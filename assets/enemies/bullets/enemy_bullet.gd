@@ -9,7 +9,8 @@ func _process(delta: float) -> void:
 	position.x += speed * delta * direction
 	
 
-
+## Bullets have to disappear after while if they hit nothing.
+## 
 func _on_timer_disappear_timeout() -> void:
 	queue_free()
 
