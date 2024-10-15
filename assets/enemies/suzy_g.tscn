@@ -1,0 +1,138 @@
+[gd_scene load_steps=17 format=3 uid="uid://ojwhepoojlhc"]
+
+[ext_resource type="Script" path="res://assets/enemies/suzy_g.gd" id="1_cj4c8"]
+[ext_resource type="Texture2D" uid="uid://dd5bvfjsqe0ya" path="res://sprites/enemies.png" id="1_gdi54"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsjkg"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(914, 614, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4d2x"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(947, 614, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3hap"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(980, 614, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwowo"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(1013, 614, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxf3n"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(1046, 614, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aios6"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(914, 647, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j62kw"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(947, 647, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y53h"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(980, 647, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqwcs"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(1013, 647, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwmyf"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(1046, 647, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38twc"]
+atlas = ExtResource("1_gdi54")
+region = Rect2(914, 614, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cul56"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsjkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4d2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3hap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwowo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxf3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aios6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j62kw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y53h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqwcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwmyf")
+}],
+"loop": true,
+"name": &"all",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38twc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fx4d6"]
+size = Vector2(18, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkrf"]
+size = Vector2(200, 100)
+
+[node name="SuzyG" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_cj4c8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_cul56")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_fx4d6")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(-9, -15)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(1, -50)
+shape = SubResource("RectangleShape2D_qjkrf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

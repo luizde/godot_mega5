@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7q7qjpx3iux1"]
+
+[ext_resource type="PackedScene" uid="uid://dm1x0rk64vtbn" path="res://scenes/levels/world_bounds.tscn" id="1_fd0um"]
+[ext_resource type="PackedScene" uid="uid://dxdciixxpiwd8" path="res://assets/megaman/megaman.tscn" id="2_0cn2v"]
+[ext_resource type="PackedScene" uid="uid://ojwhepoojlhc" path="res://assets/enemies/suzy_g.tscn" id="3_rirsj"]
+
+[node name="Level_Gravity" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(23, 49)
+position_smoothing_enabled = true
+
+[node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
+position = Vector2(23, -60)
+
+[node name="WorldBounds" parent="." instance=ExtResource("1_fd0um")]
+position = Vector2(73, 135)
+
+[node name="SuzyG" parent="." instance=ExtResource("3_rirsj")]
+position = Vector2(105, 136)
