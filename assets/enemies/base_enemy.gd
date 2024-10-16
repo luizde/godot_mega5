@@ -26,12 +26,8 @@ func take_damage(damage: int) -> void:
 		animated_sprite_2d.play(death_animation_name)
 		animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
 		
-		# We remove the Collider right away so player can't collide with the explosion
-		#TODO: there should be a better way to handle this without hardcoding names in strings
-		if has_node("CollisionShape2D"):
-			get_node("CollisionShape2D").queue_free()
-		if has_node("DetectionRange"):
-			get_node("DetectionRange").queue_free()
+		# We remove the Colliders right away so player can't collide with the explosion
+		MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
 		
 	
 
