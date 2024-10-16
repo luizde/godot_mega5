@@ -14,6 +14,7 @@ func enter() -> void:
 	# the game begins
 	muzzle = $IdleShootMuzzle
 	lower_cannon_idle = $LowerCannonIdle
+	
 
 func input(_event: InputEvent) -> int:
 	super(_event)
@@ -48,6 +49,6 @@ func physics_process(_delta: float) -> int:
 	
 	return State.Null
 
-
 func _on_lower_cannon_idle_timeout() -> void:
 	player.animations.play(animation_name)
+	

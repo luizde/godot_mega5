@@ -56,21 +56,17 @@ func _physics_process(delta: float) -> void:
 ## TODO: review / should this be in base_state?
 func face_right() -> void:
 	direction = 1
-	animations.flip_h = true
-	# This position changes when 
-	idle_shoot_muzzle.position = _shoot_muzzle_position 
+	animations.flip_h = true	
 	
 
 ## Group all player activities required to face the left side of the screen
 ## 
 func face_left() -> void:
 	direction = -1
-	animations.flip_h = false
-	idle_shoot_muzzle.position.x = _shoot_muzzle_position.x - 31 #probably shouldn-t be hardcoded
+	animations.flip_h = false	
 	
 
-func receive_damage(enemy_name: String, damage_hp: int) -> void:
+func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	hp_current -= damage_hp
-	#print("receiv dmg %d" % hp_current)
-	#print("hit by %s" % enemy_name)
+	
 	states.change_state(BaseState.State.Damaged)

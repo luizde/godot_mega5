@@ -15,6 +15,6 @@ func _on_timer_disappear_timeout() -> void:
 	queue_free()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	EventBus.enemy_hit_player.emit("", damage)
+func _on_body_entered(_body: Node2D) -> void:
+	EventBus.enemy_hit_player.emit(shooter_name, damage)
 	queue_free()

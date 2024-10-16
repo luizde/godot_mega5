@@ -38,13 +38,19 @@ func shoot() -> void:
 
 func _on_shoot_timer_timeout() -> void:
 	shoot()
+	sprite_2d.play("shoot")
 
 
-func _on_detection_range_body_entered(body: Node2D) -> void:
+func _on_detection_range_body_entered(_body: Node2D) -> void:
 	shoot_timer.start()
-	print("megaman is close")
+	
 
 
-func _on_detection_range_body_exited(body: Node2D) -> void:
+func _on_detection_range_body_exited(_body: Node2D) -> void:
 	shoot_timer.stop()
-	print("megaman is far")
+	
+
+func _process(_delta: float) -> void:	
+	if shoot_timer.time_left < shoot_timer.wait_time * 0.8 and sprite_2d.animation == "shoot":
+		print(sprite_2d.animation)
+		sprite_2d.play("idle")

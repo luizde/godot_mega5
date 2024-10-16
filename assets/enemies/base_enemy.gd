@@ -7,16 +7,29 @@ var hp: int
 var damage_shot: int
 var damage_touch: int
 
-var death_animation_name: String 
+@export var death_animation_name: String 
+var animations: AnimatedSprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	EventBus.player_hit_enemy_normalshot.connect(take_damage)
+	animations = $AnimatedSprite2D
+	
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
 func take_damage(damage: int) -> void:
 	hp -= damage
+	print(animated_sprite_2d.is_playing())
 	if hp <= 0:
-		#TODO: add death fx
-		queue_free()
+		animated_sprite_2d.play(death_animation_name)
+		animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
+		# We remove the Collider right away so player can't collide with the explosion
+		get_node("CollisionShape2D").queue_free()
+		get_node("DetectionRange").queue_free()
+		
+	
+
+func on_death_timer_timeout() -> void:
+	queue_free()

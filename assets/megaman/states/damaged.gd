@@ -15,7 +15,7 @@ func enter() -> void:
 	invul_timer.start()
 	# move against players's direction for a bit, then give control back
 
-func physics_process(delta: float) -> int:
+func physics_process(_delta: float) -> int:
 	
 	player.velocity.x = player.SPEED * player.direction * -1 / 8
 	player.velocity.y += player.gravity
