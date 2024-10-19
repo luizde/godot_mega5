@@ -45,6 +45,8 @@ func _ready() -> void:
 	
 	EventBus.enemy_hit_player.connect(receive_damage)
 	
+	is_vulnerable = true
+	
 func _unhandled_input(event: InputEvent) -> void:
 	states.input(event)
 	
@@ -67,6 +69,11 @@ func face_left() -> void:
 	
 
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
-	hp_current -= damage_hp
 	
-	states.change_state(BaseState.State.Damaged)
+	if is_vulnerable:
+		hp_current -= damage_hp
+		
+		if(hp_current <= 0):
+			states.change_state(BaseState.State.Dead)
+		else:
+			states.change_state(BaseState.State.Damaged)

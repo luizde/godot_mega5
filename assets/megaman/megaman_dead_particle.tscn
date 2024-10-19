@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://behmytlef86a2"]
+
+[ext_resource type="Script" path="res://assets/megaman/megaman_dead_particle.gd" id="1_7knrw"]
+[ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="1_34ovh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y8j"]
+atlas = ExtResource("1_34ovh")
+region = Rect2(262, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgbe5"]
+atlas = ExtResource("1_34ovh")
+region = Rect2(245, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxi8"]
+atlas = ExtResource("1_34ovh")
+region = Rect2(228, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
+atlas = ExtResource("1_34ovh")
+region = Rect2(204, 164, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jr5pk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6y8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qxi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h5d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="MegamanDead" type="Node2D"]
+script = ExtResource("1_7knrw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jr5pk")
+autoplay = "default"
+frame_progress = 0.246912

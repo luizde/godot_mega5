@@ -9,7 +9,8 @@ extends Node
 	BaseState.State.Jump: $Jump,
 	BaseState.State.Fall: $Fall,
 	BaseState.State.Slide: $Slide,
-	BaseState.State.Damaged: $Damaged
+	BaseState.State.Damaged: $Damaged,
+	BaseState.State.Dead: $Dead,
 }
 
 var current_state: BaseState

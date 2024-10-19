@@ -6,12 +6,16 @@
 
 [node name="Level_Gravity" type="Node"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(23, 49)
-position_smoothing_enabled = true
-
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 position = Vector2(23, -60)
+
+[node name="Camera2D" type="Camera2D" parent="megaman"]
+position = Vector2(0, 109)
+offset = Vector2(0, -150)
+anchor_mode = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_vertical_offset = -1.0
 
 [node name="WorldBounds" parent="." instance=ExtResource("1_fd0um")]
 position = Vector2(73, 135)

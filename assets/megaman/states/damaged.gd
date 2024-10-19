@@ -15,6 +15,10 @@ func enter() -> void:
 	invul_timer.start()
 	# move against players's direction for a bit, then give control back
 
+func input(event: InputEvent) -> int:
+	#we can't move in this state. p
+	return State.Null
+
 func physics_process(_delta: float) -> int:
 	
 	player.velocity.x = player.SPEED * player.direction * -1 / 8
@@ -26,7 +30,6 @@ func physics_process(_delta: float) -> int:
 		return BaseState.State.Idle
 		
 	return BaseState.State.Null
-	
 
 
 

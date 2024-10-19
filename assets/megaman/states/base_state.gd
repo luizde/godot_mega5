@@ -11,6 +11,7 @@ enum State {
 	Jump,
 	Fall,
 	Damaged,
+	Dead,
 }
 
 @export var animation_name: String

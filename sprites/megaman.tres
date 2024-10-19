@@ -1,10 +1,15 @@
-[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://b8f6rp22okegb"]
+[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://b8f6rp22okegb"]
 
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="1_wmq16"]
+[ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="2_64ocv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gf3gx"]
 atlas = ExtResource("1_wmq16")
 region = Rect2(266, 13, 26, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh1d2"]
+atlas = ExtResource("2_64ocv")
+region = Rect2(792, 1008, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmphn"]
 atlas = ExtResource("1_wmq16")
@@ -70,6 +75,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh1d2")
+}],
+"loop": true,
+"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
