@@ -1,0 +1,183 @@
+[gd_scene load_steps=2 format=3 uid="uid://32jh3r3yni3r"]
+
+[ext_resource type="Texture2D" uid="uid://00h8vyluxe4n" path="res://sprites/energy_bar.png" id="1_ubhg0"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="HPBackground" type="ColorRect" parent="."]
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 16.0
+offset_bottom = 39.5
+scale = Vector2(1, 1.786)
+color = Color(0, 0, 0, 1)
+
+[node name="HPBars" type="Node" parent="."]
+
+[node name="HP1" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 63)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP2" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 61)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP3" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 59)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP4" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 57)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP5" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 55)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP6" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 53)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP7" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 51)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP8" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 49)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP9" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 47)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP10" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 45)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP11" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 43)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP12" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 41)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP13" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 39)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP14" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 37)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP15" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 35)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP16" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 33)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP17" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 31)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP18" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 29)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP19" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 27)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP20" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 25)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP21" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 23)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP22" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 21)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP23" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 19)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP24" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 17)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP25" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 15)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP26" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 13)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP27" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 11)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
+
+[node name="HP28" type="Sprite2D" parent="HPBars"]
+position = Vector2(12, 9)
+texture = ExtResource("1_ubhg0")
+region_enabled = true
+region_rect = Rect2(245, 320, 6, 1)
