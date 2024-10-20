@@ -18,7 +18,6 @@ func enter() -> void:
 		
 		particle.rotate(deg_to_rad(directions[i]))
 
-		print(particle.rotation_degrees)
 		#particle.rotate()
 		
 		$".".add_child(particle)

@@ -21,7 +21,7 @@ func _on_body_entered(_body: Node2D) -> void:
 
 func take_damage(damage: int) -> void:
 	hp -= damage
-	print(animated_sprite_2d.is_playing())
+	
 	if hp <= 0:
 		animated_sprite_2d.play(death_animation_name)
 		animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)

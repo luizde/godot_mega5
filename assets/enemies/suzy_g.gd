@@ -26,8 +26,6 @@ func shoot() -> void:
 	
 	var new_position = Vector2(muzzle.global_position.x, 
 			+ muzzle.global_position.y)
-			
-	print("global position x %s" % new_position)
 	
 	new_bullet.set_position(new_position)
 	
@@ -52,5 +50,4 @@ func _on_detection_range_body_exited(_body: Node2D) -> void:
 
 func _process(_delta: float) -> void:	
 	if shoot_timer.time_left < shoot_timer.wait_time * 0.8 and sprite_2d.animation == "shoot":
-		print(sprite_2d.animation)
 		sprite_2d.play("idle")
