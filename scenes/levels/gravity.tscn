@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=7 format=3 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://scenes/levels/camera.gd" id="1_a42lx"]
 [ext_resource type="PackedScene" uid="uid://dm1x0rk64vtbn" path="res://scenes/levels/world_bounds.tscn" id="1_fd0um"]
 [ext_resource type="PackedScene" uid="uid://dxdciixxpiwd8" path="res://assets/megaman/megaman.tscn" id="2_0cn2v"]
 [ext_resource type="PackedScene" uid="uid://ojwhepoojlhc" path="res://assets/enemies/suzy_g.tscn" id="3_rirsj"]
+[ext_resource type="Texture2D" uid="uid://dky005fvx0cfl" path="res://sprites/stage_map.png" id="4_oyhjy"]
 [ext_resource type="PackedScene" uid="uid://32jh3r3yni3r" path="res://assets/HUD/hud.tscn" id="5_tv7ju"]
 
 [node name="Level_Gravity" type="Node"]
 
+[node name="Level" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Level"]
+position = Vector2(1700, 200)
+texture = ExtResource("4_oyhjy")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(23, 196)
+position = Vector2(23, 205)
 offset = Vector2(0, -150)
 limit_smoothed = true
 position_smoothing_enabled = true
@@ -24,11 +31,11 @@ position = Vector2(23, -60)
 [node name="WorldBounds" parent="." instance=ExtResource("1_fd0um")]
 position = Vector2(73, 135)
 
-[node name="Level" type="Node" parent="."]
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="SuzyG" parent="Enemies" instance=ExtResource("3_rirsj")]
 position = Vector2(105, 136)
 
 [node name="HUD" parent="." instance=ExtResource("5_tv7ju")]
+
+[node name="Node" type="Node" parent="."]

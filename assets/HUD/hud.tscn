@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://32jh3r3yni3r"]
+[gd_scene load_steps=3 format=3 uid="uid://32jh3r3yni3r"]
 
+[ext_resource type="Script" path="res://assets/HUD/hud.gd" id="1_7mags"]
 [ext_resource type="Texture2D" uid="uid://00h8vyluxe4n" path="res://sprites/energy_bar.png" id="1_ubhg0"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7mags")
 
 [node name="HPBackground" type="ColorRect" parent="."]
 offset_left = 8.0

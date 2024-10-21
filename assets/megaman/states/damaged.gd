@@ -1,6 +1,8 @@
 extends BaseState
 
 @onready var invul_timer: Timer = $InvulTimer
+@onready var damaged_timer: Timer = $DamagedParticles/Timer
+@onready var damaged_particles: Sprite2D = $DamagedParticles
 
 var _return_to_idle: bool = false
 
@@ -11,8 +13,9 @@ func enter() -> void:
 	player.velocity.y = 0
 	player.is_vulnerable = false
 	
-	#TODO: there's some effect played. can we do it with particles?
 	invul_timer.start()
+	damaged_timer.start()
+	damaged_particles.visible = false
 	# move against players's direction for a bit, then give control back
 
 func input(event: InputEvent) -> int:
@@ -31,7 +34,9 @@ func physics_process(_delta: float) -> int:
 		
 	return BaseState.State.Null
 
-
+func exit() -> void:
+	damaged_timer.stop()
+	damaged_particles.visible = false
 
 func _on_invul_timer_timeout() -> void:
 	_return_to_idle = true

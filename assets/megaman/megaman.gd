@@ -71,9 +71,18 @@ func face_left() -> void:
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	
 	if is_vulnerable:
-		hp_current -= damage_hp
+		hp_current = clamp(hp_current - damage_hp, 0, hp_max)
+		
+		EventBus.player_hp_changed.emit(hp_current)
 		
 		if(hp_current <= 0):
 			states.change_state(BaseState.State.Dead)
 		else:
 			states.change_state(BaseState.State.Damaged)
+
+
+func heal(_item_name: String, heal_hp: int) -> void:
+	
+	hp_current = clamp(hp_current + heal_hp, 0 , hp_max)
+	
+	EventBus.player_hp_changed.emit(hp_current)
