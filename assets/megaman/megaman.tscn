@@ -78,13 +78,11 @@ animation = &"idle"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_mn401")
 
 [node name="SlidingCollider" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -11.25)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_mw5wp")
 disabled = true
 
