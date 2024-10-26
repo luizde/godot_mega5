@@ -7,10 +7,11 @@ extends BaseState
 func enter() -> void:
 	super()
 	
-	if Input.is_action_pressed("move_left"):
-		player.face_left()
-	elif Input.is_action_pressed("move_right"):
-		player.face_right()
+	#if Input.is_action_pressed("move_left"):
+		#player.face_left()
+	#elif Input.is_action_pressed("move_right"):
+		#player.face_right()
+	
 	
 func input(_event: InputEvent) -> int:
 	
@@ -36,13 +37,15 @@ func input(_event: InputEvent) -> int:
 	return State.Null
 	
 func physics_process(_delta: float) -> int:
-	
+	super(_delta)
 	# We can also do with move and slide I guess? to keep consistencies
 	# 	but I find it often does unwanted stuff like sliding too much 
-	#player.velocity.x = player.SPEED * player.direction * delta
-	#player.move_and_slide()
+	player.velocity.x = player.SPEED * player.direction
+	player.move_and_slide()
 	
-	player.move_and_collide(Vector2(player.SPEED * player.direction * _delta, 0))
+	if !player.is_on_floor():
+		return State.Jump
+	#player.move_and_collide(Vector2(player.SPEED * player.direction * _delta, 0))
 	
 	return State.Null
 

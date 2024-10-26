@@ -45,6 +45,8 @@ func process(_delta: float) -> int:
 	return State.Null
 
 func physics_process(_delta: float) -> int:
+	player.velocity.y += player.gravity
+	
 	return State.Null
 	
 func shoot(muzzle:Node2D) -> void:

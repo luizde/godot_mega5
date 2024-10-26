@@ -1,3 +1,4 @@
+## State class for Jumping and Falling (falling is just a special case of jump)
 class_name Jump
 extends BaseState
 
@@ -5,21 +6,22 @@ extends BaseState
 @export var move_speed: float = 60.0
 @export var shoot_anim: String = "jump_shoot"
 
-
 @onready var muzzle: Node2D = $JumpShootMuzzle #TODO
 #@onready var jump_shoot_muzzle: Node2D = $JumpShootMuzzle
 
 func enter() -> void:
 	super()
 	
-	player.velocity.y = -jump_force
+	if Input.is_action_just_pressed("jump"):
+		player.velocity.y = -jump_force
 
 func input(_event: InputEvent) -> int:  
 	super(_event)
 	
 	# We need to deccelerate if the player released the jump button
-	# TODO but consider if we should have a minimum jump
-	if Input.is_action_just_released("jump"):
+	# 	we need to check that velocity is still less than zero. Otherwise, 
+	#	turning the velocity of Y to zero causes deceleration of falll
+	if Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y = 0
 		#return State.Fall
 	

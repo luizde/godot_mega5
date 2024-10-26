@@ -23,7 +23,7 @@ func input(_event: InputEvent) -> int:
 	return State.Null
 
 func physics_process(_delta: float) -> int:
-	
+	super(_delta)
 	# If we are done sliding, leave
 	if _next_state != BaseState.State.Null:
 		return _next_state
@@ -36,7 +36,7 @@ func physics_process(_delta: float) -> int:
 	player.move_and_slide()
 	
 	if !player.is_on_floor():
-		return State.Fall
+		return State.Jump
 	
 	return State.Null
 

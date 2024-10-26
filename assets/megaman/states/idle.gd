@@ -41,11 +41,13 @@ func input(_event: InputEvent) -> int:
 	return State.Null
 
 func physics_process(_delta: float) -> int:
+	super(_delta)
+	
 	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
 		return State.Step
 	
 	if !player.is_on_floor():
-		return State.Fall
+		return State.Jump
 	
 	return State.Null
 

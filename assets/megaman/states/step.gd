@@ -21,9 +21,12 @@ func enter() -> void:
 # but rather wait for the next _physics_process. 
 # At 60fps its a very acceptable error hopefully
 func physics_process(_delta: float) -> int:
+	super(_delta)
 	
 	if _internal_state != State.Step:
 		return _internal_state
+	if !player.is_on_floor():
+		return State.Jump
 	
 	return State.Null
 
