@@ -74,7 +74,7 @@ script = ExtResource("1_afrgl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_b87kq")
-animation = &"idle"
+animation = &"walk_shoot"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]

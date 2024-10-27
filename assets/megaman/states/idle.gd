@@ -11,7 +11,7 @@ func enter() -> void:
 	
 	# not sure why the to below don't work @onready
 	# probably something related to Idle being the first state to be used when 
-	# the game begins
+	# the game begins or about order of instantiation between parents and children
 	muzzle = $IdleShootMuzzle
 	lower_cannon_idle = $LowerCannonIdle
 	
@@ -52,5 +52,11 @@ func physics_process(_delta: float) -> int:
 	return State.Null
 
 func _on_lower_cannon_idle_timeout() -> void:
+	#print(player.states.current_state)
 	player.animations.play(animation_name)
+	
+func exit() -> void:
+	# The timer that calls back the lower fire could be running. Stop it.
+	lower_cannon_idle.stop()
+	
 	

@@ -44,6 +44,7 @@ func _ready() -> void:
 	hp_current = hp_max
 	
 	EventBus.enemy_hit_player.connect(receive_damage)
+	EventBus.player_enter_spikes.connect(instadie)
 	
 	is_vulnerable = true
 	
@@ -80,6 +81,8 @@ func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 		else:
 			states.change_state(BaseState.State.Damaged)
 
+func instadie(killer_entity: String) -> void:
+	receive_damage(killer_entity, 1000)
 
 func heal(_item_name: String, heal_hp: int) -> void:
 	

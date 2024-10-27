@@ -18,7 +18,7 @@ func enter() -> void:
 	damaged_particles.visible = false
 	# move against players's direction for a bit, then give control back
 
-func input(event: InputEvent) -> int:
+func input(_event: InputEvent) -> int:
 	#we can't move in this state. p
 	return State.Null
 

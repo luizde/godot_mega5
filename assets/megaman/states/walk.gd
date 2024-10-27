@@ -49,6 +49,9 @@ func physics_process(_delta: float) -> int:
 	
 	return State.Null
 
+func exit() -> void:
+	# The timer that calls back the lower fire could be running. Stop it.
+	lower_cannon.stop()
 
 func _on_lower_cannon_timeout() -> void:
 	player.animations.play(animation_name)

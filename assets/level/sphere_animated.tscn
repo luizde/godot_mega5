@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgo7s7c77qy7s"]
+
+[ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="1_tad2l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwu44"]
+atlas = ExtResource("1_tad2l")
+region = Rect2(358, 126, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl5rl"]
+atlas = ExtResource("1_tad2l")
+region = Rect2(358, 143, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd2hw"]
+atlas = ExtResource("1_tad2l")
+region = Rect2(358, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdnky"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwu44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl5rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd2hw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="sphere_animated" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_jdnky")
+autoplay = "default"
+frame_progress = 0.481338
