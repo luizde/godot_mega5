@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=18 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://scenes/levels/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -950,6 +950,9 @@ sources/2 = SubResource("TileSetAtlasSource_il1q5")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjlbx"]
 size = Vector2(560, 232)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saue8"]
+size = Vector2(352, 224)
+
 [node name="Level_Gravity" type="Node2D"]
 
 [node name="Level Decor" type="TileMapLayer" parent="."]
@@ -961,7 +964,6 @@ tile_set = SubResource("TileSet_c1xvu")
 [node name="Room_01" type="Area2D" parent="Level"]
 
 [node name="Room_01_collider" type="CollisionShape2D" parent="Level/Room_01"]
-visible = false
 position = Vector2(184, 76)
 shape = SubResource("RectangleShape2D_yjlbx")
 debug_color = Color(0.930403, 0.028212, 0.645446, 0.42)
@@ -987,28 +989,36 @@ position = Vector2(408, 104)
 [node name="01_03_numbers" parent="Level/Room_01" instance=ExtResource("4_21sfi")]
 position = Vector2(408, 216)
 
-[node name="Room_02" type="Node" parent="Level"]
+[node name="Room_02" type="Area2D" parent="Level"]
+position = Vector2(311, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Room_02"]
+position = Vector2(25, 88)
+shape = SubResource("RectangleShape2D_saue8")
 
 [node name="02_01_VaseElectricTop" parent="Level/Room_02" instance=ExtResource("8_pi6uj")]
-position = Vector2(352, 424)
+position = Vector2(41, 184)
 
 [node name="02_02_VaseElectricTop2" parent="Level/Room_02" instance=ExtResource("8_pi6uj")]
-position = Vector2(416, 424)
+position = Vector2(105, 184)
 
 [node name="02_02_VaseElectricTop3" parent="Level/Room_02" instance=ExtResource("8_pi6uj")]
-position = Vector2(480, 424)
+position = Vector2(169, 184)
 
 [node name="02_01_spikes" parent="Level/Room_02" instance=ExtResource("9_h5tir")]
-position = Vector2(280, 312)
+position = Vector2(-31, 72)
 
 [node name="02_02_spikes" parent="Level/Room_02" instance=ExtResource("9_h5tir")]
-position = Vector2(296, 312)
+position = Vector2(-15, 72)
 
 [node name="02_03_spikes" parent="Level/Room_02" instance=ExtResource("9_h5tir")]
-position = Vector2(296, 424)
+position = Vector2(-15, 184)
 
 [node name="02_04_spikes" parent="Level/Room_02" instance=ExtResource("9_h5tir")]
-position = Vector2(311, 424)
+position = Vector2(0, 184)
+
+[node name="02_01_numbers" parent="Level/Room_02" instance=ExtResource("4_21sfi")]
+position = Vector2(-63, 200)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(23, 66)
