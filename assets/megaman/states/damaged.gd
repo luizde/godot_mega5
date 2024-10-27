@@ -25,7 +25,7 @@ func input(_event: InputEvent) -> int:
 func physics_process(_delta: float) -> int:
 	
 	player.velocity.x = player.SPEED * player.direction * -1 / 8
-	player.velocity.y += player.gravity
+	player.velocity.y += WorldPhysics.gravity
 	
 	player.move_and_slide()
 	

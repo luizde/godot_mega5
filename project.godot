@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="megaman5_clone"
-run/main_scene="res://scenes/levels/gravity.tscn"
+run/main_scene="res://assets/level/gravity.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"

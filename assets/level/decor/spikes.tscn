@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxbfa47guslk7"]
 
 [ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="1_l083a"]
-[ext_resource type="Script" path="res://assets/level/spikes.gd" id="2_mqj56"]
+[ext_resource type="Script" path="res://assets/level/decor/spikes.gd" id="2_mqj56"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2jcwd"]
 atlas = ExtResource("1_l083a")
