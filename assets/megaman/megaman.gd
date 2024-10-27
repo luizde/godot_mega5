@@ -1,9 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-@export var gravity = 15.0
-@export var falling_gravity = 15.0
-
 @export var hp_max:int = 28
 @export var hp_current: int :
 	get:

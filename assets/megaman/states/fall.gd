@@ -7,10 +7,10 @@ func enter() -> void:
 func physics_process(_delta: float) -> int:
 	
 	# We cap velocity at 420 px per sec or 7px per frame
-	if player.velocity.y >= player.gravity * 60:
-		player.velocity.y = player.gravity * 60
+	if player.velocity.y >= WorldPhysics.gravity * 60:
+		player.velocity.y = WorldPhysics.gravity * 60
 	else:
-		player.velocity.y += player.gravity
+		player.velocity.y += WorldPhysics.gravity
 	
 	player.velocity.x = player.direction * player.is_moving_horizontal * player.SPEED 
 		

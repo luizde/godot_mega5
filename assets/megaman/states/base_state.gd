@@ -45,7 +45,7 @@ func process(_delta: float) -> int:
 	return State.Null
 
 func physics_process(_delta: float) -> int:
-	player.velocity.y += player.gravity
+	player.velocity.y += WorldPhysics.gravity
 	
 	return State.Null
 	
