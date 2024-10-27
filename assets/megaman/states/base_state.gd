@@ -20,6 +20,9 @@ enum State {
 var player: Player
 var bullet = preload("res://assets/megaman/megaman_bullet.tscn")
 
+func _ready() -> void:
+	EventBus.player_enters_room.connect(reset_y_velocity)
+
 func enter() -> void:
 	player.animations.play(animation_name)  
 
@@ -63,3 +66,5 @@ func shoot(muzzle:Node2D) -> void:
 		
 	$".".add_child(new_bullet)
 	
+func reset_y_velocity(abc, dfg) -> void:
+	player.velocity.y = 0
