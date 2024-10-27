@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://du3klj8atble"]
+
+[ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_yii3m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xbp3"]
+atlas = ExtResource("1_yii3m")
+region = Rect2(18, 58, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w65a4"]
+atlas = ExtResource("1_yii3m")
+region = Rect2(35, 58, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4728"]
+atlas = ExtResource("1_yii3m")
+region = Rect2(52, 58, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bihxs"]
+atlas = ExtResource("1_yii3m")
+region = Rect2(69, 58, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hc4xd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xbp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w65a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4728")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bihxs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LevelNumbers" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hc4xd")
+autoplay = "default"
+frame = 3
+frame_progress = 0.677369
+centered = false

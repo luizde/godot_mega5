@@ -12,3 +12,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	position.x = player.position.x
+	#print("Camera Y is %d and player Y is %d" % [position.y, player.position.y])

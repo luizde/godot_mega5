@@ -37,4 +37,4 @@ animations = [{
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_jdnky")
 autoplay = "default"
-frame_progress = 0.481338
+frame_progress = 0.0547528
