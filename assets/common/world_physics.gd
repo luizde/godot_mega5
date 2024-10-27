@@ -1,5 +1,10 @@
 extends Node
 
+## This is basically a singleton with functions for altering gravity. Every
+## object that responds to gravity should get it from here. It can also change
+## (like underwater or in gravity man's stage) which is why we don't use a simple
+## global variable of the physics engine
+
 static var gravity: float :
 	get:
 		return gravity
