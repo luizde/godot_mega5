@@ -69,5 +69,5 @@ func shoot(muzzle:Node2D) -> void:
 		
 	$".".add_child(new_bullet)
 	
-func reset_y_velocity(abc, dfg) -> void:
+func reset_y_velocity(_na, _none) -> void:
 	player.velocity.y = 0
