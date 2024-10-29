@@ -11,6 +11,7 @@ extends Node
 	BaseState.State.Slide: $Slide,
 	BaseState.State.Damaged: $Damaged,
 	BaseState.State.Dead: $Dead,
+	BaseState.State.Teleport: $Teleport
 }
 
 var current_state: BaseState
@@ -29,7 +30,7 @@ func init(player: Player) -> void:
 		child.player = player
 	
 	# We initialize on Idle always 
-	change_state(BaseState.State.Idle)
+	change_state(BaseState.State.Teleport)
 	
 # Pass thru functions for the player to call handling states as needed
 func physics_process(delta: float) -> void:

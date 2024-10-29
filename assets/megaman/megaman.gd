@@ -29,6 +29,10 @@ var is_vulnerable: bool :
 	set(value):
 		is_vulnerable = value
 
+var is_movement_enabled: bool:
+	get:
+		return is_movement_enabled
+
 # Original game was 1.375 px per frame. We are locking at 60 fps, therefore
 #	1.375 * 60 = 82.5 px per sec
 @export var SPEED = 82.5 
@@ -44,6 +48,7 @@ func _ready() -> void:
 	EventBus.player_enter_spikes.connect(instadie)
 	
 	is_vulnerable = true
+	is_movement_enabled = true
 	
 func _unhandled_input(event: InputEvent) -> void:
 	states.input(event)
@@ -63,8 +68,7 @@ func face_right() -> void:
 ## 
 func face_left() -> void:
 	direction = -1
-	animations.flip_h = false	
-	
+	animations.flip_h = false
 
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	
@@ -86,3 +90,9 @@ func heal(_item_name: String, heal_hp: int) -> void:
 	hp_current = clamp(hp_current + heal_hp, 0 , hp_max)
 	
 	EventBus.player_hp_changed.emit(hp_current)
+
+func disable_movement() -> void:
+	is_movement_enabled = false
+	
+func enable_movement() -> void:
+	is_movement_enabled = true

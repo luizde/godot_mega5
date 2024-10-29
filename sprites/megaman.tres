@@ -1,7 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=19 format=3 uid="uid://b8f6rp22okegb"]
+[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://b8f6rp22okegb"]
 
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="1_wmq16"]
 [ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="2_64ocv"]
+[ext_resource type="Texture2D" uid="uid://dxl7t6qb6ws4b" path="res://sprites/megaman_02.png" id="3_jgri4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gf3gx"]
 atlas = ExtResource("1_wmq16")
@@ -42,6 +43,18 @@ region = Rect2(302, 24, 28, 21)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bee8a"]
 atlas = ExtResource("1_wmq16")
 region = Rect2(58, 21, 20, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sna8"]
+atlas = ExtResource("3_jgri4")
+region = Rect2(26, 2, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqp7e"]
+atlas = ExtResource("3_jgri4")
+region = Rect2(44, 2, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t23aq"]
+atlas = ExtResource("3_jgri4")
+region = Rect2(71, 2, 26, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t45pq"]
 atlas = ExtResource("1_wmq16")
@@ -143,6 +156,20 @@ animations = [{
 "loop": false,
 "name": &"step",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sna8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqp7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t23aq")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,

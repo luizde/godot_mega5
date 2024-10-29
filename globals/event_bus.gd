@@ -17,3 +17,6 @@ signal gravity_changed()
 
 ## Emmitted when player enters an area on the stage
 signal player_enters_room(room_number: int, room_position: Vector2)
+
+## Emmitted when player is ready to play in level
+signal player_teleported_into_level()

@@ -11,6 +11,11 @@ var room_position:Vector2 :
 				return to_global(child.position)
 		return Vector2(0, 0)
 
+func _ready() -> void:
+	EventBus.player_teleported_into_level.connect(enable_room_monitoring)
 
 func _on_body_entered(_body: Node2D) -> void:
 	EventBus.player_enters_room.emit(room_number, room_position)
+
+func enable_room_monitoring() -> void:
+	monitoring = true

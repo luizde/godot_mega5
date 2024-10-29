@@ -12,10 +12,10 @@ enum State {
 	Fall,
 	Damaged,
 	Dead,
+	Teleport
 }
 
 @export var animation_name: String
-
 
 var player: Player
 var bullet = preload("res://assets/megaman/megaman_bullet.tscn")
@@ -32,6 +32,9 @@ func exit() -> void:
 	
 # We return an enum, which is really an int behind the scenes
 func input(_event: InputEvent) -> int:
+	
+	if !player.is_movement_enabled:
+		return State.Null
 	
 	if Input.is_action_pressed("move_left"):
 		player.face_left()
