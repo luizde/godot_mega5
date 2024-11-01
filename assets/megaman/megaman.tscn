@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dxdciixxpiwd8"]
+[gd_scene load_steps=21 format=3 uid="uid://dxdciixxpiwd8"]
 
 [ext_resource type="Script" path="res://assets/megaman/megaman.gd" id="1_afrgl"]
+[ext_resource type="Material" uid="uid://chd5naiy8nv6o" path="res://assets/megaman/shaders/charge_material.tres" id="2_2ymrv"]
 [ext_resource type="SpriteFrames" uid="uid://b8f6rp22okegb" path="res://sprites/megaman.tres" id="2_b87kq"]
 [ext_resource type="Script" path="res://assets/megaman/states/state_manager.gd" id="3_i7aho"]
 [ext_resource type="Script" path="res://assets/megaman/states/idle.gd" id="4_dtmg8"]
@@ -14,6 +15,8 @@
 [ext_resource type="Script" path="res://assets/megaman/states/dead.gd" id="11_wc211"]
 [ext_resource type="Script" path="res://assets/megaman/fx/damaged_particles.gd" id="12_f7mta"]
 [ext_resource type="Script" path="res://assets/megaman/states/teleport.gd" id="14_kifi3"]
+[ext_resource type="PackedScene" uid="uid://dcm7pg8mt7npd" path="res://assets/common/charging_colorer.tscn" id="15_401m3"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="17_xwqg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mn401"]
 size = Vector2(12, 22)
@@ -163,6 +166,12 @@ animation_name = "dead"
 
 [node name="Teleport" type="Node2D" parent="StateManager"]
 script = ExtResource("14_kifi3")
+
+[node name="ChargingColorer" parent="." instance=ExtResource("15_401m3")]
+charging_material = ExtResource("2_2ymrv")
+
+[node name="Flasher" parent="." instance=ExtResource("17_xwqg1")]
+position = Vector2(-8, -32)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateManager/Step" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="StateManager/Idle/LowerCannonIdle" to="StateManager/Idle" method="_on_lower_cannon_idle_timeout"]

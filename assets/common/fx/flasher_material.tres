@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ogqha8dwwm3v"]
+
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="1_u26kl"]
+
+[resource]
+shader = ExtResource("1_u26kl")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0

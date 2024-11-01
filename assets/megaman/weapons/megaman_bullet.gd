@@ -26,3 +26,7 @@ func _on_body_entered(_body: Node2D) -> void:
 func _on_area_entered(_area: Area2D) -> void:
 	EventBus.player_hit_enemy_normalshot.emit(1)
 	queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

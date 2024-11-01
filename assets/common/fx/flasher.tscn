@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cedrej40vfvit"]
+
+[ext_resource type="Material" uid="uid://ogqha8dwwm3v" path="res://assets/common/fx/flasher_material.tres" id="1_fu7kv"]
+[ext_resource type="Script" path="res://assets/common/fx/flasher.gd" id="1_jd1k4"]
+
+[node name="Flasher" type="Node2D"]
+material = ExtResource("1_fu7kv")
+script = ExtResource("1_jd1k4")
+
+[node name="FlasherTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FlasherTimer" to="." method="_on_flasher_timer_timeout"]

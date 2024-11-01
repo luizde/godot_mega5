@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://chd5naiy8nv6o"]
+
+[ext_resource type="Shader" path="res://assets/megaman/shaders/charge_shot.gdshader" id="1_na4tu"]
+
+[resource]
+shader = ExtResource("1_na4tu")
+shader_parameter/line_color = Color(0.626259, 0.959338, 0.885896, 1)
+shader_parameter/line_thickness = 1.0
+shader_parameter/onoff = 1.0

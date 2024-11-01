@@ -19,9 +19,24 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 @onready var standing_collider: CollisionShape2D = $StandingCollider
 @onready var sliding_collider: CollisionShape2D = $SlidingCollider
 
+#region shooting variables
 # reference to idle animation shoot muzzle
 @onready var idle_shoot_muzzle: Node2D = $StateManager/Idle/IdleShootMuzzle
 var _shoot_muzzle_position:Vector2
+
+@onready var charging_colorer = $ChargingColorer :
+	get:
+		return charging_colorer
+
+@onready var charge_time:float = 0
+enum ChargeLevels {
+	NoCharge,
+	Medium,
+	High,
+}
+@onready var charge_level: ChargeLevels = ChargeLevels.NoCharge
+@onready var charging: bool = false
+#endregion 
 
 var is_vulnerable: bool :
 	get:
@@ -32,6 +47,9 @@ var is_vulnerable: bool :
 var is_movement_enabled: bool:
 	get:
 		return is_movement_enabled
+
+# object for FX flash when hit by enemy
+@onready var flasher: Node2D = $Flasher
 
 # Original game was 1.375 px per frame. We are locking at 60 fps, therefore
 #	1.375 * 60 = 82.5 px per sec
@@ -73,6 +91,7 @@ func face_left() -> void:
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	
 	if is_vulnerable:
+		flasher.start_flicker(0.2, animations, 0.4)
 		hp_current = clamp(hp_current - damage_hp, 0, hp_max)
 		
 		EventBus.player_hp_changed.emit(hp_current)

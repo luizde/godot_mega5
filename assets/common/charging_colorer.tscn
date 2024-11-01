@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcm7pg8mt7npd"]
+
+[ext_resource type="Script" path="res://assets/common/charging_colorer.gd" id="1_4ewto"]
+
+[node name="ChargingColorer" type="Node"]
+script = ExtResource("1_4ewto")
+
+[node name="TimerFlicker" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerFlicker" to="." method="_on_timer_flicker_timeout"]

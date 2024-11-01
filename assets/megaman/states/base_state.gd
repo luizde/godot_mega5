@@ -15,6 +15,8 @@ enum State {
 	Teleport
 }
 
+@export var material_charging:Material = preload("res://assets/megaman/shaders/charge_material.tres")
+
 @export var animation_name: String
 
 var player: Player
@@ -22,9 +24,10 @@ var bullet = preload("res://assets/megaman/megaman_bullet.tscn")
 
 func _ready() -> void:
 	EventBus.player_enters_room.connect(reset_y_velocity)
+	
 
 func enter() -> void:
-	player.animations.play(animation_name)  
+	player.animations.play(animation_name)
 
 	
 func exit() -> void:
@@ -44,6 +47,13 @@ func input(_event: InputEvent) -> int:
 		player.is_moving_horizontal = 1
 	elif !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 		player.is_moving_horizontal = 0
+		
+	if Input.is_action_pressed("shoot"):
+		player.charging = true
+	
+	if Input.is_action_just_released("shoot"):
+		player.charge_time = 0
+		player.charging = false
 	
 	return State.Null
 	
@@ -52,6 +62,17 @@ func process(_delta: float) -> int:
 
 func physics_process(_delta: float) -> int:
 	player.velocity.y += WorldPhysics.gravity
+	
+	if player.charging:
+		player.charge_time = clamp(player.charge_time + _delta, 0, 2)
+	else:
+		player.charging_colorer.stop_flicker()
+	
+	if player.charge_time >= 1.0 and player.charge_time < 2.0:
+		player.charging_colorer.start_flicker(player, 0.1, player.animations)
+	elif player.charge_time >= 2.0:
+		#player.charging_colorer.stop_flicker()
+		player.charging_colorer.start_flicker(player, 0.05, player.animations)
 	
 	return State.Null
 	
