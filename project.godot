@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://globals/event_bus.gd"
-WorldPhysics="*res://assets/common/world_physics.gd"
+EventBus="*res://assets/common/globals/event_bus.gd"
+WorldPhysics="*res://assets/common/globals/world_physics.gd"
 GodotLogger="*res://addons/logger/logger.gd"
 
 [display]
