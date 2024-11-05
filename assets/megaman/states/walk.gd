@@ -21,6 +21,7 @@ func input(_event: InputEvent) -> int:
 		#player.face_right()
 	
 	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
+		GodotLogger.debug("Slide start")
 		return State.Slide
 	
 	if Input.is_action_just_pressed("jump"):

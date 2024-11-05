@@ -9,7 +9,7 @@ const _STANDING_COLLIDER_SIZE_X = 12.0
 const _STANDING_COLLIDER_SIZE_Y = 22.0
 
 const _SLIDING_COLLIDER_SIZE_X = 27.5
-const _SLIDING_COLLIDER_SIZE_Y = 19.5
+const _SLIDING_COLLIDER_SIZE_Y = 22.0
 
 func enter() -> void:
 	super()
