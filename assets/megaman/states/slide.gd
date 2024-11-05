@@ -63,11 +63,7 @@ func _on_slide_timer_timeout() -> void:
 	_next_state = BaseState.State.Idle
 	
 func change_collider_to_slide() -> void:
-	var shape = RectangleShape2D.new()
-	shape.size = Vector2(_SLIDING_COLLIDER_SIZE_X, _SLIDING_COLLIDER_SIZE_Y)
-	player.standing_collider.shape = shape
+	player.standing_collider.shape.size = Vector2(_SLIDING_COLLIDER_SIZE_X, _SLIDING_COLLIDER_SIZE_Y)
 
 func change_collider_to_stand() -> void:
-	var shape = RectangleShape2D.new()
-	shape.size = Vector2(_STANDING_COLLIDER_SIZE_X, _STANDING_COLLIDER_SIZE_Y)
-	player.standing_collider.shape = shape
+	player.standing_collider.shape.size = Vector2(_STANDING_COLLIDER_SIZE_X, _STANDING_COLLIDER_SIZE_Y)

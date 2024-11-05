@@ -1,5 +1,5 @@
 class_name BaseEnemy
-extends Node
+extends Area2D
 
 var enemy_name: String
 
@@ -29,7 +29,7 @@ func take_damage(damage: int) -> void:
 		
 		# We remove the Colliders right away so player can't collide with the explosion
 		MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
-		
+		monitoring = false
 	
 
 func on_death_timer_timeout() -> void:
