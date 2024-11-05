@@ -30,10 +30,6 @@ func input(_event: InputEvent) -> int:
 	if !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 		return State.Idle
 		
-	if Input.is_action_just_pressed("shoot"):
-		player.animations.play(walk_shoot_animation)
-		player.shoot(walk_shoot_muzzle)
-		lower_cannon.start()
 	
 	if Input.is_action_just_pressed("shoot") \
 				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \

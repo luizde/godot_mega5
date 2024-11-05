@@ -78,19 +78,6 @@ func physics_process(_delta: float) -> int:
 	
 	return State.Null
 	
-#func shoot(muzzle:Node2D) -> void:
-	## Instantiate a bullet
-	#var new_bullet = bullet.instantiate()
-#
-	#var new_position = Vector2((muzzle.global_position.x * player.direction) + player.position.x, 
-			#+ muzzle.global_position.y + player.position.y)
-	#new_bullet.set_position(new_position)
-	#
-	#if player.direction == -1:
-		#new_bullet.scale.y *= -1  #TODO
-		#new_bullet.direction = player.direction
-		#
-	#$".".add_child(new_bullet)
 	
 func reset_y_velocity(_na, _none) -> void:
 	player.velocity.y = 0

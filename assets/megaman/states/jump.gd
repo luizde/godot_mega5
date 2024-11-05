@@ -27,10 +27,6 @@ func input(_event: InputEvent) -> int:
 	# I had originally thought to add a "jump_shoot" state but really nothing changes
 	#	in terms of behavior, so I chose to put it here.
 	#	I feel it should return to jumping withuot the cannon maybe but TODO
-	if Input.is_action_just_pressed("shoot"):
-		player.animations.play("jump_shoot")
-		player.shoot(muzzle)
-	
 	if Input.is_action_just_pressed("shoot") \
 				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
 				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
