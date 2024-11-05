@@ -58,7 +58,7 @@ var is_movement_enabled: bool:
 
 # Original game was 1.375 px per frame. We are locking at 60 fps, therefore
 #	1.375 * 60 = 82.5 px per sec
-@export var SPEED = 82.5 
+@export var speed = 82.5 
 
 func _ready() -> void:
 	velocity = Vector2.ZERO

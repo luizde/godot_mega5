@@ -3,7 +3,6 @@ class_name Jump
 extends BaseState
 
 @export var jump_force: float = 300#285.0
-@export var move_speed: float = 60.0
 @export var shoot_anim: String = "jump_shoot"
 
 @onready var muzzle: Node2D = $JumpShootMuzzle #TODO
@@ -32,13 +31,21 @@ func input(_event: InputEvent) -> int:
 		player.animations.play("jump_shoot")
 		player.shoot(muzzle)
 	
+	if Input.is_action_just_pressed("shoot") \
+				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
+				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
+		player.shoot(muzzle)
+		player.animations.play("jump_shoot")
+		
+	
 	return State.Null
 
 
 func physics_process(_delta: float) -> int:
+	super(_delta)
 	
-	player.velocity.x = player.direction * player.is_moving_horizontal * move_speed
-	player.velocity.y += WorldPhysics.gravity
+	player.velocity.x = player.direction * player.is_moving_horizontal * player.speed
+	#player.velocity.y += WorldPhysics.gravity
 	
 	player.move_and_slide()
 	

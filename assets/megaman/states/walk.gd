@@ -35,13 +35,20 @@ func input(_event: InputEvent) -> int:
 		player.shoot(walk_shoot_muzzle)
 		lower_cannon.start()
 	
+	if Input.is_action_just_pressed("shoot") \
+				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
+				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
+		player.shoot(walk_shoot_muzzle)
+		player.animations.play(walk_shoot_animation)
+		lower_cannon.start()
+	
 	return State.Null
 	
 func physics_process(_delta: float) -> int:
 	super(_delta)
 	# We can also do with move and slide I guess? to keep consistencies
 	# 	but I find it often does unwanted stuff like sliding too much 
-	player.velocity.x = player.SPEED * player.direction
+	player.velocity.x = player.speed * player.direction
 	player.move_and_slide()
 	
 	if !player.is_on_floor():
