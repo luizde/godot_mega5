@@ -72,9 +72,9 @@ func physics_process(_delta: float) -> int:
 		player.charge_time = 0.0
 	
 	if player.charge_time >= 1.0 and player.charge_time < 2.0:
-		player.charging_colorer.start_flicker(player, 0.1, player.animations)
+		player.charging_colorer.start_flash(player, 0.1, player.animations)
 	elif player.charge_time >= 2.0:
-		player.charging_colorer.start_flicker(player, 0.05, player.animations)
+		player.charging_colorer.start_flash(player, 0.05, player.animations)
 	
 	return State.Null
 	

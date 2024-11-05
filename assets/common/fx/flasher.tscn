@@ -10,4 +10,7 @@ script = ExtResource("1_jd1k4")
 [node name="FlasherTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="FlickerToggleTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="FlasherTimer" to="." method="_on_flasher_timer_timeout"]
+[connection signal="timeout" from="FlickerToggleTimer" to="." method="_on_flicker_toggle_timer_timeout"]

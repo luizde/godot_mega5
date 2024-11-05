@@ -3,6 +3,7 @@ extends BaseState
 @onready var invul_timer: Timer = $InvulTimer
 @onready var damaged_timer: Timer = $DamagedParticles/Timer
 @onready var damaged_particles: Sprite2D = $DamagedParticles
+@onready var disable_move_timer: Timer = $DisableMoveTimer
 
 var _return_to_idle: bool = false
 
@@ -14,6 +15,7 @@ func enter() -> void:
 	player.is_vulnerable = false
 	
 	invul_timer.start()
+	disable_move_timer.start()
 	damaged_timer.start()
 	damaged_particles.visible = false
 	# move against players's direction for a bit, then give control back
@@ -39,5 +41,8 @@ func exit() -> void:
 	damaged_particles.visible = false
 
 func _on_invul_timer_timeout() -> void:
-	_return_to_idle = true
 	player.is_vulnerable = true
+
+
+func _on_disable_move_timer_timeout() -> void:
+	_return_to_idle = true

@@ -24,7 +24,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
 func take_damage(damage: int) -> void:
-	flasher.start_flicker(0.2, animations, 0.4)
+	flasher.start_flash(0.2, animations, 0.4)
 	
 	hp -= damage
 	

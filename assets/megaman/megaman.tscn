@@ -154,6 +154,10 @@ script = ExtResource("12_f7mta")
 [node name="Timer" type="Timer" parent="StateManager/Damaged/DamagedParticles"]
 wait_time = 0.1
 
+[node name="DisableMoveTimer" type="Timer" parent="StateManager/Damaged"]
+wait_time = 0.5
+one_shot = true
+
 [node name="Dead" type="Node" parent="StateManager"]
 script = ExtResource("11_wc211")
 animation_name = "dead"
@@ -176,3 +180,4 @@ bullet = ExtResource("19_mab6w")
 [connection signal="timeout" from="StateManager/Slide/SlideTimer" to="StateManager/Slide" method="_on_slide_timer_timeout"]
 [connection signal="timeout" from="StateManager/Damaged/InvulTimer" to="StateManager/Damaged" method="_on_invul_timer_timeout"]
 [connection signal="timeout" from="StateManager/Damaged/DamagedParticles/Timer" to="StateManager/Damaged/DamagedParticles" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateManager/Damaged/DisableMoveTimer" to="StateManager/Damaged" method="_on_disable_move_timer_timeout"]

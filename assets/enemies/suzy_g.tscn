@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ojwhepoojlhc"]
+[gd_scene load_steps=18 format=3 uid="uid://ojwhepoojlhc"]
 
 [ext_resource type="Script" path="res://assets/enemies/suzy_g.gd" id="1_cj4c8"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="3_f3bhr"]
 [ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="3_prqad"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="4_8rqho"]
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="5_fk0hq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
 atlas = ExtResource("3_f3bhr")
@@ -88,6 +89,12 @@ size = Vector2(18, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjkrf"]
 size = Vector2(200, 100)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsw3u"]
+resource_local_to_scene = true
+shader = ExtResource("5_fk0hq")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
 [node name="SuzyG" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
@@ -119,6 +126,7 @@ position = Vector2(1, -50)
 shape = SubResource("RectangleShape2D_qjkrf")
 
 [node name="Flasher" parent="." instance=ExtResource("4_8rqho")]
+material = SubResource("ShaderMaterial_lsw3u")
 position = Vector2(0, -14)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -10,7 +10,7 @@ var charging_sprites:AnimatedSprite2D
 @onready var is_flickering: bool = false
 @onready var _onoff: float = 0.0
 
-func start_flicker(object:Node2D, flicker_frequency_secs: float, animation_sprites:AnimatedSprite2D):
+func start_flash(object:Node2D, flicker_frequency_secs: float, animation_sprites:AnimatedSprite2D):
 	charging_object = object
 	timer_flicker.wait_time = flicker_frequency_secs
 	charging_sprites = animation_sprites

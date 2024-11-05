@@ -99,7 +99,7 @@ func face_left() -> void:
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	
 	if is_vulnerable:
-		flasher.start_flicker(0.2, animations, 0.4)
+		flasher.start_flicker(1.0, 0.1, animations, 0.4)
 		hp_current = clamp(hp_current - damage_hp, 0, hp_max)
 		
 		EventBus.player_hp_changed.emit(hp_current)
