@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://ojwhepoojlhc"]
+[gd_scene load_steps=16 format=3 uid="uid://ojwhepoojlhc"]
 
 [ext_resource type="Script" path="res://assets/enemies/suzy_g.gd" id="1_cj4c8"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="3_f3bhr"]
 [ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="3_prqad"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="4_8rqho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
 atlas = ExtResource("3_f3bhr")
@@ -116,6 +117,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 position = Vector2(1, -50)
 shape = SubResource("RectangleShape2D_qjkrf")
+
+[node name="Flasher" parent="." instance=ExtResource("4_8rqho")]
+position = Vector2(0, -14)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
