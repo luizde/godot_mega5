@@ -30,7 +30,7 @@ func input(_event: InputEvent) -> int:
 	#	I feel it should return to jumping withuot the cannon maybe but TODO
 	if Input.is_action_just_pressed("shoot"):
 		player.animations.play("jump_shoot")
-		shoot(muzzle)
+		player.shoot(muzzle)
 	
 	return State.Null
 

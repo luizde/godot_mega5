@@ -31,7 +31,7 @@ func input(_event: InputEvent) -> int:
 		
 	if Input.is_action_just_pressed("shoot"):
 		player.animations.play(walk_shoot_animation)
-		shoot(walk_shoot_muzzle)
+		player.shoot(walk_shoot_muzzle)
 		lower_cannon.start()
 	
 	return State.Null

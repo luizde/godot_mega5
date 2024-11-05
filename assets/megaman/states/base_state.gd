@@ -15,12 +15,13 @@ enum State {
 	Teleport
 }
 
-@export var material_charging:Material = preload("res://assets/megaman/shaders/charge_material.tres")
+#@export var material_charging:Material = preload("res://assets/megaman/shaders/charge_material.tres")
 
 @export var animation_name: String
+@export var animation_shooting_name: String
 
 var player: Player
-var bullet = preload("res://assets/megaman/megaman_bullet.tscn")
+var bullet = preload("res://assets/megaman/weapons/megaman_bullet.tscn")
 
 func _ready() -> void:
 	EventBus.player_enters_room.connect(reset_y_velocity)
@@ -52,7 +53,7 @@ func input(_event: InputEvent) -> int:
 		player.charging = true
 	
 	if Input.is_action_just_released("shoot"):
-		player.charge_time = 0
+		#player.charge_time = 0
 		player.charging = false
 	
 	return State.Null
@@ -76,19 +77,19 @@ func physics_process(_delta: float) -> int:
 	
 	return State.Null
 	
-func shoot(muzzle:Node2D) -> void:
-	# Instantiate a bullet
-	var new_bullet = bullet.instantiate()
-
-	var new_position = Vector2((muzzle.global_position.x * player.direction) + player.position.x, 
-			+ muzzle.global_position.y + player.position.y)
-	new_bullet.set_position(new_position)
-	
-	if player.direction == -1:
-		new_bullet.scale.y *= -1  #TODO
-		new_bullet.direction = player.direction
-		
-	$".".add_child(new_bullet)
+#func shoot(muzzle:Node2D) -> void:
+	## Instantiate a bullet
+	#var new_bullet = bullet.instantiate()
+#
+	#var new_position = Vector2((muzzle.global_position.x * player.direction) + player.position.x, 
+			#+ muzzle.global_position.y + player.position.y)
+	#new_bullet.set_position(new_position)
+	#
+	#if player.direction == -1:
+		#new_bullet.scale.y *= -1  #TODO
+		#new_bullet.direction = player.direction
+		#
+	#$".".add_child(new_bullet)
 	
 func reset_y_velocity(_na, _none) -> void:
 	player.velocity.y = 0

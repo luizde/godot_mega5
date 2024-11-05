@@ -1043,6 +1043,7 @@ position = Vector2(72, 488)
 
 [node name="SuzyG" parent="Enemies" instance=ExtResource("3_rirsj")]
 position = Vector2(200, 144)
+hp = 4
 
 [node name="HUD" parent="." instance=ExtResource("5_tv7ju")]
 

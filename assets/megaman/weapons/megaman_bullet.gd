@@ -1,32 +1,31 @@
-extends Area2D
+extends BaseBullet
 
-## Emitted when megaman's bullet hit something
-##
-signal megaman_bullet_hit
+@onready var sprites: AnimatedSprite2D = $Sprites
 
-@export var damage:int = 1
-@export var speed:float = 290.0
-@export var direction: int = 1
+@onready var collider: CollisionShape2D = $Collider
 
-func _process(delta: float) -> void:
-	position.x += speed * delta * direction
-
-
-func _on_disappear_timer_timeout() -> void:
-	queue_free()
-
-
+func set_bullet_type(type : BULLET_TYPE):
+	
+	damage = type
+	match type:
+		BULLET_TYPE.NORMAL:
+			collider.scale = Vector2(1,1)
+			sprites.play("low")
+		BULLET_TYPE.MEDIUM:
+			collider.scale = Vector2(3,3)
+			sprites.play("medium")
+		BULLET_TYPE.CHARGED:
+			collider.scale = Vector2(3,3)
+			sprites.play("charged")
 
 func _on_body_entered(_body: Node2D) -> void:
-	EventBus.player_hit_enemy_normalshot.emit(1)
-	#emit_signal("megaman_bullet_hit", "damage", 1)
+	EventBus.player_hit_enemy_normalshot.emit(damage)
 	queue_free()
 
 
 func _on_area_entered(_area: Area2D) -> void:
-	EventBus.player_hit_enemy_normalshot.emit(1)
+	EventBus.player_hit_enemy_normalshot.emit(damage)
 	queue_free()
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

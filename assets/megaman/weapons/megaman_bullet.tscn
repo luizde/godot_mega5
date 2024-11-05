@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2a4tv2bm4n3o"]
+
+[ext_resource type="Script" path="res://assets/megaman/weapons/megaman_bullet.gd" id="1_332ne"]
+[ext_resource type="Texture2D" uid="uid://1mko3tq2em7s" path="res://sprites/megaman_weapon.png" id="2_n0m3o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo1jv"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(242, 61, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usaut"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(271, 61, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk787"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(303, 61, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfril"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(335, 61, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5u8o"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(246, 10, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llvi7"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(245, 38, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rph7p"]
+atlas = ExtResource("2_n0m3o")
+region = Rect2(265, 38, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1jxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo1jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usaut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk787")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfril")
+}],
+"loop": true,
+"name": &"charged",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5u8o")
+}],
+"loop": true,
+"name": &"low",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llvi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rph7p")
+}],
+"loop": true,
+"name": &"medium",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqeb8"]
+radius = 3.0
+
+[node name="MegamanBullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_332ne")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprites" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_y1jxc")
+animation = &"low"
+autoplay = "low"
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eqeb8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

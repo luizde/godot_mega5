@@ -5,6 +5,9 @@ func enter() -> void:
 	player.disable_movement()
 	
 
+func input(_event: InputEvent) -> int:
+	return State.Null
+
 func physics_process(_delta) -> int:
 	
 	player.velocity.y += WorldPhysics.gravity * 2

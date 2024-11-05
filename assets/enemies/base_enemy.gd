@@ -3,7 +3,7 @@ extends Node
 
 var enemy_name: String
 
-var hp: int
+@export var hp: int
 var damage_shot: int
 var damage_touch: int
 
@@ -20,6 +20,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
 func take_damage(damage: int) -> void:
+	GodotLogger.info("Damage received is %d " % damage)
 	hp -= damage
 	
 	if hp <= 0:

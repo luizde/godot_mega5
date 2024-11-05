@@ -32,11 +32,12 @@ func input(_event: InputEvent) -> int:
 	if Input.is_action_just_pressed("jump"):
 		return State.Jump
 	
-	if Input.is_action_just_pressed("shoot"):
-		shoot(muzzle)
+	if Input.is_action_just_pressed("shoot") \
+				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
+				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
+		player.shoot(muzzle)
 		player.animations.play(shoot_animation)
 		lower_cannon_idle.start()
-		#return State.IdleShoot
 	
 	return State.Null
 

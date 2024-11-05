@@ -29,13 +29,19 @@ var _shoot_muzzle_position:Vector2
 		return charging_colorer
 
 @onready var charge_time:float = 0
-enum ChargeLevels {
-	NoCharge,
-	Medium,
-	High,
-}
-@onready var charge_level: ChargeLevels = ChargeLevels.NoCharge
+
+@onready var charge_level: BaseBullet.BULLET_TYPE:
+	get:
+		if charge_time < 1.0:
+			return BaseBullet.BULLET_TYPE.NORMAL
+		elif charge_time < 2.0:
+			return BaseBullet.BULLET_TYPE.MEDIUM
+		else:
+			return BaseBullet.BULLET_TYPE.CHARGED
+		
 @onready var charging: bool = false
+
+@onready var shooter = $Shooter
 #endregion 
 
 var is_vulnerable: bool :
@@ -115,3 +121,8 @@ func disable_movement() -> void:
 	
 func enable_movement() -> void:
 	is_movement_enabled = true
+
+func shoot(muzzle: Node2D) -> void:
+	#
+	shooter.shoot_bullet(self, muzzle, direction, charge_level)
+	charge_time = 0.0
