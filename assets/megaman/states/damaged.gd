@@ -26,19 +26,29 @@ func input(_event: InputEvent) -> int:
 
 func physics_process(_delta: float) -> int:
 	
+	if _return_to_idle:
+		return BaseState.State.Idle
+		
 	player.velocity.x = player.speed * player.direction * -1 / 8
 	player.velocity.y += WorldPhysics.gravity
 	
 	player.move_and_slide()
 	
-	if _return_to_idle:
-		return BaseState.State.Idle
-		
 	return BaseState.State.Null
 
 func exit() -> void:
 	damaged_timer.stop()
 	damaged_particles.visible = false
+	
+	# We need the lines below because sometimes when exitting the next _phyisics 
+	# cycle will run in the Idle state and then when going to walk it will step
+	# in the wrong direction.
+	# This could also be solved by going directly to walk instead of Idle when
+	# buttons are pressed
+	if Input.is_action_pressed("move_left"):
+		player.face_left()
+	elif Input.is_action_pressed("move_right"):
+		player.face_right()
 
 func _on_invul_timer_timeout() -> void:
 	player.is_vulnerable = true
@@ -46,3 +56,4 @@ func _on_invul_timer_timeout() -> void:
 
 func _on_disable_move_timer_timeout() -> void:
 	_return_to_idle = true
+	player.velocity.x = 0

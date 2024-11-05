@@ -7,18 +7,9 @@ extends BaseState
 func enter() -> void:
 	super()
 	
-	#if Input.is_action_pressed("move_left"):
-		#player.face_left()
-	#elif Input.is_action_pressed("move_right"):
-		#player.face_right()
-	
 	
 func input(_event: InputEvent) -> int:
 	super(_event)
-	#if Input.is_action_pressed("move_left"):
-		#player.face_left()
-	#elif Input.is_action_pressed("move_right"):
-		#player.face_right()
 	
 	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
 		GodotLogger.debug("Slide start")

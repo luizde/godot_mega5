@@ -50,6 +50,7 @@ func input(_event: InputEvent) -> int:
 	elif !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 		player.is_moving_horizontal = 0
 		
+		
 	if Input.is_action_pressed("shoot"):
 		player.charging = true
 	
