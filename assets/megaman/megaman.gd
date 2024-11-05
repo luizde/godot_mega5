@@ -70,6 +70,8 @@ func _ready() -> void:
 	EventBus.enemy_hit_player.connect(receive_damage)
 	EventBus.player_enter_spikes.connect(instadie)
 	
+	EventBus.player_enters_room.connect(handle_room_enter)
+	
 	is_vulnerable = true
 	is_movement_enabled = true
 	
@@ -84,7 +86,7 @@ func _physics_process(delta: float) -> void:
 ## TODO: review / should this be in base_state?
 func face_right() -> void:
 	direction = 1
-	animations.flip_h = true	
+	animations.flip_h = true
 	
 
 ## Group all player activities required to face the left side of the screen
@@ -93,6 +95,7 @@ func face_left() -> void:
 	direction = -1
 	animations.flip_h = false
 
+## TODO: move to a hurtbox script outside of player properties object
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 	
 	if is_vulnerable:
@@ -125,3 +128,9 @@ func shoot(muzzle: Node2D) -> void:
 	#
 	shooter.shoot_bullet(self, muzzle, direction, charge_level)
 	charge_time = 0.0
+
+func handle_room_enter(_none, _none2) -> void:
+	disable_movement()
+	await get_tree().create_timer(1.20).timeout
+	enable_movement()
+	
