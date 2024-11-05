@@ -15,9 +15,7 @@ func _ready() -> void:
 	EventBus.player_teleported_into_level.connect(enable_room_monitoring)
 
 func _on_body_entered(_body: Node2D) -> void:
-	EventBus.player_enters_room.emit(room_number, room_position)
-	GodotLogger.info("Level begins in room_number %d" % room_number)
-
-func enable_room_monitoring() -> void:
-	monitoring = true
-	
+	if room_number > 1:
+		EventBus.player_enters_room.emit(room_number, room_position)
+	else:
+		GodotLogger.info("Level begins in room_number %d" % room_number)

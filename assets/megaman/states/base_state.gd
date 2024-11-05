@@ -30,10 +30,11 @@ func _ready() -> void:
 func enter() -> void:
 	player.animations.play(animation_name)
 
-	
+## Will execute before leaving the State and starting the new state
 func exit() -> void:
-	pass #this should be extended if necessary I believe - Luis
-	
+	pass #this should be extended if necessary
+	 
+
 # We return an enum, which is really an int behind the scenes
 func input(_event: InputEvent) -> int:
 	

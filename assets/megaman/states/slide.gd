@@ -11,6 +11,8 @@ func enter() -> void:
 	slide_timer.start()
 	_next_state = BaseState.State.Null
 	
+	EventBus.player_sliding_start.emit()
+	
 	# Change to the horitzontal collider
 	player.standing_collider.set_deferred("disabled", true)
 	player.sliding_collider.set_deferred("disabled", false)

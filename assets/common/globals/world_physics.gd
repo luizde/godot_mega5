@@ -40,6 +40,8 @@ static func change_gravity_underwater() -> void:
 static func transition_screen() -> void:
 	change_gravity_for_screen_transition()
 
-func handle_room_enter(room_number: int, room_position: Vector2):
+func handle_room_enter(_room_number: int, _room_position: Vector2):
 	change_gravity_for_screen_transition()
 	
+#func _process(_delta):
+	#GodotLogger.debug("Gravity is %f" % gravity)
