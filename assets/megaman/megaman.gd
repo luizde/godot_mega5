@@ -17,7 +17,6 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 
 # references to the colliders
 @onready var standing_collider: CollisionShape2D = $StandingCollider
-@onready var sliding_collider: CollisionShape2D = $SlidingCollider
 
 #region shooting variables
 # reference to idle animation shoot muzzle

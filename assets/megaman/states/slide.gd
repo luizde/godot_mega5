@@ -5,17 +5,25 @@ extends BaseState
 
 var _next_state: int = BaseState.State.Null
 
+const _STANDING_COLLIDER_SIZE_X = 12.0
+const _STANDING_COLLIDER_SIZE_Y = 22.0
+
+const _SLIDING_COLLIDER_SIZE_X = 27.5
+const _SLIDING_COLLIDER_SIZE_Y = 19.5
+
 func enter() -> void:
 	super()
 	
 	slide_timer.start()
 	_next_state = BaseState.State.Null
 	
-	EventBus.player_sliding_start.emit()
-	
 	# Change to the horitzontal collider
-	player.standing_collider.set_deferred("disabled", true)
-	player.sliding_collider.set_deferred("disabled", false)
+	#player.standing_collider.set_deferred("disabled", true)
+	#player.sliding_collider.set_deferred("disabled", false)
+	change_collider_to_slide()
+
+func exit() -> void:
+	change_collider_to_stand()
 
 func input(_event: InputEvent) -> int:
 	super(_event) 
@@ -54,7 +62,12 @@ func physics_process(_delta: float) -> int:
 func _on_slide_timer_timeout() -> void:
 	_next_state = BaseState.State.Idle
 	
-	# Return to the standing collider
-	player.standing_collider.set_deferred("disabled", false)
-	player.sliding_collider.set_deferred("disabled", true)
-	
+func change_collider_to_slide() -> void:
+	var shape = RectangleShape2D.new()
+	shape.size = Vector2(_SLIDING_COLLIDER_SIZE_X, _SLIDING_COLLIDER_SIZE_Y)
+	player.standing_collider.shape = shape
+
+func change_collider_to_stand() -> void:
+	var shape = RectangleShape2D.new()
+	shape.size = Vector2(_STANDING_COLLIDER_SIZE_X, _STANDING_COLLIDER_SIZE_Y)
+	player.standing_collider.shape = shape
