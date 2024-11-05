@@ -33,7 +33,6 @@ func shoot() -> void:
 	
 	$"../".add_child(new_bullet)
 
-
 func _on_shoot_timer_timeout() -> void:
 	shoot()
 	sprite_2d.play("shoot")
@@ -41,7 +40,6 @@ func _on_shoot_timer_timeout() -> void:
 
 func _on_detection_range_body_entered(_body: Node2D) -> void:
 	shoot_timer.start()
-	
 
 
 func _on_detection_range_body_exited(_body: Node2D) -> void:
