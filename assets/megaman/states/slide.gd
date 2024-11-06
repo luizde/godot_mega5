@@ -17,9 +17,11 @@ func enter() -> void:
 	slide_timer.start()
 	_next_state = BaseState.State.Null
 	
-	# Change to the horitzontal collider
-	#player.standing_collider.set_deferred("disabled", true)
-	#player.sliding_collider.set_deferred("disabled", false)
+	# activate FX
+	var fx_flip_h: bool = true if player.direction == 1 else false
+	var slide_smoke_position: Vector2 = Vector2(player.position.x, player.position.y-5)
+	player.slide_smoke_emmitter.emit_fx(player, slide_smoke_position, false, fx_flip_h, false)
+	
 	change_collider_to_slide()
 
 func exit() -> void:

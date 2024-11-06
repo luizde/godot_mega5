@@ -43,6 +43,10 @@ var _shoot_muzzle_position:Vector2
 @onready var shooter = $Shooter
 #endregion 
 
+#region Graphic FX
+@onready var slide_smoke_emmitter: Node = $SlideSmokeEmmitter
+#endregion
+
 var is_vulnerable: bool :
 	get:
 		return is_vulnerable

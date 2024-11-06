@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0vt8af7mk340"]
+
+[ext_resource type="Texture2D" uid="uid://b6nfi278geap1" path="res://sprites/items.png" id="1_uxk7i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3nan"]
+atlas = ExtResource("1_uxk7i")
+region = Rect2(65, 68, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x773w"]
+atlas = ExtResource("1_uxk7i")
+region = Rect2(74, 68, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fksx"]
+atlas = ExtResource("1_uxk7i")
+region = Rect2(83, 68, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ldr1"]
+atlas = ExtResource("1_uxk7i")
+region = Rect2(254, 92, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jsvv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3nan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x773w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fksx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ldr1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SlideSmoke" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6jsvv")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
