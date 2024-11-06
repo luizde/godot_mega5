@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxdciixxpiwd8"]
+[gd_scene load_steps=27 format=3 uid="uid://dxdciixxpiwd8"]
 
 [ext_resource type="Script" path="res://assets/megaman/megaman.gd" id="1_afrgl"]
 [ext_resource type="Material" uid="uid://chd5naiy8nv6o" path="res://assets/megaman/shaders/charge_material.tres" id="2_2ymrv"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://c2a4tv2bm4n3o" path="res://assets/megaman/weapons/megaman_bullet.tscn" id="19_mab6w"]
 [ext_resource type="PackedScene" uid="uid://bjsefel4dcyvb" path="res://assets/common/fx/fx_emmitter.tscn" id="21_vxmmo"]
 [ext_resource type="PackedScene" uid="uid://d0vt8af7mk340" path="res://assets/megaman/fx/slide_smoke.tscn" id="22_40ece"]
+[ext_resource type="PackedScene" uid="uid://20qwjo0pinb4" path="res://assets/megaman/fx/fx_damaged_smoke.tscn" id="23_xowuf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mn401"]
 size = Vector2(12, 22)
@@ -186,6 +187,10 @@ bullet = ExtResource("19_mab6w")
 
 [node name="SlideSmokeEmmitter" parent="." instance=ExtResource("21_vxmmo")]
 fx = ExtResource("22_40ece")
+fx_duration = 0.5
+
+[node name="DamagedSmokeEmmitter" parent="." instance=ExtResource("21_vxmmo")]
+fx = ExtResource("23_xowuf")
 fx_duration = 0.5
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateManager/Step" method="_on_animated_sprite_2d_animation_finished"]

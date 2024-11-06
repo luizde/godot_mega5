@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cywwd7rv6pors"]
+
+[ext_resource type="Shader" path="res://assets/common/shaders/make_color_transparent.gdshader" id="1_kbclh"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_kbclh")

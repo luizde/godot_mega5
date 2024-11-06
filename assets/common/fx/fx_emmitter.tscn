@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/common/fx/fx_emmitter.gd" id="1_2h8lq"]
 
-[node name="FXEmmitter" type="Node"]
+[node name="FXEmmitter" type="Node2D"]
 script = ExtResource("1_2h8lq")
 
 [node name="FxDurationTimer" type="Timer" parent="."]
