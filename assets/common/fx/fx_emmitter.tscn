@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjsefel4dcyvb"]
+
+[ext_resource type="Script" path="res://assets/common/fx/fx_emmitter.gd" id="1_2h8lq"]
+
+[node name="FXEmmitter" type="Node"]
+script = ExtResource("1_2h8lq")
+
+[node name="FxDurationTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FxDurationTimer" to="." method="_on_fx_duration_timer_timeout"]
