@@ -997,6 +997,10 @@ position = Vector2(512, 144)
 [node name="01_03_numbers" parent="LevelLayout/Room_01" instance=ExtResource("4_21sfi")]
 position = Vector2(512, 256)
 
+[node name="SuzyG 01" parent="LevelLayout/Room_01" instance=ExtResource("13_4x6yt")]
+position = Vector2(424, 152)
+enemy_scene = ExtResource("3_rirsj")
+
 [node name="Room_02" parent="LevelLayout" instance=ExtResource("3_asqvj")]
 position = Vector2(160, 94)
 collision_mask = 2
@@ -1052,18 +1056,8 @@ debug_color = Color(0, 0.623529, 0.552941, 0)
 [node name="WorldBounds" parent="." instance=ExtResource("1_fd0um")]
 position = Vector2(72, 488)
 
-[node name="Enemies" type="Node" parent="."]
-
-[node name="SuzyG" parent="Enemies" instance=ExtResource("3_rirsj")]
-position = Vector2(200, 144)
-hp = 4
-
 [node name="HUD" parent="." instance=ExtResource("5_tv7ju")]
 
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
 position = Vector2(24, 42)
-
-[node name="EnemySpawner" parent="." instance=ExtResource("13_4x6yt")]
-position = Vector2(320, 112)
-enemy_scene = ExtResource("3_rirsj")
