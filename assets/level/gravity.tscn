@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=21 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="7_wfknj"]
 [ext_resource type="PackedScene" uid="uid://kaatcnqckqrl" path="res://assets/level/decor/vase_electric_top.tscn" id="8_pi6uj"]
 [ext_resource type="PackedScene" uid="uid://bxbfa47guslk7" path="res://assets/level/decor/spikes.tscn" id="9_h5tir"]
+[ext_resource type="PackedScene" uid="uid://cfr14g30b3epm" path="res://assets/enemies/enemy_spawner.tscn" id="13_4x6yt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
 resource_name = "lights"
@@ -954,6 +955,9 @@ size = Vector2(560, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saue8"]
 size = Vector2(352, 232)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1ph"]
+size = Vector2(320, 288)
+
 [node name="Level_Gravity" type="Node2D"]
 
 [node name="LevelLayout" type="Node2D" parent="."]
@@ -1036,6 +1040,15 @@ drag_vertical_enabled = true
 drag_vertical_offset = 0.2
 script = ExtResource("1_a42lx")
 
+[node name="Area2D" type="Area2D" parent="Camera2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_hk1ph")
+debug_color = Color(0, 0.623529, 0.552941, 0)
+
 [node name="WorldBounds" parent="." instance=ExtResource("1_fd0um")]
 position = Vector2(72, 488)
 
@@ -1050,3 +1063,7 @@ hp = 4
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
 position = Vector2(24, 42)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("13_4x6yt")]
+position = Vector2(320, 112)
+enemy_scene = ExtResource("3_rirsj")
