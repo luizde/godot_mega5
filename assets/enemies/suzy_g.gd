@@ -24,14 +24,14 @@ func shoot() -> void:
 	if sprite_2d.flip_h == true:
 		direction = 1
 	
-	var new_position = Vector2(muzzle.global_position.x, 
-			+ muzzle.global_position.y)
-	
-	new_bullet.set_position(new_position)
-	
 	new_bullet.direction = direction
 	
-	$"../".add_child(new_bullet)
+	add_child(new_bullet)
+	
+	var new_position = Vector2(muzzle.position.x, 
+			+ muzzle.position.y)
+	
+	new_bullet.set_position(new_position)
 
 func _on_shoot_timer_timeout() -> void:
 	shoot()
@@ -46,6 +46,6 @@ func _on_detection_range_body_exited(_body: Node2D) -> void:
 	shoot_timer.stop()
 	
 
-func _process(_delta: float) -> void:	
+func _process(_delta: float) -> void:
 	if shoot_timer.time_left < shoot_timer.wait_time * 0.8 and sprite_2d.animation == "shoot":
 		sprite_2d.play("idle")
