@@ -19,10 +19,6 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 @onready var standing_collider: CollisionShape2D = $StandingCollider
 
 #region shooting variables
-# reference to idle animation shoot muzzle
-@onready var idle_shoot_muzzle: Node2D = $StateManager/Idle/IdleShootMuzzle
-@onready var walk_shoot_muzzle: Node2D = $StateManager/Walk/WalkShootMuzzle
-@onready var jump_shoot_muzzle: Node2D = $StateManager/Jump/JumpShootMuzzle
 
 @onready var charging_colorer = $ChargingColorer :
 	get:
@@ -91,11 +87,7 @@ func _physics_process(delta: float) -> void:
 ## TODO: review / should this be in base_state?
 func face_right() -> void:
 	direction = 1
-	if !animations.flip_h:
-		animations.flip_h = true
-		idle_shoot_muzzle.position.x = idle_shoot_muzzle.position.x * -1
-		walk_shoot_muzzle.position.x = walk_shoot_muzzle.position.x * -1
-		jump_shoot_muzzle.position.x = jump_shoot_muzzle.position.x * -1
+	animations.flip_h = true
 	
 	
 	
@@ -104,11 +96,7 @@ func face_right() -> void:
 ## 
 func face_left() -> void:
 	direction = -1
-	if animations.flip_h:
-		animations.flip_h = false
-		idle_shoot_muzzle.position.x = idle_shoot_muzzle.position.x * -1
-		walk_shoot_muzzle.position.x = walk_shoot_muzzle.position.x * -1
-		jump_shoot_muzzle.position.x = jump_shoot_muzzle.position.x * -1
+	animations.flip_h = false
 	
 
 ## TODO: move to a hurtbox script outside of player properties object
@@ -140,9 +128,10 @@ func disable_movement() -> void:
 func enable_movement() -> void:
 	is_movement_enabled = true
 
-func shoot(muzzle: Node2D) -> void:
-	#
-	shooter.shoot_bullet(self, muzzle, direction, charge_level)
+func shoot(muzzle_position: Vector2) -> void:
+	if direction == -1:
+		muzzle_position.x *= -1
+	shooter.shoot_bullet(self, muzzle_position, direction, charge_level)
 	charge_time = 0.0
 
 func handle_room_enter(_none, _none2) -> void:

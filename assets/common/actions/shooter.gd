@@ -2,13 +2,13 @@ extends Node
 
 @export var bullet: Resource
 
-func shoot_bullet(shooter:Node2D, muzzle: Node2D, direction: int, charge_level: int = 0):
+func shoot_bullet(shooter:Node2D, muzzle: Vector2, direction: int, charge_level: int = 0):
 	var new_bullet  = bullet.instantiate()
 	
 	#var new_position = Vector2((muzzle.global_position.x * direction) + shooter.position.x, 
 			#+ muzzle.global_position.y + shooter.position.y)
 			
-	var new_position = muzzle.global_position
+	var new_position = shooter.to_global(muzzle)
 	
 	new_bullet.set_position(new_position)
 	

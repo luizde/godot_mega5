@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxdciixxpiwd8"]
+[gd_scene load_steps=26 format=3 uid="uid://dxdciixxpiwd8"]
 
 [ext_resource type="Script" path="res://assets/megaman/megaman.gd" id="1_afrgl"]
 [ext_resource type="Material" uid="uid://chd5naiy8nv6o" path="res://assets/megaman/shaders/charge_material.tres" id="2_2ymrv"]
@@ -27,53 +27,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mn401"]
 size = Vector2(12, 22)
 
-[sub_resource type="GDScript" id="GDScript_htodi"]
-script/source = "extends Idle
-
-@onready var animated_sprite_2d: AnimatedSprite2D = $\"../../AnimatedSprite2D\"
-
-@export var time_to_return_to_idle:float = 0.5
-
-var _offset_animation:float = 2.5
-var _time_since_shot:float = 0.5
-
-func enter() -> void:
-	super()
-	
-	#the animation sprite here is 2.5px offset. We need to move it to fit and bring back when out of this state.
-	animated_sprite_2d.position.x = _offset_animation * player.direction
-	
-	# When debugging, be mindful that we called super() so we'll get two prints
-	#print(\"\\tentered Idle Shoot at \" + Time.get_time_string_from_system())
-	
-	# Instantiate a bullet
-	#shoot(idle_shoot_muzzle)
-	
-	# Start timer to return to idle
-	_time_since_shot = time_to_return_to_idle
-	
-	# TODO: play a sound
-	
-
-func physics_process(_delta: float) -> int:
-	super(_delta)
-	
-	_time_since_shot -= _delta
-	
-	if Input.is_action_just_pressed(\"shoot\") and _time_since_shot < time_to_return_to_idle - _delta:
-		_time_since_shot = time_to_return_to_idle
-	
-	if _time_since_shot <= 0:
-		return State.Idle
-	
-	return State.Null
-	
-func exit() -> void:
-	# Re do the offset
-	animated_sprite_2d.position.x = 0
-	#print(\"On Exit position x is %f\" % animated_sprite_2d.position.x)
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vuwg"]
 resource_local_to_scene = true
 shader = ExtResource("18_q8axb")
@@ -100,6 +53,8 @@ script = ExtResource("3_i7aho")
 [node name="Idle" type="Node2D" parent="StateManager"]
 script = ExtResource("4_dtmg8")
 animation_name = "idle"
+muzzle_position_relative_x = 16.0
+muzzle_position_relative_y = -13.0
 
 [node name="IdleShootMuzzle" type="Node2D" parent="StateManager/Idle"]
 position = Vector2(16, -13)
@@ -116,16 +71,17 @@ animation_name = "step"
 script = ExtResource("5_njy5f")
 walk_shoot_animation = "walk_shoot"
 animation_name = "walk"
+muzzle_position_relative_x = 17.0
+muzzle_position_relative_y = -12.0
 
 [node name="LowerCannon" type="Timer" parent="StateManager/Walk"]
 one_shot = true
 
-[node name="WalkShootMuzzle" type="Node2D" parent="StateManager/Walk"]
-position = Vector2(17, -12)
-
 [node name="Jump" type="Node2D" parent="StateManager"]
 script = ExtResource("5_sk46j")
 animation_name = "jump"
+muzzle_position_relative_x = 13.0
+muzzle_position_relative_y = -17.0
 
 [node name="JumpShootMuzzle" type="Node2D" parent="StateManager/Jump"]
 position = Vector2(13, -17)
@@ -141,9 +97,6 @@ animation_name = "slide"
 [node name="SlideTimer" type="Timer" parent="StateManager/Slide"]
 wait_time = 0.43
 one_shot = true
-
-[node name="IdleShoot" type="Node" parent="StateManager"]
-script = SubResource("GDScript_htodi")
 
 [node name="Damaged" type="Node2D" parent="StateManager"]
 position = Vector2(0, -11)

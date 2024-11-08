@@ -15,10 +15,11 @@ enum State {
 	Teleport
 }
 
-#@export var material_charging:Material = preload("res://assets/megaman/shaders/charge_material.tres")
-
 @export var animation_name: String
 @export var animation_shooting_name: String
+
+@export var muzzle_position_relative_x: float = 10000.0
+@export var muzzle_position_relative_y: float = 10000.0
 
 var player: Player
 var bullet = preload("res://assets/megaman/weapons/megaman_bullet.tscn")

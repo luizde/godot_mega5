@@ -2,7 +2,6 @@ extends BaseState
 
 @export var walk_shoot_animation:String
 @onready var lower_cannon: Timer = $LowerCannon
-@onready var walk_shoot_muzzle: Node2D = $WalkShootMuzzle
 
 func enter() -> void:
 	super()
@@ -25,7 +24,8 @@ func input(_event: InputEvent) -> int:
 	if Input.is_action_just_pressed("shoot") \
 				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
 				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
-		player.shoot(walk_shoot_muzzle)
+		
+		player.shoot(Vector2(muzzle_position_relative_x, muzzle_position_relative_y))
 		player.animations.play(walk_shoot_animation)
 		lower_cannon.start()
 	

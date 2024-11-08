@@ -35,7 +35,7 @@ func input(_event: InputEvent) -> int:
 	if Input.is_action_just_pressed("shoot") \
 				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
 				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
-		player.shoot(muzzle)
+		player.shoot(Vector2(muzzle_position_relative_x, muzzle_position_relative_y))
 		player.animations.play(shoot_animation)
 		lower_cannon_idle.start()
 	
