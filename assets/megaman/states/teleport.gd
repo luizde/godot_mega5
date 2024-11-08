@@ -1,6 +1,7 @@
 extends BaseState
 
 func enter() -> void:
+	player.animations.play(animation_name)
 	player.animations.pause()
 	player.disable_movement()
 	

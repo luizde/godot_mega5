@@ -87,8 +87,7 @@ script = ExtResource("1_afrgl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_b87kq")
-animation = &"teleport"
-frame_progress = 0.720171
+animation = &"slide"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
@@ -98,12 +97,12 @@ shape = SubResource("RectangleShape2D_mn401")
 [node name="StateManager" type="Node2D" parent="."]
 script = ExtResource("3_i7aho")
 
-[node name="Idle" type="Node" parent="StateManager"]
+[node name="Idle" type="Node2D" parent="StateManager"]
 script = ExtResource("4_dtmg8")
 animation_name = "idle"
 
 [node name="IdleShootMuzzle" type="Node2D" parent="StateManager/Idle"]
-position = Vector2(17, -13)
+position = Vector2(16, -13)
 
 [node name="LowerCannonIdle" type="Timer" parent="StateManager/Idle"]
 wait_time = 0.5
@@ -113,7 +112,7 @@ one_shot = true
 script = ExtResource("5_c1id8")
 animation_name = "step"
 
-[node name="Walk" type="Node" parent="StateManager"]
+[node name="Walk" type="Node2D" parent="StateManager"]
 script = ExtResource("5_njy5f")
 walk_shoot_animation = "walk_shoot"
 animation_name = "walk"
@@ -124,7 +123,7 @@ one_shot = true
 [node name="WalkShootMuzzle" type="Node2D" parent="StateManager/Walk"]
 position = Vector2(17, -12)
 
-[node name="Jump" type="Node" parent="StateManager"]
+[node name="Jump" type="Node2D" parent="StateManager"]
 script = ExtResource("5_sk46j")
 animation_name = "jump"
 
@@ -174,6 +173,7 @@ animation_name = "dead"
 
 [node name="Teleport" type="Node2D" parent="StateManager"]
 script = ExtResource("14_kifi3")
+animation_name = "teleport"
 
 [node name="ChargingColorer" parent="." instance=ExtResource("15_401m3")]
 charging_material = ExtResource("2_2ymrv")

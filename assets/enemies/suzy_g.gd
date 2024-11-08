@@ -1,10 +1,11 @@
 extends BaseEnemy
 
-const BULLET = preload("res://assets/enemies/bullets/enemy_bullet.tscn")
+#const BULLET = preload("res://assets/enemies/bullets/enemy_bullet.tscn")
 @onready var muzzle: Node2D = $Muzzle
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var shooter: Node = $Shooter
 
 func _ready() -> void:
 	super()
@@ -16,25 +17,8 @@ func _ready() -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	EventBus.enemy_hit_player.emit("suzy_g", damage_touch)
 
-func shoot() -> void:
-	var new_bullet = BULLET.instantiate()
-	
-	var direction = -1
-	
-	if sprite_2d.flip_h == true:
-		direction = 1
-	
-	new_bullet.direction = direction
-	
-	add_child(new_bullet)
-	
-	var new_position = Vector2(muzzle.position.x, 
-			+ muzzle.position.y)
-	
-	new_bullet.set_position(new_position)
-
 func _on_shoot_timer_timeout() -> void:
-	shoot()
+	shooter.shoot_bullet(self, muzzle, -1) #TODO dynamic direction
 	sprite_2d.play("shoot")
 
 

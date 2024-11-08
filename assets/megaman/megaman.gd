@@ -21,7 +21,8 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 #region shooting variables
 # reference to idle animation shoot muzzle
 @onready var idle_shoot_muzzle: Node2D = $StateManager/Idle/IdleShootMuzzle
-var _shoot_muzzle_position:Vector2
+@onready var walk_shoot_muzzle: Node2D = $StateManager/Walk/WalkShootMuzzle
+@onready var jump_shoot_muzzle: Node2D = $StateManager/Jump/JumpShootMuzzle
 
 @onready var charging_colorer = $ChargingColorer :
 	get:
@@ -68,7 +69,6 @@ var is_movement_enabled: bool:
 func _ready() -> void:
 	velocity = Vector2.ZERO
 	states.init(self)
-	_shoot_muzzle_position = idle_shoot_muzzle.position
 	
 	hp_current = hp_max
 	
@@ -91,14 +91,25 @@ func _physics_process(delta: float) -> void:
 ## TODO: review / should this be in base_state?
 func face_right() -> void:
 	direction = 1
-	animations.flip_h = true
+	if !animations.flip_h:
+		animations.flip_h = true
+		idle_shoot_muzzle.position.x = idle_shoot_muzzle.position.x * -1
+		walk_shoot_muzzle.position.x = walk_shoot_muzzle.position.x * -1
+		jump_shoot_muzzle.position.x = jump_shoot_muzzle.position.x * -1
+	
+	
 	
 
 ## Group all player activities required to face the left side of the screen
 ## 
 func face_left() -> void:
 	direction = -1
-	animations.flip_h = false
+	if animations.flip_h:
+		animations.flip_h = false
+		idle_shoot_muzzle.position.x = idle_shoot_muzzle.position.x * -1
+		walk_shoot_muzzle.position.x = walk_shoot_muzzle.position.x * -1
+		jump_shoot_muzzle.position.x = jump_shoot_muzzle.position.x * -1
+	
 
 ## TODO: move to a hurtbox script outside of player properties object
 func receive_damage(_enemy_name: String, damage_hp: int) -> void:
