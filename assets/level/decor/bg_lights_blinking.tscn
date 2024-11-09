@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://btc5cpn41b7vm"]
+
+[ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_siikf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxjcl"]
+atlas = ExtResource("1_siikf")
+region = Rect2(10, 45, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3mdu"]
+atlas = ExtResource("1_siikf")
+region = Rect2(19, 45, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66mte"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxjcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3mdu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="LightsBlinking" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_66mte")
+autoplay = "default"
+frame_progress = 0.663574
+centered = false
