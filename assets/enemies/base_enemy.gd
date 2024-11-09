@@ -1,15 +1,15 @@
 class_name BaseEnemy
-extends Area2D
+extends CharacterBody2D
 
-var enemy_name: String
+@export var enemy_name: String
 
 @export var hp: int
-var damage_shot: int
-var damage_touch: int
+@export var damage_shot: int
+@export var damage_touch: int
 
 @export var death_animation_name: String 
-#var animations: AnimatedSprite2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collider_physics: CollisionShape2D = $CollisionShape2D
 
 #Wish I could force all enemies had this. I have to remember
 @onready var flasher = $Flasher 
@@ -19,6 +19,13 @@ var player_direction:int #relative to enemy. -1 left, anything else right
 
 @export var muzzle_position_x: float = 100000.0
 @export var muzzle_position_y: float = 100000.0
+
+@export var reacts_to_gravity:bool = true
+
+#region
+@export var collider_position_gravity_down: Vector2
+@export var collider_position_gravity_up: Vector2
+#endregion
 
 func _ready() -> void:
 	EventBus.player_hit_enemy_normalshot.connect(take_damage)
@@ -31,7 +38,15 @@ func _process(_delta) -> void:
 	look_at_player()
 	
 
+func _physics_process(_delta) -> void:
+	if reacts_to_gravity:
+		velocity.y += WorldPhysics.gravity
+		move_and_slide()
+
 func _on_body_entered(_body: Node2D) -> void:
+	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
+
+func send_damage() -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
 func take_damage(damage: int) -> void:
@@ -40,15 +55,18 @@ func take_damage(damage: int) -> void:
 	hp -= damage
 	
 	GodotLogger.debug("Enemy [%s] received [%d] damage. New HP is %d" % [enemy_name, damage, hp])
-
 	
 	if hp <= 0:
 		animated_sprite_2d.play(death_animation_name)
-		animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
+		if !animated_sprite_2d.animation_looped.is_connected(on_death_timer_timeout):
+			animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
 		
 		# We remove the Colliders right away so player can't collide with the explosion
-		MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
-		monitoring = false
+		#MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
+		reacts_to_gravity = false
+		MiscUtils.set_disabled_children_area2d(self, true, true)
+		MiscUtils.setDisabledForChildrenCollisionShapes(self, true, true)
+		#monitoring = false
 	
 
 func on_death_timer_timeout() -> void:

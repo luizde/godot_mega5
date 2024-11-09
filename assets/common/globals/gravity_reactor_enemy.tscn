@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsmq5iecsqxye"]
+
+[ext_resource type="Script" path="res://assets/common/globals/gravity_reactor_enemy.gd" id="1_feivw"]
+
+[node name="GravityReactor" type="Node"]
+script = ExtResource("1_feivw")

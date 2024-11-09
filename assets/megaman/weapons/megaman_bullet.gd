@@ -19,9 +19,9 @@ func set_bullet_type(type : BULLET_TYPE):
 			sprites.play("charged")
 
 func _on_body_entered(_body: Node2D) -> void:
-	#EventBus.player_hit_enemy_normalshot.emit(damage)
-	#queue_free()
-	pass
+	EventBus.player_hit_enemy_normalshot.emit(damage)
+	queue_free()
+	#pass
 
 
 func _on_area_entered(_area: Area2D) -> void:
