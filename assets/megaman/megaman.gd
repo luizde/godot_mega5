@@ -62,6 +62,7 @@ var is_movement_enabled: bool:
 #	1.375 * 60 = 82.5 px per sec
 @export var speed = 82.5 
 
+
 func _ready() -> void:
 	velocity = Vector2.ZERO
 	states.init(self)

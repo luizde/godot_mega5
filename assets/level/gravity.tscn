@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1x0rk64vtbn" path="res://assets/level/world_bounds.tscn" id="1_fd0um"]
 [ext_resource type="PackedScene" uid="uid://dxdciixxpiwd8" path="res://assets/megaman/megaman.tscn" id="2_0cn2v"]
 [ext_resource type="PackedScene" uid="uid://bsv2yl7w8rp8b" path="res://assets/level/rooms/base_room.tscn" id="3_asqvj"]
-[ext_resource type="PackedScene" uid="uid://ojwhepoojlhc" path="res://assets/enemies/suzy_g.tscn" id="3_rirsj"]
+[ext_resource type="PackedScene" uid="uid://ojwhepoojlhc" path="res://assets/enemies/enemy_suzy_g.tscn" id="3_rirsj"]
 [ext_resource type="PackedScene" uid="uid://bgo7s7c77qy7s" path="res://assets/level/decor/sphere_animated.tscn" id="4_6yhfa"]
 [ext_resource type="PackedScene" uid="uid://du3klj8atble" path="res://assets/level/decor/level_numbers.tscn" id="4_21sfi"]
 [ext_resource type="PackedScene" uid="uid://32jh3r3yni3r" path="res://assets/HUD/hud.tscn" id="5_tv7ju"]

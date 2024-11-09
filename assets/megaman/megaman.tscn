@@ -33,14 +33,14 @@ shader = ExtResource("18_q8axb")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_intensity = 1.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_afrgl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_b87kq")
-animation = &"slide"
+animation = &"dead"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
