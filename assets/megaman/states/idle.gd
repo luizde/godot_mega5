@@ -48,7 +48,8 @@ func physics_process(_delta: float) -> int:
 		return State.Step
 	
 	if !player.is_on_floor():
-		return State.Jump
+		player.velocity.y = 0
+		return State.Fall
 	
 	return State.Null
 

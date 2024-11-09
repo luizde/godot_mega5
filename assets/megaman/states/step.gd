@@ -26,7 +26,8 @@ func physics_process(_delta: float) -> int:
 	if _internal_state != State.Step:
 		return _internal_state
 	if !player.is_on_floor():
-		return State.Jump
+		player.velocity.y = 0
+		return State.Fall
 	
 	return State.Null
 

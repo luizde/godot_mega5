@@ -1058,7 +1058,7 @@ shape = SubResource("RectangleShape2D_ne6qi")
 debug_color = Color(0, 0, 0, 0.694118)
 
 [node name="GravityDown01" parent="LevelLayout/Room_02" instance=ExtResource("10_xtet7")]
-position = Vector2(160, 146)
+position = Vector2(168, 146)
 gravity_downwards = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/GravityDown01"]
@@ -1067,7 +1067,7 @@ shape = SubResource("RectangleShape2D_5b4yd")
 debug_color = Color(0.721569, 0.721569, 0.721569, 0.756863)
 
 [node name="GravityDown02" parent="LevelLayout/Room_02" instance=ExtResource("10_xtet7")]
-position = Vector2(32, 146)
+position = Vector2(24, 146)
 gravity_downwards = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/GravityDown02"]
