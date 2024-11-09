@@ -20,7 +20,7 @@ func enter() -> void:
 	# activate FX
 	var fx_flip_h: bool = true if player.direction == 1 else false
 	var slide_smoke_position: Vector2 = Vector2(player.position.x, player.position.y-5)
-	player.slide_smoke_emmitter.emit_fx(player, slide_smoke_position, false, fx_flip_h, false)
+	player.slide_smoke_emmitter.emit_fx(slide_smoke_position, false, fx_flip_h, false)
 	
 	change_collider_to_slide()
 

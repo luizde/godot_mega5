@@ -8,7 +8,7 @@ var _new_fx:Node
 
 ## Will emmit the FX assigned in the inspector
 ## 
-func emit_fx(parent_node: Node2D, position: Vector2, move_with_parent: bool = true, flip_h: bool = false, flip_v: bool = false):
+func emit_fx(position: Vector2, move_with_parent: bool = true, flip_h: bool = false, flip_v: bool = false):
 	_new_fx = fx.instantiate()
 		
 	if flip_h:

@@ -22,7 +22,7 @@ var player_direction:int #relative to enemy. -1 left, anything else right
 
 func _ready() -> void:
 	EventBus.player_hit_enemy_normalshot.connect(take_damage)
-	#animations = $AnimatedSprite2D
+	
 	#grab a reference to the player
 	player = get_tree().get_nodes_in_group("player")[0]
 	

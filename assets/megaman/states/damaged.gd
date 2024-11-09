@@ -16,7 +16,7 @@ func enter() -> void:
 	
 	# activate FX
 	var fx_flip_h: bool = true if player.direction == 1 else false
-	player.damaged_smoke_emmitter.emit_fx(player, player.position, true, fx_flip_h, false)
+	player.damaged_smoke_emmitter.emit_fx(player.position, true, fx_flip_h, false)
 	
 	invul_timer.start()
 	disable_move_timer.start()
