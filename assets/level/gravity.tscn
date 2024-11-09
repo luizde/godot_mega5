@@ -979,7 +979,6 @@ tile_map_data = PackedByteArray("AAD///3/AQAJAAEAAAAAAP3/AQACAAoAAAAAAP7/AQACAAs
 tile_set = SubResource("TileSet_c1xvu")
 
 [node name="Room_01" parent="LevelLayout" instance=ExtResource("3_asqvj")]
-visible = false
 position = Vector2(-104, -40)
 monitoring = false
 room_number = 1
