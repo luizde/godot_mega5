@@ -26,6 +26,8 @@ func _ready() -> void:
 	screen_transition_timer.timeout.connect(change_gravity_to_normal)
 	
 	EventBus.player_enters_room.connect(handle_room_enter)
+	
+	EventBus.gravity_changed.connect(handle_gravity_change)
 
 static func change_gravity_for_screen_transition() -> void:
 	screen_transition_timer.start()
@@ -40,8 +42,20 @@ static func change_gravity_underwater() -> void:
 static func transition_screen() -> void:
 	change_gravity_for_screen_transition()
 
+static func gravity_change_to_upwards() -> void:
+	gravity = abs(gravity) * -1
+	
+static func gravity_change_to_downwards() -> void:
+	gravity = abs(gravity)
+
 func handle_room_enter(_room_number: int, _room_position: Vector2):
 	change_gravity_for_screen_transition()
 	
 #func _process(_delta):
 	#GodotLogger.debug("Gravity is %f" % gravity)
+
+func handle_gravity_change(downwards: bool) -> void:
+	if downwards:
+		gravity_change_to_downwards()
+	else:
+		gravity_change_to_upwards()

@@ -15,8 +15,17 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
 @onready var states = $StateManager
 
-# references to the colliders
+#region Movement and speed
+# Original game was 1.375 px per frame. We are locking at 60 fps, therefore
+#	1.375 * 60 = 82.5 px per sec
+@export var speed: float = 82.5 
+@export var jump_force: float = -300.0
+@export var speed_slide: float = 150.0
+#endregion
+
+#region Necessary colliders
 @onready var standing_collider: CollisionShape2D = $StandingCollider
+#endregion
 
 #region shooting variables
 
@@ -58,10 +67,6 @@ var is_movement_enabled: bool:
 # object for FX flash when hit by enemy
 @onready var flasher: Node2D = $Flasher
 
-# Original game was 1.375 px per frame. We are locking at 60 fps, therefore
-#	1.375 * 60 = 82.5 px per sec
-@export var speed = 82.5 
-
 
 func _ready() -> void:
 	velocity = Vector2.ZERO
@@ -73,6 +78,8 @@ func _ready() -> void:
 	EventBus.player_enter_spikes.connect(instadie)
 	
 	EventBus.player_enters_room.connect(handle_room_enter)
+	
+	
 	
 	is_vulnerable = true
 	is_movement_enabled = true

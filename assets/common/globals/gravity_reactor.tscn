@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbj8710mjr2ao"]
+
+[ext_resource type="Script" path="res://assets/common/globals/gravity_reactor.gd" id="1_duor5"]
+
+[node name="GravityReactor" type="Node"]
+script = ExtResource("1_duor5")

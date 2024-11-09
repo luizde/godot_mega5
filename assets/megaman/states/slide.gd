@@ -1,6 +1,5 @@
 extends BaseState
 
-@export var sliding_speed: float = 150.0
 @onready var slide_timer: Timer = $SlideTimer
 
 var _next_state: int = BaseState.State.Null
@@ -41,9 +40,9 @@ func physics_process(_delta: float) -> int:
 		return _next_state
 	
 	if player.direction == 0:
-		player.velocity.x = sliding_speed
+		player.velocity.x = player.speed_slide
 	else:
-		player.velocity.x = sliding_speed * player.direction
+		player.velocity.x = player.speed_slide * player.direction
 	
 	player.move_and_slide()
 	

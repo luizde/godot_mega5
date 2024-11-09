@@ -13,7 +13,7 @@ signal player_hit_enemy_normalshot(damage)
 signal player_enter_spikes()
 
 ## Emmitted when gravity direction changes
-signal gravity_changed()
+signal gravity_changed(downwards: bool)
 
 ## Emmitted when player enters an area on the stage
 signal player_enters_room(room_number: int, room_position: Vector2)

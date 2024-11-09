@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=24 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="7_wfknj"]
 [ext_resource type="PackedScene" uid="uid://kaatcnqckqrl" path="res://assets/level/decor/vase_electric_top.tscn" id="8_pi6uj"]
 [ext_resource type="PackedScene" uid="uid://bxbfa47guslk7" path="res://assets/level/decor/spikes.tscn" id="9_h5tir"]
+[ext_resource type="PackedScene" uid="uid://disk4jj8kvk60" path="res://assets/level/rooms/gravity_change_area.tscn" id="10_xtet7"]
 [ext_resource type="PackedScene" uid="uid://cfr14g30b3epm" path="res://assets/enemies/enemy_spawner.tscn" id="13_4x6yt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
@@ -955,6 +956,12 @@ size = Vector2(560, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_saue8"]
 size = Vector2(352, 232)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne6qi"]
+size = Vector2(96, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b4yd"]
+size = Vector2(24, 80)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1ph"]
 size = Vector2(320, 288)
 
@@ -1034,6 +1041,23 @@ position = Vector2(151, 328)
 
 [node name="02_01_numbers" parent="LevelLayout/Room_02" instance=ExtResource("4_21sfi")]
 position = Vector2(88, 344)
+
+[node name="GravityChangeArea_01" parent="LevelLayout/Room_02" instance=ExtResource("10_xtet7")]
+position = Vector2(64, 146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/GravityChangeArea_01"]
+position = Vector2(48, 31)
+shape = SubResource("RectangleShape2D_ne6qi")
+debug_color = Color(0, 0, 0, 0.694118)
+
+[node name="GravityChangeArea_02" parent="LevelLayout/Room_02" instance=ExtResource("10_xtet7")]
+position = Vector2(32, 146)
+gravity_downwards = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/GravityChangeArea_02"]
+position = Vector2(12, 40)
+shape = SubResource("RectangleShape2D_5b4yd")
+debug_color = Color(0.721569, 0.721569, 0.721569, 0.756863)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(23, 68)
