@@ -12,6 +12,7 @@ func enter() -> void:
 	GodotLogger.debug("Entered Ladder State")
 	
 func input(_event: InputEvent) -> int:  
+	super(_event)
 	
 	if Input.is_action_pressed("shoot"):
 		player.charging = true
@@ -22,10 +23,10 @@ func input(_event: InputEvent) -> int:
 		
 	if Input.is_action_pressed("move_up"):
 		_ladder_direction = 1
-		player.animations.play()
+		player.animations.play(animation_name)
 	elif Input.is_action_pressed("move_down"):
 		_ladder_direction = -1
-		player.animations.play()
+		player.animations.play(animation_name)
 	else:
 		_ladder_direction = 0
 	
@@ -36,13 +37,11 @@ func input(_event: InputEvent) -> int:
 	if Input.is_action_just_pressed("jump"):
 		return State.Fall
 	
-	
-	## TODO: let him shoot
-	#if Input.is_action_just_pressed("shoot") \
-				#or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
-				#and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
-		#player.shoot(Vector2(muzzle_position_relative_x, muzzle_position_relative_y))
-		#player.animations.play("jump_shoot")
+	if Input.is_action_just_pressed("shoot") \
+				or (Input.is_action_just_released("shoot") and player.charge_time > 0.0 \
+				and player.charge_level > BaseBullet.BULLET_TYPE.NORMAL):
+		player.shoot(Vector2(muzzle_position_relative_x, muzzle_position_relative_y))
+		player.animations.play(animation_shooting_name)
 		
 	
 	return State.Null

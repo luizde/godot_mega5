@@ -42,7 +42,7 @@ script = ExtResource("1_afrgl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_b87kq")
-animation = &"jump"
+animation = &"ladder_shoot"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
@@ -130,6 +130,8 @@ animation_name = "teleport"
 script = ExtResource("15_xaleh")
 animation_name = "ladder"
 animation_shooting_name = "ladder_shoot"
+muzzle_position_relative_x = 13.0
+muzzle_position_relative_y = -14.5
 
 [node name="ChargingColorer" parent="." instance=ExtResource("15_401m3")]
 charging_material = ExtResource("2_2ymrv")

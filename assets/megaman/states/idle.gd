@@ -17,9 +17,12 @@ func enter() -> void:
 func input(_event: InputEvent) -> int:
 	super(_event)
 	
-	if Input.is_action_just_pressed("damage_test"):
-		return State.Damaged
-	
+	#TODO: this doesn't work due to colliders and move_and_slide()
+	#TODO: consider on ladders move without physics engine?
+	#if player.is_on_ladder and Input.is_action_just_pressed("move_up"):
+		#player.position = player.ladder_touched_position
+		#return State.Ladder
+		
 	if Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_left"):
 		return State.Step
 	
