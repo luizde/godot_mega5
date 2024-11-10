@@ -47,7 +47,6 @@ func input(_event: InputEvent) -> int:
 	return State.Null
 
 
-
 func physics_process(_delta: float) -> int:
 	super(_delta)
 	

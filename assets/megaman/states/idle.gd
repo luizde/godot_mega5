@@ -27,8 +27,12 @@ func input(_event: InputEvent) -> int:
 		return State.Step
 	
 	# If we put slide before jump, we avoid one check on Jump's if
-	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
-		return State.Slide
+	if WorldPhysics.gravity > 10: #gravity goes down
+		if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
+			return State.Slide
+	else:
+		if Input.is_action_pressed("move_up") and Input.is_action_just_pressed("jump"):
+			return State.Slide
 	
 	if Input.is_action_just_pressed("jump"):
 		return State.Jump

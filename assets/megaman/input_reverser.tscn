@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ufr6softacyw"]
+
+[ext_resource type="Script" path="res://assets/megaman/input_reverser.gd" id="1_xiye5"]
+
+[node name="InputReverser" type="Node"]
+script = ExtResource("1_xiye5")
