@@ -11,7 +11,8 @@ extends Node
 	BaseState.State.Slide: $Slide,
 	BaseState.State.Damaged: $Damaged,
 	BaseState.State.Dead: $Dead,
-	BaseState.State.Teleport: $Teleport
+	BaseState.State.Teleport: $Teleport,
+	BaseState.State.Ladder: $Ladder
 }
 
 var current_state: BaseState

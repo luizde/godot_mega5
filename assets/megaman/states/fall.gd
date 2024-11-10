@@ -6,6 +6,10 @@ func enter() -> void:
 func input(_event: InputEvent) -> int:  
 	super(_event)
 	
+	if player.is_on_ladder and Input.is_action_just_pressed("move_down"):
+		player.position = player.ladder_touched_position
+		return State.Ladder
+	
 	# I had originally thought to add a "jump_shoot" state but really nothing changes
 	#	in terms of behavior, so I chose to put it here.
 	#	I feel it should return to jumping withuot the cannon maybe but TODO
@@ -17,7 +21,6 @@ func input(_event: InputEvent) -> int:
 		
 	
 	return State.Null
-
 
 
 func physics_process(_delta: float) -> int:

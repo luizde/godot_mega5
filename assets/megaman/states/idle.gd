@@ -1,18 +1,16 @@
 class_name Idle
 extends BaseState
 
-var muzzle: Node2D
 var lower_cannon_idle: Timer
 
 @export var shoot_animation: String = "idle_shoot"
 
 func enter() -> void:
 	super()
-	
+		
 	# not sure why the to below don't work @onready
 	# probably something related to Idle being the first state to be used when 
 	# the game begins or about order of instantiation between parents and children
-	muzzle = $IdleShootMuzzle
 	lower_cannon_idle = $LowerCannonIdle
 	
 

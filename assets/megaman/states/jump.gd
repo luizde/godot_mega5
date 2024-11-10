@@ -4,9 +4,6 @@ extends BaseState
 
 @export var shoot_anim: String = "jump_shoot"
 
-@onready var muzzle: Node2D = $JumpShootMuzzle #TODO
-#@onready var jump_shoot_muzzle: Node2D = $JumpShootMuzzle
-
 func enter() -> void:
 	super()
 	
@@ -15,6 +12,10 @@ func enter() -> void:
 
 func input(_event: InputEvent) -> int:  
 	super(_event)
+	
+	if player.is_on_ladder and Input.is_action_just_pressed("move_down"):
+		player.position = player.ladder_touched_position
+		return State.Ladder
 	
 	# We need to deccelerate if the player released the jump button
 	# 	we need to check that velocity is still less than zero. Otherwise, 

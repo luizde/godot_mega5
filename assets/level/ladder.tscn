@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kigrck7j8rly"]
+
+[ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="1_7pyw5"]
+[ext_resource type="Script" path="res://assets/level/ladder.gd" id="1_es4hx"]
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_es4hx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7pyw5")
+centered = false
+region_enabled = true
+region_rect = Rect2(103, 194, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

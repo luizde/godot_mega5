@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=29 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://disk4jj8kvk60" path="res://assets/level/rooms/gravity_change_area.tscn" id="10_xtet7"]
 [ext_resource type="PackedScene" uid="uid://btc5cpn41b7vm" path="res://assets/level/decor/bg_lights_blinking.tscn" id="11_s3ykn"]
 [ext_resource type="PackedScene" uid="uid://cfr14g30b3epm" path="res://assets/enemies/enemy_spawner.tscn" id="13_4x6yt"]
+[ext_resource type="PackedScene" uid="uid://kigrck7j8rly" path="res://assets/level/ladder.tscn" id="17_jdfag"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
 resource_name = "lights"
@@ -970,6 +971,9 @@ size = Vector2(32, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1ph"]
 size = Vector2(320, 288)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_233of"]
+size = Vector2(11, 38)
+
 [node name="Level_Gravity" type="Node2D"]
 
 [node name="LevelLayout" type="Node2D" parent="."]
@@ -1233,3 +1237,13 @@ position = Vector2(72, 488)
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
 position = Vector2(24, 42)
+
+[node name="LadderTest" parent="." instance=ExtResource("17_jdfag")]
+position = Vector2(72, 81)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadderTest"]
+position = Vector2(7.5, 1)
+shape = SubResource("RectangleShape2D_233of")
+
+[node name="LadderTest2" parent="." instance=ExtResource("17_jdfag")]
+position = Vector2(72, 65)

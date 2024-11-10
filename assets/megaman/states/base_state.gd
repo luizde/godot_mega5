@@ -12,7 +12,8 @@ enum State {
 	Fall,
 	Damaged,
 	Dead,
-	Teleport
+	Teleport,
+	Ladder
 }
 
 @export var animation_name: String
@@ -24,12 +25,18 @@ enum State {
 var player: Player
 var bullet = preload("res://assets/megaman/weapons/megaman_bullet.tscn")
 
+
 func _ready() -> void:
 	EventBus.player_enters_room.connect(reset_y_velocity)
+	
 	
 
 func enter() -> void:
 	player.animations.play(animation_name)
+	if Input.is_action_pressed("move_left"):
+		player.face_left()
+	elif Input.is_action_pressed("move_right"):
+		player.face_right()
 
 ## Will execute before leaving the State and starting the new state
 func exit() -> void:

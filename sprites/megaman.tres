@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=23 format=3 uid="uid://b8f6rp22okegb"]
+[gd_resource type="SpriteFrames" load_steps=26 format=3 uid="uid://b8f6rp22okegb"]
 
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="1_wmq16"]
 [ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="2_64ocv"]
@@ -35,6 +35,18 @@ region = Rect2(171, 13, 29, 30)
 [sub_resource type="AtlasTexture" id="AtlasTexture_00c7y"]
 atlas = ExtResource("1_wmq16")
 region = Rect2(141, 70, 29, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e21hu"]
+atlas = ExtResource("3_jgri4")
+region = Rect2(63, 246, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bom"]
+atlas = ExtResource("3_jgri4")
+region = Rect2(85, 246, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koykm"]
+atlas = ExtResource("1_wmq16")
+region = Rect2(176, 70, 32, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7of7k"]
 atlas = ExtResource("1_wmq16")
@@ -139,6 +151,25 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e21hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bom")
+}],
+"loop": true,
+"name": &"ladder",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koykm")
+}],
+"loop": true,
+"name": &"ladder_shoot",
 "speed": 5.0
 }, {
 "frames": [{

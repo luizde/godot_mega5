@@ -21,6 +21,12 @@ var is_moving_horizontal: int = 0 # Keep as number instead of boolean and we can
 @export var speed: float = 82.5 
 @export var jump_force: float = -300.0
 @export var speed_slide: float = 150.0
+var is_on_ladder:bool = false:
+	get:
+		return is_on_ladder
+var ladder_velocity_before_touch: float
+
+var ladder_touched_position: Vector2
 #endregion
 
 #region Necessary colliders
@@ -77,9 +83,9 @@ func _ready() -> void:
 	EventBus.enemy_hit_player.connect(receive_damage)
 	EventBus.player_enter_spikes.connect(instadie)
 	
-	EventBus.player_enters_room.connect(handle_room_enter)
-	
-	
+	EventBus.player_enters_room.connect(_handle_room_enter)
+	EventBus.player_enters_ladder.connect(_handle_enter_ladder)
+	EventBus.player_leaves_ladder.connect(_handle_leave_ladder)
 	
 	is_vulnerable = true
 	is_movement_enabled = true
@@ -142,8 +148,17 @@ func shoot(muzzle_position: Vector2) -> void:
 	shooter.shoot_bullet(self, muzzle_position, direction, charge_level)
 	charge_time = 0.0
 
-func handle_room_enter(_none, _none2) -> void:
+func _handle_room_enter(_none, _none2) -> void:
 	disable_movement()
 	await get_tree().create_timer(1.20).timeout
 	enable_movement()
+
+func _handle_enter_ladder(ladder_position: Vector2, velocity_y:float) -> void:
+	GodotLogger.debug("Player is touching ladder")
+	ladder_touched_position = ladder_position
+	ladder_velocity_before_touch = velocity_y
+	is_on_ladder = true
 	
+func _handle_leave_ladder() -> void:
+	GodotLogger.debug("Player is leaving ladder")
+	is_on_ladder = false
