@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://t0c18sqj7mhr"]
+
+[sub_resource type="GDScript" id="GDScript_r42va"]
+script/source = "#extends Node
+#
+#var swap_mode: bool = false
+#
+#func _ready() -> void:
+	#EventBus.gravity_changed.connect(reverse_up_input)
+	#
+#func reverse_up_input(downwards: bool):
+	#if downwards:
+		#var new_input = InputEventKey.new()
+		#
+		#InputMap.act
+"
+
+[node name="InputReverser" type="Node"]
+script = SubResource("GDScript_r42va")

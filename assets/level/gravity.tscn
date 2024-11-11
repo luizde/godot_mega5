@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=31 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://disk4jj8kvk60" path="res://assets/level/rooms/gravity_change_area.tscn" id="10_xtet7"]
 [ext_resource type="PackedScene" uid="uid://btc5cpn41b7vm" path="res://assets/level/decor/bg_lights_blinking.tscn" id="11_s3ykn"]
 [ext_resource type="PackedScene" uid="uid://cfr14g30b3epm" path="res://assets/enemies/enemy_spawner.tscn" id="13_4x6yt"]
+[ext_resource type="PackedScene" uid="uid://b83x802xbvo3x" path="res://assets/level/decor/light_elevators.tscn" id="13_21am7"]
 [ext_resource type="PackedScene" uid="uid://kigrck7j8rly" path="res://assets/level/ladder.tscn" id="17_jdfag"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
@@ -1181,10 +1182,6 @@ shape = SubResource("RectangleShape2D_ny2al")
 position = Vector2(48, 338)
 enemy_scene = ExtResource("8_m5s3c")
 
-[node name="Enemy_SuzyG2" parent="LevelLayout/Room_02" instance=ExtResource("13_4x6yt")]
-position = Vector2(248, 306)
-enemy_scene = ExtResource("8_m5s3c")
-
 [node name="Decor" type="Node" parent="LevelLayout/Room_02"]
 
 [node name="02_01_VaseElectricTop" parent="LevelLayout/Room_02/Decor" instance=ExtResource("8_pi6uj")]
@@ -1213,6 +1210,62 @@ position = Vector2(248, 438)
 
 [node name="sphere_animated" parent="LevelLayout/Room_02/Decor" instance=ExtResource("4_6yhfa")]
 position = Vector2(376, 368)
+
+[node name="LightElevators2" parent="LevelLayout/Room_02" instance=ExtResource("13_21am7")]
+position = Vector2(154, 202)
+start_even_light = true
+
+[node name="LightElevators3" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -8)
+
+[node name="LightElevators2" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -16)
+start_even_light = true
+
+[node name="LightElevators4" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -24)
+
+[node name="LightElevators5" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -32)
+start_even_light = true
+
+[node name="LightElevators6" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -40)
+
+[node name="LightElevators7" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -48)
+start_even_light = true
+
+[node name="LightElevators8" parent="LevelLayout/Room_02/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(0, -56)
+
+[node name="LightElevators" parent="LevelLayout/Room_02" instance=ExtResource("13_21am7")]
+position = Vector2(162, 202)
+
+[node name="LightElevators3" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -8)
+start_even_light = true
+
+[node name="LightElevators2" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -16)
+
+[node name="LightElevators4" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -24)
+start_even_light = true
+
+[node name="LightElevators5" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -32)
+
+[node name="LightElevators6" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -40)
+start_even_light = true
+
+[node name="LightElevators7" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -48)
+
+[node name="LightElevators8" parent="LevelLayout/Room_02/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -56)
+start_even_light = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(23, 68)
@@ -1260,3 +1313,7 @@ collision_mask = 3
 position = Vector2(8.5, 1)
 shape = SubResource("RectangleShape2D_34fob")
 one_way_collision = true
+
+[node name="EnemySpawner" parent="." instance=ExtResource("13_4x6yt")]
+position = Vector2(400, 400)
+enemy_scene = ExtResource("8_m5s3c")

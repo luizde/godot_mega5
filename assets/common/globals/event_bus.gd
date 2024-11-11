@@ -7,7 +7,7 @@ signal enemy_hit_player(enemy_name, hp_damage)
 signal player_hp_changed(new_hp)
 
 ## Emmitted when the player hits the enemy
-signal player_hit_enemy_normalshot(damage)
+signal player_hit_enemy_normalshot(damage, enemy_id)
 
 ## Emmitted when the a body touches spikes
 signal player_enter_spikes()

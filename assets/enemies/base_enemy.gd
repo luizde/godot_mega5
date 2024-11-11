@@ -49,24 +49,25 @@ func _on_body_entered(_body: Node2D) -> void:
 func send_damage() -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
-func take_damage(damage: int) -> void:
-	flasher.start_flash(0.2, animated_sprite_2d, 0.4)
-	
-	hp -= damage
-	
-	GodotLogger.debug("Enemy [%s] received [%d] damage. New HP is %d" % [enemy_name, damage, hp])
-	
-	if hp <= 0:
-		animated_sprite_2d.play(death_animation_name)
-		if !animated_sprite_2d.animation_looped.is_connected(on_death_timer_timeout):
-			animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
+func take_damage(damage: int, enemy_id) -> void:
+	if get_instance_id() == enemy_id:
+		flasher.start_flash(0.2, animated_sprite_2d, 0.4)
 		
-		# We remove the Colliders right away so player can't collide with the explosion
-		#MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
-		reacts_to_gravity = false
-		MiscUtils.set_disabled_children_area2d(self, true, true)
-		MiscUtils.setDisabledForChildrenCollisionShapes(self, true, true)
-		#monitoring = false
+		hp -= damage
+		
+		GodotLogger.debug("Enemy [%s] received [%d] damage. New HP is %d" % [enemy_name, damage, hp])
+		
+		if hp <= 0:
+			animated_sprite_2d.play(death_animation_name)
+			if !animated_sprite_2d.animation_looped.is_connected(on_death_timer_timeout):
+				animated_sprite_2d.animation_looped.connect(on_death_timer_timeout)
+			
+			# We remove the Colliders right away so player can't collide with the explosion
+			#MiscUtils.setDisabledForChildrenCollisionShapes(get_node("."), true, true)
+			reacts_to_gravity = false
+			MiscUtils.set_disabled_children_area2d(self, true, true)
+			MiscUtils.setDisabledForChildrenCollisionShapes(self, true, true)
+			#monitoring = false
 	
 
 func on_death_timer_timeout() -> void:
