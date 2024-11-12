@@ -148,7 +148,7 @@ func shoot(muzzle_position: Vector2) -> void:
 	shooter.shoot_bullet(self, muzzle_position, direction, charge_level)
 	charge_time = 0.0
 
-func _handle_room_enter(_none, _none2) -> void:
+func _handle_room_enter(_none, _none2, _room_rect: Rect2) -> void:
 	disable_movement()
 	await get_tree().create_timer(1.20).timeout
 	enable_movement()

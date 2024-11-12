@@ -88,5 +88,5 @@ func physics_process(_delta: float) -> int:
 	return State.Null
 	
 	
-func reset_y_velocity(_na, _none) -> void:
+func reset_y_velocity(_na, _none, _room_rect: Rect2) -> void:
 	player.velocity.y = 0

@@ -48,7 +48,7 @@ static func gravity_change_to_upwards() -> void:
 static func gravity_change_to_downwards() -> void:
 	gravity = abs(gravity)
 
-func handle_room_enter(_room_number: int, _room_position: Vector2):
+func handle_room_enter(_room_number: int, _room_position: Vector2, _room_rect: Rect2):
 	change_gravity_for_screen_transition()
 	
 #func _process(_delta):

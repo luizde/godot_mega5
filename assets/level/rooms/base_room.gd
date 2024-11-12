@@ -2,6 +2,7 @@ extends Area2D
 class_name BaseRoom
 
 @export var room_number:int = 0
+@export var room_rect: CollisionShape2D
 
 var room_position:Vector2 :
 	get:
@@ -17,7 +18,7 @@ func _ready() -> void:
 func _on_body_entered(_body: Node2D) -> void:
 	GodotLogger.debug("Body entered room")
 	if room_number > 1:
-		EventBus.player_enters_room.emit(room_number, room_position)
+		EventBus.player_enters_room.emit(room_number, room_position, room_rect.shape.get_rect())
 
 
 func enable_room_monitoring() -> void:
