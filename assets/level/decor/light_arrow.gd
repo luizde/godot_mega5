@@ -19,5 +19,4 @@ func _handle_timeout() -> void:
 	else:
 		timer.wait_time = 0.15
 		sprites.play("small")
-		GodotLogger.debug("Playing animation %s" % sprites.animation)
 		timer.start()
