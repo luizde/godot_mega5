@@ -1249,6 +1249,34 @@ start_even_light = true
 [node name="LightElevators8" parent="LevelLayout/Room_02/Decor/LightElevators2" instance=ExtResource("13_21am7")]
 position = Vector2(0, -56)
 
+[node name="LightElevators9" parent="LevelLayout/Room_02/Decor/LightElevators2" instance=ExtResource("13_21am7")]
+position = Vector2(-96, 0)
+start_even_light = true
+
+[node name="LightElevators3" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -8)
+
+[node name="LightElevators2" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -16)
+start_even_light = true
+
+[node name="LightElevators4" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -24)
+
+[node name="LightElevators5" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -32)
+start_even_light = true
+
+[node name="LightElevators6" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -40)
+
+[node name="LightElevators7" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -48)
+start_even_light = true
+
+[node name="LightElevators8" parent="LevelLayout/Room_02/Decor/LightElevators2/LightElevators9" instance=ExtResource("13_21am7")]
+position = Vector2(0, -56)
+
 [node name="LightElevators" parent="LevelLayout/Room_02/Decor" instance=ExtResource("13_21am7")]
 position = Vector2(322, 296)
 
@@ -1274,6 +1302,34 @@ start_even_light = true
 position = Vector2(0, -48)
 
 [node name="LightElevators8" parent="LevelLayout/Room_02/Decor/LightElevators" instance=ExtResource("13_21am7")]
+position = Vector2(0, -56)
+start_even_light = true
+
+[node name="LightElevators3" parent="LevelLayout/Room_02/Decor" instance=ExtResource("13_21am7")]
+position = Vector2(226, 296)
+
+[node name="LightElevators3" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -8)
+start_even_light = true
+
+[node name="LightElevators2" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -16)
+
+[node name="LightElevators4" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -24)
+start_even_light = true
+
+[node name="LightElevators5" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -32)
+
+[node name="LightElevators6" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -40)
+start_even_light = true
+
+[node name="LightElevators7" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
+position = Vector2(0, -48)
+
+[node name="LightElevators8" parent="LevelLayout/Room_02/Decor/LightElevators3" instance=ExtResource("13_21am7")]
 position = Vector2(0, -56)
 start_even_light = true
 

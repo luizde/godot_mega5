@@ -21,8 +21,10 @@ func _process(_delta: float) -> void:
 	
 func change_room(_room_number: int, room_pos: Vector2, room_rect: Rect2) -> void:
 	next_position.y = room_pos.y + 10 #TODO: need a better way here
+	
+	#it's late but his math works so trust me bro
 	limit_left = room_rect.position.x + room_pos.x
-	limit_right = room_pos.x + room_rect.size.x
+	limit_right = (room_rect.position.x + room_pos.x) + room_rect.size.x 
 	GodotLogger.debug("limit left is %s" % limit_left)
 	GodotLogger.debug("limit right is %s" % limit_right)
 	
