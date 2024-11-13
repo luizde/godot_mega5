@@ -16,8 +16,8 @@ func _ready() -> void:
 	EventBus.player_teleported_into_level.connect(enable_room_monitoring)
 
 func _on_body_entered(_body: Node2D) -> void:
-	GodotLogger.debug("Body entered room")
-	if room_number > 1:
+	GodotLogger.debug("Player entered room %d" % room_number)
+	if room_number > 1 and _body.is_in_group("player"):
 		EventBus.player_enters_room.emit(room_number, room_position, room_rect.shape.get_rect())
 
 

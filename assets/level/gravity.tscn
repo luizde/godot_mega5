@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=36 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -976,6 +976,12 @@ size = Vector2(37, 171)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8l71u"]
 size = Vector2(29, 174)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyog4"]
+size = Vector2(16, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qc76g"]
+size = Vector2(14, 2)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1ph"]
 size = Vector2(320, 288)
 
@@ -1391,6 +1397,24 @@ gravity_downwards = true
 position = Vector2(16.5, 77)
 shape = SubResource("RectangleShape2D_8l71u")
 
+[node name="Ladder" parent="LevelLayout/Room_02" instance=ExtResource("17_jdfag")]
+position = Vector2(464, 258)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/Ladder"]
+position = Vector2(8, -26.5)
+shape = SubResource("RectangleShape2D_dyog4")
+debug_color = Color(0.943931, 6.93083e-06, 0.599388, 0.42)
+
+[node name="LadderEndBot" type="StaticBody2D" parent="LevelLayout/Room_02/Ladder"]
+collision_layer = 19
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_02/Ladder/LadderEndBot"]
+position = Vector2(8, 15)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_qc76g")
+one_way_collision = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(23, 68)
 limit_left = -90
@@ -1429,11 +1453,12 @@ shape = SubResource("RectangleShape2D_233of")
 
 [node name="LadderTest2" parent="." instance=ExtResource("17_jdfag")]
 position = Vector2(80, 65)
+collision_layer = 17
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(80, 65)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 19
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(8.5, 1)

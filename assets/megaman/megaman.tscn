@@ -42,7 +42,7 @@ script = ExtResource("1_afrgl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = ExtResource("2_b87kq")
-animation = &"ladder_shoot"
+animation = &"teleport"
 flip_h = true
 
 [node name="StandingCollider" type="CollisionShape2D" parent="."]
@@ -152,6 +152,17 @@ fx = ExtResource("23_xowuf")
 fx_duration = 0.5
 
 [node name="GravityReactor" parent="." instance=ExtResource("24_8w15t")]
+
+[node name="RayCastFeet" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)
+collision_mask = 16
+hit_from_inside = true
+
+[node name="RayCastHead" type="RayCast2D" parent="."]
+position = Vector2(0, -23)
+target_position = Vector2(0, -8)
+collision_mask = 16
+hit_from_inside = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateManager/Step" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="StateManager/Idle/LowerCannonIdle" to="StateManager/Idle" method="_on_lower_cannon_idle_timeout"]

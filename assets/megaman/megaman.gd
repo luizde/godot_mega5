@@ -31,6 +31,8 @@ var ladder_touched_position: Vector2
 
 #region Necessary colliders
 @onready var standing_collider: CollisionShape2D = $StandingCollider
+@onready var ray_cast_feet: RayCast2D = $RayCastFeet
+@onready var ray_cast_head: RayCast2D = $RayCastHead
 #endregion
 
 #region shooting variables

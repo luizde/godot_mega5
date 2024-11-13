@@ -11,6 +11,13 @@ func enter() -> void:
 	_first_frame = true
 	GodotLogger.debug("Entered Ladder State")
 	
+	if Input.is_action_pressed("move_up"):
+		player.animations.play(animation_name)
+		_ladder_direction = -1
+	elif Input.is_action_pressed("move_down"):
+		player.animations.play(animation_name)
+		_ladder_direction = 1
+	
 func input(_event: InputEvent) -> int:  
 	super(_event)
 	
@@ -20,18 +27,18 @@ func input(_event: InputEvent) -> int:
 	if Input.is_action_just_released("shoot"):
 		#player.charge_time = 0
 		player.charging = false
-		
+
 	if Input.is_action_pressed("move_up"):
-		_ladder_direction = 1
+		_ladder_direction = -1
 		player.animations.play(animation_name)
 	elif Input.is_action_pressed("move_down"):
-		_ladder_direction = -1
+		_ladder_direction = 1
 		player.animations.play(animation_name)
 	else:
 		_ladder_direction = 0
 	
-	if (Input.is_action_just_released("move_up") and !Input.is_action_pressed("move_down")) or \
-			 (Input.is_action_just_released("move_down") and !Input.is_action_pressed("move_up")):
+	if (!Input.is_action_pressed("move_down") and \
+			 !Input.is_action_pressed("move_up")):
 		player.animations.stop()
 	
 	if Input.is_action_just_pressed("jump"):

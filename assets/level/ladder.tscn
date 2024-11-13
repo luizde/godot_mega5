@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2d6de43556ge" path="res://sprites/level_tileset_gravityman.png" id="1_7pyw5"]
 [ext_resource type="Script" path="res://assets/level/ladder.gd" id="1_es4hx"]
 
-[node name="Area2D" type="Area2D"]
+[node name="Ladder" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_es4hx")

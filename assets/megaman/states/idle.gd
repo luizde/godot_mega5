@@ -15,8 +15,10 @@ func enter() -> void:
 	
 
 func input(_event: InputEvent) -> int:
-	super(_event)
-	
+	var ret = super(_event)
+	#super(_event)
+	if ret != State.Null:
+		return ret
 	#TODO: this doesn't work due to colliders and move_and_slide()
 	#TODO: consider on ladders move without physics engine?
 	#if player.is_on_ladder and Input.is_action_just_pressed("move_up"):

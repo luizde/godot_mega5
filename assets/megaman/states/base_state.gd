@@ -57,7 +57,11 @@ func input(_event: InputEvent) -> int:
 		player.is_moving_horizontal = 1
 	elif !Input.is_action_pressed("move_left") and !Input.is_action_pressed("move_right"):
 		player.is_moving_horizontal = 0
-		
+	
+	if player.ray_cast_head.is_colliding() and Input.is_action_pressed("move_up"):
+		GodotLogger.debug("going into ladder")
+		player.position.y -= 16
+		return State.Ladder
 		
 	if Input.is_action_pressed("shoot"):
 		player.charging = true

@@ -13,7 +13,7 @@ func enter() -> void:
 func input(_event: InputEvent) -> int:  
 	super(_event)
 	
-	if player.is_on_ladder and Input.is_action_just_pressed("move_down"):
+	if player.is_on_ladder and (Input.is_action_just_pressed("move_down") or Input.is_action_just_pressed("move_down")):
 		player.position = player.ladder_touched_position
 		return State.Ladder
 	
