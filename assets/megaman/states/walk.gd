@@ -10,7 +10,9 @@ func enter() -> void:
 func input(_event: InputEvent) -> int:
 	super(_event)
 	
-	if Input.is_action_pressed("move_down") and Input.is_action_just_pressed("jump"):
+	if ((WorldPhysics.gravity > 0 and Input.is_action_pressed("move_down")) \
+			or (WorldPhysics.gravity <0 and Input.is_action_pressed("move_up"))) \
+			and Input.is_action_just_pressed("jump"):
 		GodotLogger.debug("Slide start")
 		return State.Slide
 	

@@ -16,6 +16,7 @@ const _GRAVITY_UNDERWATER: float = 7.5
 static var screen_transition_timer: Timer
 
 func _ready() -> void:
+	gravity = _GRAVITY_NORMAL
 	change_gravity_to_normal()
 	
 	screen_transition_timer = Timer.new()
@@ -31,10 +32,10 @@ func _ready() -> void:
 
 static func change_gravity_for_screen_transition() -> void:
 	screen_transition_timer.start()
-	gravity = _GRAVITY_SCREEN_TRANSITION
+	gravity = _GRAVITY_SCREEN_TRANSITION * (gravity/abs(gravity)) #this helps keep the gravity direction
 
 static func change_gravity_to_normal() -> void:
-	gravity = _GRAVITY_NORMAL
+	gravity = _GRAVITY_NORMAL * (gravity/abs(gravity))
 
 static func change_gravity_underwater() -> void:
 	gravity = _GRAVITY_UNDERWATER
