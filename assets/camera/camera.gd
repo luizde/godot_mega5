@@ -16,7 +16,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	position.x = player.position.x
 	
-	position.y = clampf(position.y + scroll_speed_multiplier, 0, next_position.y)
+	position.y = clampf(position.y + scroll_speed_multiplier, -10000, next_position.y)
 	
 	
 func change_room(_room_number: int, room_pos: Vector2, room_rect: Rect2) -> void:
