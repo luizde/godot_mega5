@@ -98,6 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
+	
 
 ## Group all player activities required to face the right side of the screen
 ## TODO: review / should this be in base_state?
