@@ -1,4 +1,5 @@
 extends Node2D
+class_name Flasher
 
 var sprites_flashing: AnimatedSprite2D
 @onready var flash_material: Material = preload("res://assets/common/fx/flasher_material.tres")

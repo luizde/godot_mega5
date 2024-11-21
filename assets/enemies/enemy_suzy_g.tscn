@@ -101,7 +101,7 @@ shader_parameter/flash_intensity = 1.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ba2i"]
 size = Vector2(16, 24)
 
-[node name="SuzyG" type="CharacterBody2D"]
+[node name="SuzyG" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collider_physics", "flasher")]
 collision_layer = 4
 script = ExtResource("1_olggt")
 enemy_name = "suzy_g"
@@ -109,6 +109,9 @@ hp = 3
 damage_shot = 2
 damage_touch = 4
 death_animation_name = "death"
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collider_physics = NodePath("CollisionShape2D")
+flasher = NodePath("Flasher")
 muzzle_position_x = 11.0
 muzzle_position_y = -15.0
 collider_position_gravity_down = Vector2(0, -12)

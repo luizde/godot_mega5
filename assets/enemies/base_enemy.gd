@@ -3,16 +3,19 @@ extends CharacterBody2D
 
 @export var enemy_name: String
 
+@export var invulnerable: bool = false
+@export var is_static: bool = false
 @export var hp: int
 @export var damage_shot: int
 @export var damage_touch: int
 
 @export var death_animation_name: String 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collider_physics: CollisionShape2D = $CollisionShape2D
+@export var animated_sprite_2d: AnimatedSprite2D
+#@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var collider_physics: CollisionShape2D
 
 #Wish I could force all enemies had this. I have to remember
-@onready var flasher = $Flasher 
+@export var flasher: Flasher
 
 var player: Player
 var player_direction:int #relative to enemy. -1 left, anything else right
@@ -50,7 +53,7 @@ func send_damage() -> void:
 	EventBus.enemy_hit_player.emit(enemy_name, damage_touch)
 
 func take_damage(damage: int, enemy_id) -> void:
-	if get_instance_id() == enemy_id:
+	if get_instance_id() == enemy_id and !invulnerable:
 		flasher.start_flash(0.2, animated_sprite_2d, 0.4)
 		
 		hp -= damage
@@ -74,10 +77,11 @@ func on_death_timer_timeout() -> void:
 	queue_free()
 
 func look_at_player() -> void:
-	#assume our objects are always facing left. all our sprites are set up in such way
-	if player.global_position.x < self.global_position.x:
-		animated_sprite_2d.flip_h = false
-		player_direction = -1
-	else:
-		animated_sprite_2d.flip_h = true
-		player_direction = 1
+	if !is_static:
+		#assume our objects are always facing left. all our sprites are set up in such way
+		if player.global_position.x < self.global_position.x:
+			animated_sprite_2d.flip_h = false
+			player_direction = -1
+		else:
+			animated_sprite_2d.flip_h = true
+			player_direction = 1

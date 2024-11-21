@@ -3,7 +3,6 @@ extends Node
 @export var player: Player
 
 var _previous_position_x:float = 0
-var _tmpx : float = 0
 var _emmitted_move:bool = false
 var _emmitted_stop:bool = false
 
