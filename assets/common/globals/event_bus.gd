@@ -26,3 +26,9 @@ signal player_enters_ladder(ladder_position_global:Vector2)
 
 ## Emmitted when a player stops touching a ladder
 signal player_leaves_ladder()
+
+## Emmitted when the player initiates lateral motion
+signal player_started_moving_lateral()
+
+## Emmitted when the player stops lateral motion
+signal player_stopped_moving_lateral()
