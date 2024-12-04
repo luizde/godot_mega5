@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=44 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://6e57mmcpcon6" path="res://assets/enemies/enemy_teckyun.tscn" id="16_pljpy"]
 [ext_resource type="PackedScene" uid="uid://kigrck7j8rly" path="res://assets/level/ladder.tscn" id="17_jdfag"]
 [ext_resource type="PackedScene" uid="uid://cpi5isamcehn" path="res://assets/level/decor/light_arrow.tscn" id="19_auutg"]
+[ext_resource type="PackedScene" uid="uid://ci3flod3f4lt0" path="res://assets/enemies/enemy_nobita.tscn" id="21_migey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
 resource_name = "lights"
@@ -1907,3 +1908,16 @@ collision_mask = 0
 position = Vector2(8.5, 1)
 shape = SubResource("RectangleShape2D_34fob")
 one_way_collision = true
+
+[node name="enemy_nobita" parent="." node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+position = Vector2(104, 144)
+limit_left = NodePath("limit_left")
+limit_right = NodePath("limit_right")
+
+[node name="limit_left" type="Node2D" parent="enemy_nobita"]
+top_level = true
+position = Vector2(64, 136)
+
+[node name="limit_right" type="Node2D" parent="enemy_nobita"]
+top_level = true
+position = Vector2(160, 135)

@@ -1,0 +1,184 @@
+[gd_scene load_steps=25 format=3 uid="uid://ci3flod3f4lt0"]
+
+[ext_resource type="Script" path="res://assets/enemies/enemy_nobita.gd" id="1_hogrk"]
+[ext_resource type="Texture2D" uid="uid://byflhrlfibxw" path="res://sprites/enemies/nobita.png" id="2_7pkxe"]
+[ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_ncru1"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_oe4tc"]
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="4_vxfes"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
+atlas = ExtResource("2_ncru1")
+region = Rect2(204, 164, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxi8"]
+atlas = ExtResource("2_ncru1")
+region = Rect2(228, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgbe5"]
+atlas = ExtResource("2_ncru1")
+region = Rect2(245, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y8j"]
+atlas = ExtResource("2_ncru1")
+region = Rect2(262, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rtxk"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(3, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p4ip"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(62, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66ltl"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(79, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2chm"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(96, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rttcd"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(130, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrsjt"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(147, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bllf"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(164, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlr6x"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(181, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwiv8"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(198, 3, 16, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsqyn"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(26, 3, 18, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_063jp"]
+atlas = ExtResource("2_7pkxe")
+region = Rect2(44, 3, 18, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp6uh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qxi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6y8j")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rtxk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p4ip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ltl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2chm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rttcd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrsjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bllf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlr6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwiv8")
+}],
+"loop": false,
+"name": &"rise",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsqyn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_063jp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhl66"]
+size = Vector2(11, 19)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gg5m"]
+resource_local_to_scene = true
+shader = ExtResource("4_vxfes")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_am6dd"]
+radius = 6.0
+height = 18.0
+
+[node name="enemy_nobita" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collider_physics", "flasher")]
+collision_layer = 4
+script = ExtResource("1_hogrk")
+enemy_name = "nobita"
+hp = 4
+damage_touch = 4
+death_animation_name = "death"
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collider_physics = NodePath("CollisionShape2D")
+flasher = NodePath("Flasher")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -14.5)
+sprite_frames = SubResource("SpriteFrames_hp6uh")
+animation = &"death"
+offset = Vector2(0, -13.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, -9.5)
+shape = SubResource("RectangleShape2D_mhl66")
+
+[node name="Flasher" parent="." instance=ExtResource("3_oe4tc")]
+material = SubResource("ShaderMaterial_0gg5m")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_am6dd")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
