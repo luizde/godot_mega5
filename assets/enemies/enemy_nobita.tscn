@@ -157,6 +157,7 @@ death_animation_name = "death"
 animated_sprite_2d = NodePath("AnimatedSprite2D")
 collider_physics = NodePath("CollisionShape2D")
 flasher = NodePath("Flasher")
+reacts_to_gravity = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14.5)

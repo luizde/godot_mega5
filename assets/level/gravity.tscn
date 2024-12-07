@@ -1589,6 +1589,19 @@ enemy_scene = ExtResource("8_m5s3c")
 position = Vector2(344, 226)
 enemy_scene = ExtResource("8_m5s3c")
 
+[node name="enemy_nobita" parent="LevelLayout/Room_02/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+position = Vector2(88, 210)
+limit_left = NodePath("limit_left")
+limit_right = NodePath("limit_right")
+
+[node name="limit_left" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
+top_level = true
+position = Vector2(224, 296)
+
+[node name="limit_right" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
+top_level = true
+position = Vector2(272, 302)
+
 [node name="Room_03" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(442, -26)
 collision_mask = 2
@@ -1908,16 +1921,3 @@ collision_mask = 0
 position = Vector2(8.5, 1)
 shape = SubResource("RectangleShape2D_34fob")
 one_way_collision = true
-
-[node name="enemy_nobita" parent="." node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
-position = Vector2(104, 144)
-limit_left = NodePath("limit_left")
-limit_right = NodePath("limit_right")
-
-[node name="limit_left" type="Node2D" parent="enemy_nobita"]
-top_level = true
-position = Vector2(64, 136)
-
-[node name="limit_right" type="Node2D" parent="enemy_nobita"]
-top_level = true
-position = Vector2(160, 135)
