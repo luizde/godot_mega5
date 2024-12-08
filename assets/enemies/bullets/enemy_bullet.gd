@@ -1,12 +1,17 @@
 extends Area2D
+class_name EnemyBullet
 
 var direction: int = 1
 var speed: float = 175.0
-var damage: int = 2
+@export var damage: int = 2
 var shooter_name: String
+var horizontal:bool = true
 
 func _process(delta: float) -> void:
-	position.x += speed * delta * direction
+	if horizontal:
+		position.x += speed * delta * direction
+	else:
+		position.y += speed * delta * direction
 	
 
 

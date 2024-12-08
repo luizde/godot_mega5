@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=45 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://55qqd3dnpqb4" path="res://assets/level/decor/bg_blue_wall.tscn" id="16_cc81b"]
 [ext_resource type="PackedScene" uid="uid://6e57mmcpcon6" path="res://assets/enemies/enemy_teckyun.tscn" id="16_pljpy"]
 [ext_resource type="PackedScene" uid="uid://kigrck7j8rly" path="res://assets/level/ladder.tscn" id="17_jdfag"]
+[ext_resource type="PackedScene" uid="uid://siavkibuhigc" path="res://assets/enemies/enemy_graviton.tscn" id="19_adwx7"]
 [ext_resource type="PackedScene" uid="uid://cpi5isamcehn" path="res://assets/level/decor/light_arrow.tscn" id="19_auutg"]
 [ext_resource type="PackedScene" uid="uid://ci3flod3f4lt0" path="res://assets/enemies/enemy_nobita.tscn" id="21_migey"]
 
@@ -1193,6 +1194,14 @@ position = Vector2(-32, 0)
 
 [node name="LightArrow4" parent="LevelLayout/Room_01/LightArrow" instance=ExtResource("19_auutg")]
 position = Vector2(-48, 0)
+
+[node name="graviton" parent="LevelLayout/Room_01" instance=ExtResource("13_4x6yt")]
+position = Vector2(472, 104)
+enemy_scene = ExtResource("19_adwx7")
+
+[node name="suzyG_02" parent="LevelLayout/Room_01" instance=ExtResource("13_4x6yt")]
+position = Vector2(296, 184)
+enemy_scene = ExtResource("8_m5s3c")
 
 [node name="Room_02" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(160, 94)

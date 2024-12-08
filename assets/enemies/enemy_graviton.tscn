@@ -1,0 +1,153 @@
+[gd_scene load_steps=21 format=3 uid="uid://siavkibuhigc"]
+
+[ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="1_7evq5"]
+[ext_resource type="Script" path="res://assets/enemies/enemy_graviton.gd" id="1_m5lg0"]
+[ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_8lgdq"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_x1mbx"]
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="4_lgele"]
+[ext_resource type="PackedScene" uid="uid://dxawnndxl6n7e" path="res://assets/common/actions/shooter.tscn" id="5_ntp5e"]
+[ext_resource type="PackedScene" uid="uid://872ux4cftx3t" path="res://assets/enemies/bullets/bullet_graviton.tscn" id="6_41y3e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
+atlas = ExtResource("2_8lgdq")
+region = Rect2(204, 164, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxi8"]
+atlas = ExtResource("2_8lgdq")
+region = Rect2(228, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgbe5"]
+atlas = ExtResource("2_8lgdq")
+region = Rect2(245, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y8j"]
+atlas = ExtResource("2_8lgdq")
+region = Rect2(262, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6bbm"]
+atlas = ExtResource("1_7evq5")
+region = Rect2(159, 202, 16, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysx14"]
+atlas = ExtResource("1_7evq5")
+region = Rect2(176, 202, 16, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewqxi"]
+atlas = ExtResource("1_7evq5")
+region = Rect2(193, 202, 16, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrrba"]
+atlas = ExtResource("1_7evq5")
+region = Rect2(210, 202, 16, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwlau"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qxi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6y8j")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6bbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysx14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewqxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrrba")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktp67"]
+radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm6de"]
+resource_local_to_scene = true
+shader = ExtResource("4_lgele")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mq4hd"]
+radius = 5.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11bry"]
+size = Vector2(256, 174)
+
+[node name="Graviton" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collider_physics", "flasher")]
+position = Vector2(0, -16)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_m5lg0")
+enemy_name = "graviton"
+is_static = true
+hp = 3
+damage_shot = 4
+damage_touch = 4
+death_animation_name = "death"
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collider_physics = NodePath("CollisionShape2D")
+flasher = NodePath("Flasher")
+muzzle_position_x = 0.0
+muzzle_position_y = 16.0
+reacts_to_gravity = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nwlau")
+animation = &"idle"
+
+[node name="DamageArea" type="Area2D" parent="AnimatedSprite2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/DamageArea"]
+shape = SubResource("CapsuleShape2D_ktp67")
+debug_color = Color(0.928709, 0.161112, 0.533112, 0.42)
+
+[node name="Flasher" parent="." instance=ExtResource("3_x1mbx")]
+material = SubResource("ShaderMaterial_nm6de")
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_mq4hd")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(-1, -20)
+shape = SubResource("RectangleShape2D_11bry")
+
+[node name="Shooter" parent="." instance=ExtResource("5_ntp5e")]
+bullet = ExtResource("6_41y3e")
+
+[connection signal="body_entered" from="AnimatedSprite2D/DamageArea" to="." method="_on_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

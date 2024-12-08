@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://872ux4cftx3t"]
+
+[ext_resource type="Script" path="res://assets/enemies/bullets/bullet_graviton.gd" id="1_mfuts"]
+[ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="2_n5wia"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obqoi"]
+radius = 3.0
+
+[node name="BulletGraviton" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_mfuts")
+damage = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n5wia")
+region_enabled = true
+region_rect = Rect2(160, 293, 6, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_obqoi")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
