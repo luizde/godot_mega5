@@ -29,8 +29,9 @@ func _physics_process(_delta: float) -> void:
 	super(_delta)
 	velocity.x = speed_walk * _direction
 	
-	if (round(position.x) == round(limit_left.position.x) and _direction == -1) \
-	 		or (round(position.x) == round(limit_right.position.x) and _direction == 1):
+	#remember to_global should be called inside the parent
+	if (round(get_parent().to_global(position).x) == round(limit_left.position.x) and _direction == -1) \
+	 		or (round(get_parent().to_global(position).x) == round(limit_right.position.x) and _direction == 1):
 		_next_direction *= -1
 		_direction = 0
 		

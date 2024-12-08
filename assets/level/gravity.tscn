@@ -1590,16 +1590,16 @@ position = Vector2(344, 226)
 enemy_scene = ExtResource("8_m5s3c")
 
 [node name="enemy_nobita" parent="LevelLayout/Room_02/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
 position = Vector2(88, 210)
 limit_left = NodePath("limit_left")
 limit_right = NodePath("limit_right")
 
 [node name="limit_left" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
-top_level = true
 position = Vector2(224, 296)
 
 [node name="limit_right" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
-top_level = true
 position = Vector2(272, 302)
 
 [node name="Room_03" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
