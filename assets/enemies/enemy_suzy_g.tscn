@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxk2suox4ydc"]
+[gd_scene load_steps=23 format=3 uid="uid://bxk2suox4ydc"]
 
 [ext_resource type="Script" path="res://assets/enemies/enemy_suzy_g.gd" id="1_olggt"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_1desg"]
-[ext_resource type="Texture2D" uid="uid://bn783013aclga" path="res://sprites/enemies 01.png" id="3_gtikj"]
+[ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="3_6vm1d"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="4_d5ifw"]
 [ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="5_7qj3o"]
 [ext_resource type="PackedScene" uid="uid://dxawnndxl6n7e" path="res://assets/common/actions/shooter.tscn" id="6_0v6py"]
@@ -25,21 +25,25 @@ region = Rect2(245, 164, 19, 24)
 atlas = ExtResource("2_1desg")
 region = Rect2(262, 164, 19, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jphe1"]
-atlas = ExtResource("3_gtikj")
-region = Rect2(914, 614, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4gyy"]
+atlas = ExtResource("3_6vm1d")
+region = Rect2(917, 619, 24, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lr6rv"]
-atlas = ExtResource("3_gtikj")
-region = Rect2(947, 614, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_htl0s"]
+atlas = ExtResource("3_6vm1d")
+region = Rect2(1049, 619, 24, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ridbw"]
-atlas = ExtResource("3_gtikj")
-region = Rect2(980, 614, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqcys"]
+atlas = ExtResource("3_6vm1d")
+region = Rect2(983, 619, 24, 27)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dbefb"]
-atlas = ExtResource("3_gtikj")
-region = Rect2(1046, 614, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk4bq"]
+atlas = ExtResource("3_6vm1d")
+region = Rect2(950, 619, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68icu"]
+atlas = ExtResource("3_6vm1d")
+region = Rect2(917, 619, 24, 27)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cul56"]
 animations = [{
@@ -62,7 +66,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jphe1")
+"texture": SubResource("AtlasTexture_x4gyy")
 }],
 "loop": true,
 "name": &"idle",
@@ -70,16 +74,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lr6rv")
+"texture": SubResource("AtlasTexture_htl0s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ridbw")
+"texture": SubResource("AtlasTexture_uqcys")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dbefb")
+"texture": SubResource("AtlasTexture_wk4bq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jphe1")
+"texture": SubResource("AtlasTexture_68icu")
 }],
 "loop": true,
 "name": &"shoot",
@@ -115,12 +119,12 @@ flasher = NodePath("Flasher")
 muzzle_position_x = 11.0
 muzzle_position_y = -15.0
 collider_position_gravity_down = Vector2(0, -12)
-collider_position_gravity_up = Vector2(0, -18)
+collider_position_gravity_up = Vector2(0, -14)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -13)
 sprite_frames = SubResource("SpriteFrames_cul56")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
