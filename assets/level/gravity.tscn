@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=46 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://kigrck7j8rly" path="res://assets/level/ladder.tscn" id="17_jdfag"]
 [ext_resource type="PackedScene" uid="uid://siavkibuhigc" path="res://assets/enemies/enemy_graviton.tscn" id="19_adwx7"]
 [ext_resource type="PackedScene" uid="uid://cpi5isamcehn" path="res://assets/level/decor/light_arrow.tscn" id="19_auutg"]
+[ext_resource type="PackedScene" uid="uid://fq8x2p3887s5" path="res://assets/enemies/enemy_popup_cannon.tscn" id="20_tqr4l"]
 [ext_resource type="PackedScene" uid="uid://ci3flod3f4lt0" path="res://assets/enemies/enemy_nobita.tscn" id="21_migey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
@@ -1864,6 +1865,24 @@ position = Vector2(1088, 424)
 [node name="VaseElectricTop2" parent="LevelLayout/Room_06/Decor/VaseElectricTop" instance=ExtResource("8_pi6uj")]
 position = Vector2(64, 0)
 
+[node name="Enemies" type="Node2D" parent="LevelLayout/Room_06"]
+
+[node name="Popup Cannon" parent="LevelLayout/Room_06/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(206, 176)
+enemy_scene = ExtResource("20_tqr4l")
+
+[node name="Popup Cannon2" parent="LevelLayout/Room_06/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(270, 176)
+enemy_scene = ExtResource("20_tqr4l")
+
+[node name="Popup Cannon3" parent="LevelLayout/Room_06/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(334, 112)
+enemy_scene = ExtResource("20_tqr4l")
+
+[node name="Popup Cannon4" parent="LevelLayout/Room_06/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(398, 80)
+enemy_scene = ExtResource("20_tqr4l")
+
 [node name="Room_07" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(1184, 480)
 collision_mask = 2
@@ -1919,7 +1938,7 @@ debug_color = Color(0, 0.623529, 0.552941, 0)
 
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
-position = Vector2(16, 41)
+position = Vector2(1052, 93)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(80, 65)

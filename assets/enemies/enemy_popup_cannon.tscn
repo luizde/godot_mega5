@@ -1,0 +1,194 @@
+[gd_scene load_steps=23 format=3 uid="uid://fq8x2p3887s5"]
+
+[ext_resource type="Script" path="res://assets/enemies/enemy_popup_cannon.gd" id="1_0v77t"]
+[ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="1_mslcv"]
+[ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_8f1ov"]
+[ext_resource type="PackedScene" uid="uid://dxawnndxl6n7e" path="res://assets/common/actions/shooter.tscn" id="2_dadst"]
+[ext_resource type="PackedScene" uid="uid://dxyoaokygwp3n" path="res://assets/enemies/bullets/enemy_bullet.tscn" id="4_awsah"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="6_5cxoq"]
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="7_s23rt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
+atlas = ExtResource("2_8f1ov")
+region = Rect2(204, 164, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxi8"]
+atlas = ExtResource("2_8f1ov")
+region = Rect2(228, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgbe5"]
+atlas = ExtResource("2_8f1ov")
+region = Rect2(245, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y8j"]
+atlas = ExtResource("2_8f1ov")
+region = Rect2(262, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juo8v"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(251, 80, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbvso"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(376, 80, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwv0s"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(351, 80, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs8qk"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(326, 80, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1yib"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(301, 80, 24, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeugq"]
+atlas = ExtResource("1_mslcv")
+region = Rect2(276, 80, 24, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdlyl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qxi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6y8j")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juo8v")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbvso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwv0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs8qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1yib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeugq")
+}],
+"loop": false,
+"name": &"lower",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeugq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1yib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs8qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwv0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbvso")
+}],
+"loop": false,
+"name": &"rise_shoot",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emnh3"]
+size = Vector2(15, 18)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5kl3"]
+resource_local_to_scene = true
+shader = ExtResource("7_s23rt")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xepu"]
+size = Vector2(57, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg8dj"]
+size = Vector2(15, 18)
+
+[node name="PopUpCannon" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collider_physics", "flasher")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0v77t")
+enemy_name = "PopUpCannon"
+hp = 4
+damage_shot = 4
+damage_touch = 4
+death_animation_name = "death"
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collider_physics = NodePath("ColliderPhysics")
+flasher = NodePath("Flasher")
+muzzle_position_x = -8.0
+muzzle_position_y = -18.0
+reacts_to_gravity = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_kdlyl")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="ColliderPhysics" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_emnh3")
+
+[node name="Shooter" parent="." instance=ExtResource("2_dadst")]
+bullet = ExtResource("4_awsah")
+
+[node name="Flasher" parent="." instance=ExtResource("6_5cxoq")]
+material = SubResource("ShaderMaterial_t5kl3")
+
+[node name="Muzzle" type="Node2D" parent="."]
+position = Vector2(-8, -18)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(-20.5, -28)
+shape = SubResource("RectangleShape2D_1xepu")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0.5, -9)
+shape = SubResource("RectangleShape2D_sg8dj")
+debug_color = Color(0.879249, 0.15821, 0.735876, 0.42)
+
+[node name="TimerCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerCooldown" to="." method="_on_timer_cooldown_timeout"]

@@ -76,14 +76,16 @@ func take_damage(damage: int, enemy_id) -> void:
 func on_death_timer_timeout() -> void:
 	queue_free()
 
-func look_at_player() -> void:
+func look_at_player(flip_sprite: bool = true) -> void:
 	if !is_static:
 		if player == null:
 			player = get_tree().get_nodes_in_group("player")[0]
 		#assume our objects are always facing left. all our sprites are set up in such way
 		if player.global_position.x < self.global_position.x:
-			animated_sprite_2d.flip_h = false
+			if flip_sprite:
+				animated_sprite_2d.flip_h = false
 			player_direction = -1
 		else:
-			animated_sprite_2d.flip_h = true
+			if flip_sprite:
+				animated_sprite_2d.flip_h = true
 			player_direction = 1
