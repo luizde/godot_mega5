@@ -29,9 +29,12 @@ func _physics_process(_delta: float) -> void:
 	super(_delta)
 	velocity.x = speed_walk * _direction
 	
+	#if self.name == "enemy_nobita2":
+		#GodotLogger.debug("%s position is %s " % [self.name, round(position.x)])
+		#GodotLogger.debug("\tleft position is %s " % [round(limit_left.position.x)])
 	#remember to_global should be called inside the parent
-	if (round(get_parent().to_global(position).x) == round(limit_left.position.x) and _direction == -1) \
-	 		or (round(get_parent().to_global(position).x) == round(limit_right.position.x) and _direction == 1):
+	if (round(position.x) == round(limit_left.position.x) and _direction == -1) \
+	 		or (round(position.x) == round(limit_right.position.x) and _direction == 1):
 		_next_direction *= -1
 		_direction = 0
 		

@@ -1603,14 +1603,27 @@ enemy_scene = ExtResource("8_m5s3c")
 z_index = 100
 z_as_relative = false
 position = Vector2(88, 210)
-limit_left = NodePath("limit_left")
-limit_right = NodePath("limit_right")
+limit_left = NodePath("../limit_left")
+limit_right = NodePath("../limit_right")
 
-[node name="limit_left" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
-position = Vector2(224, 296)
+[node name="limit_left" type="Node2D" parent="LevelLayout/Room_02/Enemies"]
+position = Vector2(70, 202)
 
-[node name="limit_right" type="Node2D" parent="LevelLayout/Room_02/Enemies/enemy_nobita"]
-position = Vector2(272, 302)
+[node name="limit_right" type="Node2D" parent="LevelLayout/Room_02/Enemies"]
+position = Vector2(104, 202)
+
+[node name="enemy_nobita2" parent="LevelLayout/Room_02/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
+position = Vector2(480, 320)
+limit_left = NodePath("../nobita2_limit_left2")
+limit_right = NodePath("../nobita2_limit_right2")
+
+[node name="nobita2_limit_left2" type="Node2D" parent="LevelLayout/Room_02/Enemies"]
+position = Vector2(456, 314)
+
+[node name="nobita2_limit_right2" type="Node2D" parent="LevelLayout/Room_02/Enemies"]
+position = Vector2(512, 320)
 
 [node name="Room_03" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(442, -26)
@@ -1697,6 +1710,64 @@ gravity_downwards = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_04/GravityChangeArea"]
 position = Vector2(11, 7.5)
 shape = SubResource("RectangleShape2D_vfcu8")
+
+[node name="Enemies" type="Node2D" parent="LevelLayout/Room_04"]
+
+[node name="enemy_nobita" parent="LevelLayout/Room_04/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
+position = Vector2(88, 191)
+limit_left = NodePath("../nobita_limit_left")
+limit_right = NodePath("../nobita_limit_right")
+
+[node name="nobita_limit_left" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(40, 182)
+
+[node name="nobita_limit_right" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(88, 183)
+
+[node name="enemy_nobita3" parent="LevelLayout/Room_04/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
+position = Vector2(220, 79)
+limit_left = NodePath("../nobita3_limit_left2")
+limit_right = NodePath("../nobita3_limit_right2")
+
+[node name="nobita3_limit_left2" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(168, 71)
+
+[node name="nobita3_limit_right2" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(220, 71)
+
+[node name="SuzyG" parent="LevelLayout/Room_04/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(288, 79)
+enemy_scene = ExtResource("8_m5s3c")
+
+[node name="enemy_nobita4" parent="LevelLayout/Room_04/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
+position = Vector2(388, 78)
+limit_left = NodePath("../nobita4_limit_left3")
+limit_right = NodePath("../nobita4_limit_right3")
+
+[node name="nobita4_limit_left3" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(344, 71)
+
+[node name="nobita4_limit_right3" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(388, 70)
+
+[node name="enemy_nobita5" parent="LevelLayout/Room_04/Enemies" node_paths=PackedStringArray("limit_left", "limit_right") instance=ExtResource("21_migey")]
+z_index = 100
+z_as_relative = false
+position = Vector2(476, 111)
+limit_left = NodePath("../nobita5_limit_left4")
+limit_right = NodePath("../nobita5_limit_right4")
+
+[node name="nobita5_limit_left4" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(440, 104)
+
+[node name="nobita5_limit_right4" type="Node2D" parent="LevelLayout/Room_04/Enemies"]
+position = Vector2(472, 103)
 
 [node name="Room_05" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(930, -68)
@@ -1938,7 +2009,7 @@ debug_color = Color(0, 0.623529, 0.552941, 0)
 
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
-position = Vector2(1052, 93)
+position = Vector2(8, 38)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(80, 65)
