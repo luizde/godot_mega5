@@ -150,7 +150,7 @@ reacts_to_gravity = false
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_kdlyl")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
 
 [node name="ColliderPhysics" type="CollisionShape2D" parent="."]

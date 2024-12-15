@@ -1,0 +1,139 @@
+[gd_scene load_steps=17 format=3 uid="uid://cp0e7yl8w5y85"]
+
+[ext_resource type="Script" path="res://assets/enemies/enemy_pukapelly.gd" id="1_3b3j2"]
+[ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="2_o600b"]
+[ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="3_7mycj"]
+[ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_euc0h"]
+[ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="4_vvjli"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2mtl"]
+atlas = ExtResource("2_o600b")
+region = Rect2(859, 392, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1h5d"]
+atlas = ExtResource("3_7mycj")
+region = Rect2(204, 164, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qxi8"]
+atlas = ExtResource("3_7mycj")
+region = Rect2(228, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgbe5"]
+atlas = ExtResource("3_7mycj")
+region = Rect2(245, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y8j"]
+atlas = ExtResource("3_7mycj")
+region = Rect2(262, 164, 19, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmbnp"]
+atlas = ExtResource("2_o600b")
+region = Rect2(876, 392, 16, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nr7e0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2mtl")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1h5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qxi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgbe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6y8j")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmbnp")
+}],
+"loop": true,
+"name": &"open",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cuubm"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2a5lv"]
+radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjwkj"]
+resource_local_to_scene = true
+shader = ExtResource("4_vvjli")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_intensity = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eugyb"]
+size = Vector2(504, 313)
+
+[node name="EnemyPukapelly" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_2d", "collider_physics", "flasher")]
+position = Vector2(0, -10)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3b3j2")
+enemy_name = "pukapelly"
+hp = 2
+damage_touch = 4
+death_animation_name = "death"
+animated_sprite_2d = NodePath("AnimatedSprite2D")
+collider_physics = NodePath("DamageArea/CollisionShape2D")
+flasher = NodePath("Flasher")
+reacts_to_gravity = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nr7e0")
+animation = &"death"
+
+[node name="ColliderPhysics" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_cuubm")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_2a5lv")
+debug_color = Color(0.964706, 0.0823529, 0.054902, 0.419608)
+
+[node name="Flasher" parent="." instance=ExtResource("3_euc0h")]
+material = SubResource("ShaderMaterial_xjwkj")
+position = Vector2(0, 3)
+
+[node name="TimerMoving" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerStopped" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DetectionRange" type="Area2D" parent="."]
+z_index = 3
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+position = Vector2(8, -1.5)
+shape = SubResource("RectangleShape2D_eugyb")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerMoving" to="." method="_on_timer_moving_timeout"]
+[connection signal="timeout" from="TimerStopped" to="." method="_on_timer_stopped_timeout"]
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]
