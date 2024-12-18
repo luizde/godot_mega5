@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=53 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
@@ -1012,6 +1012,24 @@ size = Vector2(768, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp4f1"]
 size = Vector2(997, 232)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw8j2"]
+size = Vector2(240, 263)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwjbf"]
+size = Vector2(264, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttx6l"]
+size = Vector2(192, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmn77"]
+size = Vector2(96, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1ch0"]
+size = Vector2(160, 178)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ba2yv"]
+size = Vector2(144, 210)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk1ph"]
 size = Vector2(320, 288)
 
@@ -2022,6 +2040,71 @@ position = Vector2(560, 184)
 [node name="LevelNumbers6" parent="LevelLayout/Room_08/Decor/LevelNumbers" instance=ExtResource("4_21sfi")]
 position = Vector2(736, 0)
 
+[node name="Room_09" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
+position = Vector2(2722, 211)
+collision_mask = 2
+room_number = 9
+room_rect = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/Room_09"]
+position = Vector2(118, 121.5)
+shape = SubResource("RectangleShape2D_uw8j2")
+
+[node name="Decor" type="Node" parent="LevelLayout/Room_09"]
+
+[node name="Enemies" type="Node2D" parent="LevelLayout/Room_09"]
+
+[node name="Pukapelly01" parent="LevelLayout/Room_09/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(94, 85)
+enemy_scene = ExtResource("24_wt1fo")
+
+[node name="Pukapelly02" parent="LevelLayout/Room_09/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(78, 109)
+enemy_scene = ExtResource("24_wt1fo")
+
+[node name="Pukapelly03" parent="LevelLayout/Room_09/Enemies" instance=ExtResource("13_4x6yt")]
+position = Vector2(62, 93)
+enemy_scene = ExtResource("24_wt1fo")
+
+[node name="GravityChangeArea" parent="LevelLayout" instance=ExtResource("10_xtet7")]
+position = Vector2(2112, 528)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/GravityChangeArea"]
+position = Vector2(124, 80)
+shape = SubResource("RectangleShape2D_bwjbf")
+debug_color = Color(0.593677, 0.546265, 9.62615e-07, 0.42)
+
+[node name="GravityChangeArea2" parent="LevelLayout" instance=ExtResource("10_xtet7")]
+position = Vector2(2368, 528)
+gravity_downwards = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/GravityChangeArea2"]
+position = Vector2(96, 80)
+shape = SubResource("RectangleShape2D_ttx6l")
+debug_color = Color(0.330746, 0.488431, 1, 0.42)
+
+[node name="GravityChangeArea3" parent="LevelLayout" instance=ExtResource("10_xtet7")]
+position = Vector2(2560, 528)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/GravityChangeArea3"]
+position = Vector2(48, 59)
+shape = SubResource("RectangleShape2D_dmn77")
+
+[node name="GravityChangeArea4" parent="LevelLayout" instance=ExtResource("10_xtet7")]
+position = Vector2(2656, 496)
+gravity_downwards = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/GravityChangeArea4"]
+position = Vector2(80, 79)
+shape = SubResource("RectangleShape2D_l1ch0")
+
+[node name="GravityChangeArea5" parent="LevelLayout" instance=ExtResource("10_xtet7")]
+position = Vector2(2816, 496)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelLayout/GravityChangeArea5"]
+position = Vector2(72, 95)
+shape = SubResource("RectangleShape2D_ba2yv")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(23, 68)
 limit_left = -90
@@ -2046,7 +2129,7 @@ debug_color = Color(0, 0.623529, 0.552941, 0)
 
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
-position = Vector2(8, 38)
+position = Vector2(1976, 576)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(80, 65)
@@ -2057,6 +2140,3 @@ collision_mask = 0
 position = Vector2(8.5, 1)
 shape = SubResource("RectangleShape2D_34fob")
 one_way_collision = true
-
-[node name="EnemyPukapelly" parent="." instance=ExtResource("24_wt1fo")]
-position = Vector2(296, 45)
