@@ -25,16 +25,18 @@ func _physics_process(_delta:float) -> void:
 
 
 func _on_timer_stopped_timeout() -> void:
-	_moving = true
-	timer_moving.start()
-	_move_towards = player.position
-	animated_sprite_2d.play("open")
+	if hp > 0:
+		_moving = true
+		timer_moving.start()
+		_move_towards = player.position
+		animated_sprite_2d.play("open")
 
 
 func _on_timer_moving_timeout() -> void:
-	_moving = false
-	timer_stopped.start()
-	animated_sprite_2d.play("closed")
+	if hp > 0:
+		_moving = false
+		timer_stopped.start()
+		animated_sprite_2d.play("closed")
 
 
 func _on_detection_range_body_entered(body: Node2D) -> void:
