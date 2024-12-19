@@ -12,6 +12,7 @@ var _is_active:bool = false
 func _ready() -> void:
 	super()
 	timer_stopped.start()
+	animated_sprite_2d.play("closed")
 
 
 func _physics_process(_delta:float) -> void:
