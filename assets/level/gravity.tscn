@@ -2128,7 +2128,7 @@ position = Vector2(-720, 47.9968)
 rotation = 3.14159
 
 [node name="LightArrow26" parent="LevelLayout/Room_08/Decor/LightArrow" instance=ExtResource("19_auutg")]
-position = Vector2(-720, -8.0032)
+position = Vector2(-720, -16.0032)
 rotation = 3.14159
 
 [node name="GravityChangeArea" parent="LevelLayout/Room_08" instance=ExtResource("10_xtet7")]
