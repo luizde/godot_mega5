@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2a4tv2bm4n3o"]
+[gd_scene load_steps=13 format=3 uid="uid://c2a4tv2bm4n3o"]
 
 [ext_resource type="Script" path="res://assets/megaman/weapons/megaman_bullet.gd" id="1_332ne"]
 [ext_resource type="Texture2D" uid="uid://1mko3tq2em7s" path="res://sprites/megaman_weapon.png" id="2_n0m3o"]
+[ext_resource type="AudioStream" uid="uid://vtcf27q86xq0" path="res://audio/sfx/sfx_player_shoot.wav" id="3_50ux5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mo1jv"]
 atlas = ExtResource("2_n0m3o")
@@ -88,6 +89,10 @@ autoplay = "low"
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_eqeb8")
+
+[node name="appear" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_50ux5")
+autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
