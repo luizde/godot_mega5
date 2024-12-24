@@ -25,7 +25,6 @@ enum State {
 var player: Player
 var bullet = preload("res://assets/megaman/weapons/megaman_bullet.tscn")
 
-
 func _ready() -> void:
 	EventBus.player_enters_room.connect(reset_y_velocity)
 	
@@ -79,6 +78,9 @@ func physics_process(_delta: float) -> int:
 	player.velocity.y += WorldPhysics.gravity
 	
 	if player.charging:
+		
+		if !player.audio_player.playing and player.charge_time > 0.5:
+			player.audio_player.play()
 		player.charge_time = clamp(player.charge_time + _delta, 0, 2)
 	else:
 		player.charging_colorer.stop_flicker()

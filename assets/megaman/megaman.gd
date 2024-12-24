@@ -57,6 +57,10 @@ var ladder_touched_position: Vector2
 @onready var shooter = $Shooter
 #endregion 
 
+#region Audio
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+#endregion
+
 #region Graphic FX
 @onready var slide_smoke_emmitter: Node = $SlideSmokeEmmitter
 @onready var damaged_smoke_emmitter: Node = $DamagedSmokeEmmitter
@@ -150,6 +154,7 @@ func shoot(muzzle_position: Vector2) -> void:
 		muzzle_position.x *= -1
 	shooter.shoot_bullet(self, muzzle_position, direction, charge_level)
 	charge_time = 0.0
+	audio_player.stop()
 
 func _handle_room_enter(_none, _none2, _room_rect: Rect2) -> void:
 	disable_movement()
