@@ -3,6 +3,7 @@ extends Node2D
 @export var selected_level:MainMenuOption
 @onready var blinking_square: Node2D = $BlinkingSquare
 @onready var change_selection: AudioStreamPlayer = $ChangeSelection
+@onready var audio_selected: AudioStreamPlayer = $AudioSelected
 
 @export var next_screen: PackedScene
 
@@ -37,6 +38,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if _event.is_action_pressed("shoot") and \
 			selected_level.enabled and !selected_level.stage_name == "Mega Man":
+		audio_selected.play()
 		_start_level_transition()
 		
 ## Load the next level. It is hard coded now but we would have a Dictionary where
@@ -44,7 +46,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 func _start_level_transition() -> void:
 	var tween: Tween = get_tree().create_tween()
 	screen_transition_animation.play("fade_in")
-	tween.tween_interval(1)
+	tween.tween_interval(2)
 	tween.tween_callback(_load_level)
 	
 	

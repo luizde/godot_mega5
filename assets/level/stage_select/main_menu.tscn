@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c37nwv2cv887q"]
+[gd_scene load_steps=10 format=3 uid="uid://c37nwv2cv887q"]
 
 [ext_resource type="Script" path="res://assets/level/stage_select/main_menu.gd" id="1_00fqg"]
 [ext_resource type="Texture2D" uid="uid://ycgvxmytj5s4" path="res://sprites/menu/stage_select.png" id="1_rm1cg"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://dg1khkg2wve72" path="res://audio/sfx/sfx_change_level_selected.wav" id="6_8hwdl"]
 [ext_resource type="AudioStream" uid="uid://bo4noccrqsthm" path="res://audio/music/music_stage_select_loopable.mp3" id="6_i0m5c"]
 [ext_resource type="PackedScene" uid="uid://ci2484h6l6ebn" path="res://assets/level/screen_transition_animation.tscn" id="8_weicw"]
+[ext_resource type="AudioStream" uid="uid://b8k7e6p8p1jwy" path="res://audio/sfx/sfx_stage_selected.wav" id="8_wyl31"]
 
 [node name="StageSelect" type="Node2D" node_paths=PackedStringArray("selected_level")]
 script = ExtResource("1_00fqg")
@@ -107,5 +108,8 @@ bus = &"Stage Music"
 [node name="ChangeSelection" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_8hwdl")
 volume_db = -5.0
+
+[node name="AudioSelected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_wyl31")
 
 [node name="ScreenTransitionAnimation" parent="." instance=ExtResource("8_weicw")]
