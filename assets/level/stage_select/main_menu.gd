@@ -4,6 +4,7 @@ extends Node2D
 @onready var blinking_square: Node2D = $BlinkingSquare
 @onready var change_selection: AudioStreamPlayer = $ChangeSelection
 
+@export var next_screen: PackedScene
 
 func _unhandled_input(_event: InputEvent) -> void:
 	
@@ -26,3 +27,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			selected_level = selected_level.down
 			blinking_square.position = selected_level.position
 			change_selection.play()
+	
+	GodotLogger.debug("Current selection is [%s]" % selected_level.stage_name)
+	
+	if _event.is_action_pressed("shoot") and selected_level.stage_name == "Mega Man":
+		get_tree().change_scene_to_packed(next_screen)
