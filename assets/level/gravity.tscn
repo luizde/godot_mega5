@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=4 uid="uid://7q7qjpx3iux1"]
+[gd_scene load_steps=58 format=4 uid="uid://7q7qjpx3iux1"]
 
 [ext_resource type="Script" path="res://assets/camera/camera.gd" id="1_a42lx"]
 [ext_resource type="Texture2D" uid="uid://d3mu5mspkub0o" path="res://sprites/tiles_extra.png" id="1_de7yo"]
+[ext_resource type="Script" path="res://assets/level/gravity.gd" id="1_qakx4"]
 [ext_resource type="PackedScene" uid="uid://dxdciixxpiwd8" path="res://assets/megaman/megaman.tscn" id="2_0cn2v"]
 [ext_resource type="PackedScene" uid="uid://bsv2yl7w8rp8b" path="res://assets/level/rooms/base_room.tscn" id="3_asqvj"]
 [ext_resource type="PackedScene" uid="uid://bgo7s7c77qy7s" path="res://assets/level/decor/bg_sphere_animated.tscn" id="4_6yhfa"]
@@ -25,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://ci3flod3f4lt0" path="res://assets/enemies/enemy_nobita.tscn" id="21_migey"]
 [ext_resource type="PackedScene" uid="uid://cp0e7yl8w5y85" path="res://assets/enemies/enemy_pukapelly.tscn" id="24_wt1fo"]
 [ext_resource type="PackedScene" uid="uid://6nc21351806a" path="res://audio/music/music_bg.tscn" id="25_3a0bh"]
+[ext_resource type="PackedScene" uid="uid://ci2484h6l6ebn" path="res://assets/level/screen_transition_animation.tscn" id="26_0rfs2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
 resource_name = "lights"
@@ -1044,6 +1046,7 @@ size = Vector2(320, 232)
 size = Vector2(17, 4)
 
 [node name="Level_Gravity" type="Node2D"]
+script = ExtResource("1_qakx4")
 
 [node name="LevelLayout" type="Node2D" parent="."]
 
@@ -1229,6 +1232,10 @@ enemy_scene = ExtResource("19_adwx7")
 [node name="suzyG_02" parent="LevelLayout/Room_01" instance=ExtResource("13_4x6yt")]
 position = Vector2(296, 184)
 enemy_scene = ExtResource("8_m5s3c")
+
+[node name="ScreenTransitionAnimation" parent="LevelLayout/Room_01" instance=ExtResource("26_0rfs2")]
+z_index = 100
+position = Vector2(-50, -8)
 
 [node name="Room_02" parent="LevelLayout" node_paths=PackedStringArray("room_rect") instance=ExtResource("3_asqvj")]
 position = Vector2(160, 94)

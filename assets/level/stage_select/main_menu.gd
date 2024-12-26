@@ -6,6 +6,11 @@ extends Node2D
 
 @export var next_screen: PackedScene
 
+@onready var screen_transition_animation: AnimationPlayer = $ScreenTransitionAnimation/AnimationPlayer
+
+func _ready() -> void:
+	screen_transition_animation.play_backwards("fade_in")
+
 func _unhandled_input(_event: InputEvent) -> void:
 	
 	if _event.is_action_pressed("move_right") and selected_level.right != null:
@@ -28,7 +33,20 @@ func _unhandled_input(_event: InputEvent) -> void:
 			blinking_square.position = selected_level.position
 			change_selection.play()
 	
-	GodotLogger.debug("Current selection is [%s]" % selected_level.stage_name)
+	GodotLogger.debug("Current level selection is [%s]" % selected_level.stage_name)
 	
-	if _event.is_action_pressed("shoot") and selected_level.stage_name == "Mega Man":
-		get_tree().change_scene_to_packed(next_screen)
+	if _event.is_action_pressed("shoot") and \
+			selected_level.enabled and !selected_level.stage_name == "Mega Man":
+		_start_level_transition()
+		
+## Load the next level. It is hard coded now but we would have a Dictionary where
+## you can look up scenes by name from the MainMenuOption
+func _start_level_transition() -> void:
+	var tween: Tween = get_tree().create_tween()
+	screen_transition_animation.play("fade_in")
+	tween.tween_interval(1)
+	tween.tween_callback(_load_level)
+	
+	
+func _load_level() -> void:
+	get_tree().change_scene_to_packed(selected_level.stage_scene)
