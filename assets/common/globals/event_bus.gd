@@ -9,6 +9,9 @@ signal player_hp_changed(new_hp)
 ## Emmitted when the player hits the enemy
 signal player_hit_enemy_normalshot(damage, enemy_id)
 
+## Emmitted when the player's HP reaches zero.
+signal player_died()
+
 ## Emmitted when the a body touches spikes
 signal player_enter_spikes()
 

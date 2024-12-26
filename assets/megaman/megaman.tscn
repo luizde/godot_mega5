@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dxdciixxpiwd8"]
+[gd_scene load_steps=32 format=3 uid="uid://dxdciixxpiwd8"]
 
 [ext_resource type="Script" path="res://assets/megaman/megaman.gd" id="1_afrgl"]
 [ext_resource type="Material" uid="uid://chd5naiy8nv6o" path="res://assets/megaman/shaders/charge_material.tres" id="2_2ymrv"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://20qwjo0pinb4" path="res://assets/megaman/fx/fx_damaged_smoke.tscn" id="23_xowuf"]
 [ext_resource type="PackedScene" uid="uid://bbj8710mjr2ao" path="res://assets/common/globals/gravity_reactor.tscn" id="24_8w15t"]
 [ext_resource type="Script" path="res://assets/megaman/motion_announcer.gd" id="26_l70fs"]
+[ext_resource type="AudioStream" uid="uid://dtjfuvy20cb4o" path="res://audio/sfx/sfx_player_hit.wav" id="28_mri2s"]
+[ext_resource type="AudioStream" uid="uid://dg8k00chv8e3s" path="res://audio/sfx/sfx_death.wav" id="29_gxi6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mn401"]
 size = Vector2(12, 22)
@@ -174,6 +176,14 @@ player = NodePath("..")
 stream = ExtResource("2_l7fgf")
 volume_db = -6.4
 bus = &"Charger"
+
+[node name="AudioDamaged" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_mri2s")
+volume_db = -7.2
+
+[node name="AudioDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_gxi6l")
+volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="StateManager/Step" method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="StateManager/Idle/LowerCannonIdle" to="StateManager/Idle" method="_on_lower_cannon_idle_timeout"]

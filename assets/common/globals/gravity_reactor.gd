@@ -1,6 +1,7 @@
 extends Node
 
 @onready var gravity_downwards: bool = true
+@onready var audio: AudioStreamPlayer = $Audio
 
 var player: Player
 
@@ -9,6 +10,12 @@ func _ready() -> void:
 	EventBus.gravity_changed.connect(handle_gravity_change)
 	
 func handle_gravity_change(downwards: bool) -> void:
+	
+	if downwards != gravity_downwards:
+		audio.play()
+		
+	gravity_downwards = downwards
+	
 	if downwards:
 		player.animations.flip_v = false
 		player.up_direction = Vector2(0, -1)

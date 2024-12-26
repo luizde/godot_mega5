@@ -59,6 +59,8 @@ var ladder_touched_position: Vector2
 
 #region Audio
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var audio_damaged: AudioStreamPlayer = $AudioDamaged
+@onready var audio_death: AudioStreamPlayer = $AudioDeath
 #endregion
 
 #region Graphic FX
@@ -131,8 +133,11 @@ func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 		
 		if(hp_current <= 0):
 			states.change_state(BaseState.State.Dead)
+			audio_death.play()
 		else:
 			states.change_state(BaseState.State.Damaged)
+			audio_damaged.play()
+			
 
 func instadie(killer_entity: String) -> void:
 	receive_damage(killer_entity, 1000)

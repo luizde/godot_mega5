@@ -2983,7 +2983,7 @@ debug_color = Color(0, 0.623529, 0.552941, 0)
 
 [node name="megaman" parent="." instance=ExtResource("2_0cn2v")]
 z_index = 5
-position = Vector2(1976, 576)
+position = Vector2(16, 24)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(80, 65)
