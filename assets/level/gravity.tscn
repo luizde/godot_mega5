@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://fq8x2p3887s5" path="res://assets/enemies/enemy_popup_cannon.tscn" id="20_tqr4l"]
 [ext_resource type="PackedScene" uid="uid://ci3flod3f4lt0" path="res://assets/enemies/enemy_nobita.tscn" id="21_migey"]
 [ext_resource type="PackedScene" uid="uid://cp0e7yl8w5y85" path="res://assets/enemies/enemy_pukapelly.tscn" id="24_wt1fo"]
-[ext_resource type="AudioStream" uid="uid://csq2cto22jgov" path="res://audio/music/music_stage_gravity_man.mp3" id="25_imlxd"]
+[ext_resource type="PackedScene" uid="uid://6nc21351806a" path="res://audio/music/music_bg.tscn" id="25_3a0bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ueiua"]
 resource_name = "lights"
@@ -2995,7 +2995,4 @@ position = Vector2(8.5, 1)
 shape = SubResource("RectangleShape2D_34fob")
 one_way_collision = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("25_imlxd")
-volume_db = -7.2
-autoplay = true
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("25_3a0bh")]

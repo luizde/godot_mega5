@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://6nc21351806a"]
+
+[ext_resource type="AudioStream" uid="uid://csq2cto22jgov" path="res://audio/music/music_stage_gravity_man.mp3" id="1_fc8wj"]
+[ext_resource type="Script" path="res://audio/music/music_bg.gd" id="2_472ox"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_fc8wj")
+volume_db = -7.2
+autoplay = true
+script = ExtResource("2_472ox")

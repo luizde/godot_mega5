@@ -134,6 +134,7 @@ func receive_damage(_enemy_name: String, damage_hp: int) -> void:
 		if(hp_current <= 0):
 			states.change_state(BaseState.State.Dead)
 			audio_death.play()
+			EventBus.player_died.emit()
 		else:
 			states.change_state(BaseState.State.Damaged)
 			audio_damaged.play()
