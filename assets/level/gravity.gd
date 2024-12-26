@@ -5,7 +5,9 @@ extends Node2D
 
 func _ready() -> void:
 	
-	#GodotLogger.debug("Starting level")
+	GodotLogger.debug("Starting level")
+	#Ensure the transition doesn't glitch out.
+	screen_transition_animation.get_parent().get_node("ColorRect").color.a = 255 
 	screen_transition_animation.play_backwards("fade_in")
 	EventBus.player_died.connect(_fade_out)
 
