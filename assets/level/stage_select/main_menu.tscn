@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://c37nwv2cv887q"]
+
+[ext_resource type="Script" path="res://assets/level/stage_select/main_menu.gd" id="1_00fqg"]
+[ext_resource type="Texture2D" uid="uid://ycgvxmytj5s4" path="res://sprites/menu/stage_select.png" id="1_rm1cg"]
+[ext_resource type="PackedScene" uid="uid://c1g73phyv0k37" path="res://assets/level/stage_select/blinking_square.tscn" id="2_dylkc"]
+[ext_resource type="PackedScene" uid="uid://be6y234bd304u" path="res://assets/level/stage_select/main_menu_option.tscn" id="4_lhrvw"]
+[ext_resource type="AudioStream" uid="uid://1xxidivlku1e" path="res://audio/music/music_stage_select.mp3" id="5_usb76"]
+[ext_resource type="AudioStream" uid="uid://dg1khkg2wve72" path="res://audio/sfx/sfx_change_level_selected.wav" id="6_8hwdl"]
+
+[node name="StageSelect" type="Node2D" node_paths=PackedStringArray("selected_level")]
+script = ExtResource("1_00fqg")
+selected_level = NodePath("OptionStoneMan")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_rm1cg")
+centered = false
+region_enabled = true
+region_rect = Rect2(515, 844, 256, 256)
+
+[node name="MegamanFace" type="Sprite2D" parent="Background"]
+position = Vector2(112, 96)
+texture = ExtResource("1_rm1cg")
+centered = false
+region_enabled = true
+region_rect = Rect2(1301, 126, 32, 32)
+
+[node name="GravityManFace" type="Sprite2D" parent="Background"]
+position = Vector2(112, 32)
+texture = ExtResource("1_rm1cg")
+centered = false
+region_enabled = true
+region_rect = Rect2(1033, 126, 32, 32)
+
+[node name="BlinkingSquare" parent="." instance=ExtResource("2_dylkc")]
+position = Vector2(25, 25)
+
+[node name="OptionStoneMan" parent="." node_paths=PackedStringArray("down", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(25, 25)
+stage_name = "Stone Man"
+down = NodePath("../OptionChargeMan")
+right = NodePath("../OptionGravityMan")
+
+[node name="OptionGravityMan" parent="." node_paths=PackedStringArray("down", "left", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(105, 25)
+stage_name = "Gravity Man"
+down = NodePath("../OptionMegaman")
+left = NodePath("../OptionStoneMan")
+right = NodePath("../OptionCrystalMan")
+
+[node name="OptionCrystalMan" parent="." node_paths=PackedStringArray("down", "left") instance=ExtResource("4_lhrvw")]
+position = Vector2(185, 25)
+stage_name = "Crystal Man"
+down = NodePath("../OptionNapalmMan")
+left = NodePath("../OptionGravityMan")
+
+[node name="OptionChargeMan" parent="." node_paths=PackedStringArray("up", "down", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(25, 89)
+stage_name = "Charge Man"
+up = NodePath("../OptionStoneMan")
+down = NodePath("../OptionWaveMan")
+right = NodePath("../OptionMegaman")
+
+[node name="OptionMegaman" parent="." node_paths=PackedStringArray("up", "down", "left", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(105, 89)
+stage_name = "Mega Man"
+up = NodePath("../OptionGravityMan")
+down = NodePath("../OptionStarMan")
+left = NodePath("../OptionChargeMan")
+right = NodePath("../OptionNapalmMan")
+
+[node name="OptionNapalmMan" parent="." node_paths=PackedStringArray("up", "down", "left") instance=ExtResource("4_lhrvw")]
+position = Vector2(185, 89)
+stage_name = "Napalm Man"
+up = NodePath("../OptionCrystalMan")
+down = NodePath("../OptionGyroMan")
+left = NodePath("../OptionMegaman")
+
+[node name="OptionWaveMan" parent="." node_paths=PackedStringArray("up", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(25, 153)
+stage_name = "Wave Man"
+up = NodePath("../OptionChargeMan")
+right = NodePath("../OptionStarMan")
+
+[node name="OptionStarMan" parent="." node_paths=PackedStringArray("up", "left", "right") instance=ExtResource("4_lhrvw")]
+position = Vector2(105, 153)
+stage_name = "Star Man"
+up = NodePath("../OptionMegaman")
+left = NodePath("../OptionWaveMan")
+right = NodePath("../OptionGyroMan")
+
+[node name="OptionGyroMan" parent="." node_paths=PackedStringArray("up", "left") instance=ExtResource("4_lhrvw")]
+position = Vector2(185, 153)
+stage_name = "Gyro Man"
+up = NodePath("../OptionNapalmMan")
+left = NodePath("../OptionStarMan")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_usb76")
+volume_db = -7.5
+autoplay = true
+bus = &"Stage Music"
+
+[node name="ChangeSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8hwdl")
+volume_db = -5.0

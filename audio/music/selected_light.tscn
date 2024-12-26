@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dptxpvmam4650"]
+
+[ext_resource type="Texture2D" uid="uid://dd1gswxys7xx" path="res://sprites/menu/blinking_light_transp.png" id="1_ay6j1"]
+[ext_resource type="Script" path="res://assets/level/stage_select/selected_light.gd" id="3_hc0jk"]
+
+[node name="SelectedLight" type="Sprite2D"]
+texture = ExtResource("1_ay6j1")
+centered = false
+region_rect = Rect2(607, 1680, 8, 8)
+script = ExtResource("3_hc0jk")
+
+[node name="TimerBlink" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="TimerBlink" to="." method="_on_timer_blink_timeout"]

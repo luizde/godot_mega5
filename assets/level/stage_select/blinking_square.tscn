@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1g73phyv0k37"]
+
+[ext_resource type="PackedScene" uid="uid://dptxpvmam4650" path="res://audio/music/selected_light.tscn" id="1_j6ypi"]
+
+[node name="BlinkingSquare" type="Node2D"]
+
+[node name="SelectedLight" parent="." instance=ExtResource("1_j6ypi")]
+
+[node name="SelectedLight2" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(7, 0)
+
+[node name="SelectedLight3" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(0, 40)
+
+[node name="SelectedLight4" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(7, 40)
+
+[node name="SelectedLight5" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(32, 0)
+
+[node name="SelectedLight6" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(39, 0)
+
+[node name="SelectedLight7" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(32, 40)
+
+[node name="SelectedLight8" parent="." instance=ExtResource("1_j6ypi")]
+position = Vector2(39, 40)
