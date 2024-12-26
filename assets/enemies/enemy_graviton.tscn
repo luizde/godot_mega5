@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://siavkibuhigc"]
+[gd_scene load_steps=22 format=3 uid="uid://siavkibuhigc"]
 
 [ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="1_7evq5"]
 [ext_resource type="Script" path="res://assets/enemies/enemy_graviton.gd" id="1_m5lg0"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_8lgdq"]
+[ext_resource type="AudioStream" uid="uid://deqgmncr6ciaq" path="res://audio/sfx/sfx_enemy_damaged.wav" id="2_h3ru5"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_x1mbx"]
 [ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="4_lgele"]
 [ext_resource type="PackedScene" uid="uid://dxawnndxl6n7e" path="res://assets/common/actions/shooter.tscn" id="5_ntp5e"]
@@ -109,6 +110,7 @@ flasher = NodePath("Flasher")
 muzzle_position_x = 0.0
 muzzle_position_y = 16.0
 reacts_to_gravity = false
+audio_damaged = ExtResource("2_h3ru5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nwlau")

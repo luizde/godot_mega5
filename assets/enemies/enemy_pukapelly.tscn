@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp0e7yl8w5y85"]
+[gd_scene load_steps=18 format=3 uid="uid://cp0e7yl8w5y85"]
 
 [ext_resource type="Script" path="res://assets/enemies/enemy_pukapelly.gd" id="1_3b3j2"]
+[ext_resource type="AudioStream" uid="uid://deqgmncr6ciaq" path="res://audio/sfx/sfx_enemy_damaged.wav" id="2_ni6uh"]
 [ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="2_o600b"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="3_7mycj"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_euc0h"]
@@ -94,6 +95,7 @@ animated_sprite_2d = NodePath("AnimatedSprite2D")
 collider_physics = NodePath("DamageArea/CollisionShape2D")
 flasher = NodePath("Flasher")
 reacts_to_gravity = false
+audio_damaged = ExtResource("2_ni6uh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nr7e0")

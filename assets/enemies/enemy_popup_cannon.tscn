@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://fq8x2p3887s5"]
+[gd_scene load_steps=24 format=3 uid="uid://fq8x2p3887s5"]
 
 [ext_resource type="Script" path="res://assets/enemies/enemy_popup_cannon.gd" id="1_0v77t"]
 [ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="1_mslcv"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_8f1ov"]
 [ext_resource type="PackedScene" uid="uid://dxawnndxl6n7e" path="res://assets/common/actions/shooter.tscn" id="2_dadst"]
+[ext_resource type="AudioStream" uid="uid://deqgmncr6ciaq" path="res://audio/sfx/sfx_enemy_damaged.wav" id="2_mckmw"]
 [ext_resource type="PackedScene" uid="uid://dxyoaokygwp3n" path="res://assets/enemies/bullets/enemy_bullet.tscn" id="4_awsah"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="6_5cxoq"]
 [ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="7_s23rt"]
@@ -146,6 +147,7 @@ flasher = NodePath("Flasher")
 muzzle_position_x = -8.0
 muzzle_position_y = -18.0
 reacts_to_gravity = false
+audio_damaged = ExtResource("2_mckmw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)

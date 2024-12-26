@@ -30,8 +30,18 @@ var player_direction:int #relative to enemy. -1 left, anything else right
 @export var collider_position_gravity_up: Vector2
 #endregion
 
+#region audio
+@export var audio_damaged: AudioStream
+var audio_player:AudioStreamPlayer
+#endregion
+
 func _ready() -> void:
 	EventBus.player_hit_enemy_normalshot.connect(take_damage)
+	
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = audio_damaged
+	audio_player.volume_db = -5.0
+	add_child(audio_player)
 	
 	#grab a reference to the player
 	player = get_tree().get_nodes_in_group("player")[0]
@@ -54,6 +64,9 @@ func send_damage() -> void:
 
 func take_damage(damage: int, enemy_id) -> void:
 	if get_instance_id() == enemy_id and !invulnerable:
+		#play audio
+		audio_player.play()
+		#flash
 		flasher.start_flash(0.2, animated_sprite_2d, 0.4)
 		
 		hp -= damage

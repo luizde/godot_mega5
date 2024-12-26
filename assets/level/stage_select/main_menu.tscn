@@ -102,6 +102,7 @@ left = NodePath("../OptionStarMan")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_i0m5c")
+volume_db = 10.0
 autoplay = true
 bus = &"Stage Music"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxk2suox4ydc"]
+[gd_scene load_steps=24 format=3 uid="uid://bxk2suox4ydc"]
 
 [ext_resource type="Script" path="res://assets/enemies/enemy_suzy_g.gd" id="1_olggt"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_1desg"]
+[ext_resource type="AudioStream" uid="uid://deqgmncr6ciaq" path="res://audio/sfx/sfx_enemy_damaged.wav" id="2_xlj2h"]
 [ext_resource type="Texture2D" uid="uid://ctxsnjqaeotq8" path="res://sprites/enemies_transparent.png" id="3_6vm1d"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="4_d5ifw"]
 [ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="5_7qj3o"]
@@ -120,6 +121,7 @@ muzzle_position_x = 11.0
 muzzle_position_y = -15.0
 collider_position_gravity_down = Vector2(0, -12)
 collider_position_gravity_up = Vector2(0, -14)
+audio_damaged = ExtResource("2_xlj2h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -13)

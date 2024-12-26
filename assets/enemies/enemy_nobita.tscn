@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://ci3flod3f4lt0"]
+[gd_scene load_steps=26 format=3 uid="uid://ci3flod3f4lt0"]
 
 [ext_resource type="Script" path="res://assets/enemies/enemy_nobita.gd" id="1_hogrk"]
 [ext_resource type="Texture2D" uid="uid://byflhrlfibxw" path="res://sprites/enemies/nobita.png" id="2_7pkxe"]
 [ext_resource type="Texture2D" uid="uid://bf31u8jsi81xo" path="res://sprites/megaman.png" id="2_ncru1"]
+[ext_resource type="AudioStream" uid="uid://deqgmncr6ciaq" path="res://audio/sfx/sfx_enemy_damaged.wav" id="2_x6d8x"]
 [ext_resource type="PackedScene" uid="uid://cedrej40vfvit" path="res://assets/common/fx/flasher.tscn" id="3_oe4tc"]
 [ext_resource type="Shader" path="res://assets/common/fx/flasher.gdshader" id="4_vxfes"]
 
@@ -158,6 +159,7 @@ animated_sprite_2d = NodePath("AnimatedSprite2D")
 collider_physics = NodePath("CollisionShape2D")
 flasher = NodePath("Flasher")
 reacts_to_gravity = false
+audio_damaged = ExtResource("2_x6d8x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -14.5)
