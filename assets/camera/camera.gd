@@ -38,7 +38,7 @@ func change_room(_room_number: int, room_pos: Vector2, room_rect: Rect2) -> void
 	limit_left = room_rect.position.x + room_pos.x
 	limit_right = (room_rect.position.x + room_pos.x) + room_rect.size.x 
 	
-func _handle_screen_shake(_enemy_name: String, damage_hp: int) -> void:
+func _handle_screen_shake(_enemy_name: String, _damage_hp: int) -> void:
 	_shake_strength = screen_shake_strength
 
 func _random_offset() -> Vector2:

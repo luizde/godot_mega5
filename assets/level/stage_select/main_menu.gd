@@ -9,35 +9,40 @@ extends Node2D
 
 @onready var screen_transition_animation: AnimationPlayer = $ScreenTransitionAnimation/AnimationPlayer
 
+#helps to avoid a bug where you can move cursor after selecting and game would want a different level
+var _selected:bool = false
+
 func _ready() -> void:
 	screen_transition_animation.play_backwards("fade_in")
 
 func _unhandled_input(_event: InputEvent) -> void:
 	
-	if _event.is_action_pressed("move_right") and selected_level.right != null:
-			selected_level = selected_level.right
-			blinking_square.position = selected_level.position
-			change_selection.play()
-			
-	if _event.is_action_pressed("move_left") and selected_level.left != null:
-			selected_level = selected_level.left
-			blinking_square.position = selected_level.position
-			change_selection.play()
-			
-	if _event.is_action_pressed("move_up") and selected_level.up != null:
-			selected_level = selected_level.up
-			blinking_square.position = selected_level.position
-			change_selection.play()
-			
-	if _event.is_action_pressed("move_down") and selected_level.down != null:
-			selected_level = selected_level.down
-			blinking_square.position = selected_level.position
-			change_selection.play()
+	if !_selected:
+		if _event.is_action_pressed("move_right") and selected_level.right != null:
+				selected_level = selected_level.right
+				blinking_square.position = selected_level.position
+				change_selection.play()
+				
+		if _event.is_action_pressed("move_left") and selected_level.left != null:
+				selected_level = selected_level.left
+				blinking_square.position = selected_level.position
+				change_selection.play()
+				
+		if _event.is_action_pressed("move_up") and selected_level.up != null:
+				selected_level = selected_level.up
+				blinking_square.position = selected_level.position
+				change_selection.play()
+				
+		if _event.is_action_pressed("move_down") and selected_level.down != null:
+				selected_level = selected_level.down
+				blinking_square.position = selected_level.position
+				change_selection.play()
 	
 	GodotLogger.debug("Current level selection is [%s]" % selected_level.stage_name)
 	
 	if _event.is_action_pressed("shoot") and \
 			selected_level.enabled and !selected_level.stage_name == "Mega Man":
+		_selected = true
 		audio_selected.play()
 		_start_level_transition()
 		
