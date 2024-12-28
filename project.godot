@@ -31,6 +31,7 @@ window/vsync/vsync_mode=0
 
 [editor]
 
+movie_writer/movie_file="C:/Users/luisz/Documents/demo_mega5.avi"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 

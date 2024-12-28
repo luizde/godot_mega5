@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://g3xh3n64pll7"]
+
+[ext_resource type="Script" path="res://assets/level/boss_intro/boss_screen_light.gd" id="1_vxt1f"]
+[ext_resource type="Texture2D" uid="uid://c1mguttm4e6xd" path="res://sprites/menu/stage_select_light_on.png" id="2_jjm0k"]
+
+[node name="BossScreenLight" type="Node2D"]
+script = ExtResource("1_vxt1f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jjm0k")
+centered = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.125
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

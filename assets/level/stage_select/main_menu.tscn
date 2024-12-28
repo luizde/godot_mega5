@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c37nwv2cv887q"]
+[gd_scene load_steps=11 format=3 uid="uid://c37nwv2cv887q"]
 
 [ext_resource type="Script" path="res://assets/level/stage_select/main_menu.gd" id="1_00fqg"]
 [ext_resource type="Texture2D" uid="uid://ycgvxmytj5s4" path="res://sprites/menu/stage_select.png" id="1_rm1cg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7q7qjpx3iux1" path="res://assets/level/gravity.tscn" id="2_xfie6"]
 [ext_resource type="PackedScene" uid="uid://be6y234bd304u" path="res://assets/level/stage_select/main_menu_option.tscn" id="4_lhrvw"]
 [ext_resource type="AudioStream" uid="uid://dg1khkg2wve72" path="res://audio/sfx/sfx_change_level_selected.wav" id="6_8hwdl"]
+[ext_resource type="PackedScene" uid="uid://vnxfdj7bmbgg" path="res://assets/level/boss_intro/boss_intro_screen.tscn" id="6_22ssk"]
 [ext_resource type="AudioStream" uid="uid://bo4noccrqsthm" path="res://audio/music/music_stage_select_loopable.mp3" id="6_i0m5c"]
 [ext_resource type="PackedScene" uid="uid://ci2484h6l6ebn" path="res://assets/level/screen_transition_animation.tscn" id="8_weicw"]
 [ext_resource type="AudioStream" uid="uid://b8k7e6p8p1jwy" path="res://audio/sfx/sfx_stage_selected.wav" id="8_wyl31"]
@@ -51,7 +52,7 @@ down = NodePath("../OptionMegaman")
 left = NodePath("../OptionStoneMan")
 right = NodePath("../OptionCrystalMan")
 enabled = true
-stage_scene = ExtResource("2_xfie6")
+stage_scene = ExtResource("6_22ssk")
 
 [node name="OptionCrystalMan" parent="." node_paths=PackedStringArray("down", "left") instance=ExtResource("4_lhrvw")]
 position = Vector2(185, 25)

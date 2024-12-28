@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dshqh4l3b2vtn"]
+
+[ext_resource type="Texture2D" uid="uid://ycgvxmytj5s4" path="res://sprites/menu/stage_select.png" id="1_5ht1o"]
+[ext_resource type="PackedScene" uid="uid://g3xh3n64pll7" path="res://assets/level/boss_intro/boss_screen_light.tscn" id="2_yblex"]
+
+[node name="BossScreenEdge" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5ht1o")
+centered = false
+region_enabled = true
+region_rect = Rect2(1029, 1182, 256, 23)
+
+[node name="Node" type="Node2D" parent="."]
+
+[node name="BossScreenLight" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(3, 12)
+
+[node name="BossScreenLight2" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(19, 12)
+
+[node name="BossScreenLight3" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(35, 12)
+
+[node name="BossScreenLight4" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(51, 12)
+
+[node name="BossScreenLight5" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(67, 12)
+
+[node name="BossScreenLight6" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(83, 12)
+
+[node name="BossScreenLight7" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(163, 12)
+
+[node name="BossScreenLight8" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(179, 12)
+
+[node name="BossScreenLight9" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(195, 12)
+
+[node name="BossScreenLight10" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(211, 12)
+
+[node name="BossScreenLight11" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(227, 12)
+
+[node name="BossScreenLight12" parent="Node" instance=ExtResource("2_yblex")]
+position = Vector2(243, 12)
