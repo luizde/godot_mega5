@@ -435,9 +435,9 @@ libraries = {
 autoplay = "intro"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_top = 17.0
+offset_top = 60.0
 offset_right = 255.0
-offset_bottom = 217.0
+offset_bottom = 160.0
 color = Color(0.141176, 0.0941176, 0.54902, 1)
 
 [node name="BossScreenEdgeTop" parent="." instance=ExtResource("1_eynb0")]
