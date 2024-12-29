@@ -23,6 +23,10 @@ func enter() -> void:
 	damaged_timer.start()
 	damaged_particles.visible = false
 	# move against players's direction for a bit, then give control back
+	
+	# remove charge
+	player.charge_time = 0
+	player.charging = false
 
 func input(_event: InputEvent) -> int:
 	#we can't move in this state. p

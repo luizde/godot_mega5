@@ -85,6 +85,7 @@ func physics_process(_delta: float) -> int:
 	else:
 		player.charging_colorer.stop_flicker()
 		player.charge_time = 0.0
+		player.audio_player.stop()
 	
 	if player.charge_time >= 1.0 and player.charge_time < 2.0:
 		player.charging_colorer.start_flash(player, 0.1, player.animations)
