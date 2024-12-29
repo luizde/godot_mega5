@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk4qvtw7ojeb2"]
+[gd_scene load_steps=13 format=3 uid="uid://dk4qvtw7ojeb2"]
 
 [ext_resource type="Script" path="res://assets/enemies/gravity_man.gd" id="1_ay7yl"]
 [ext_resource type="Texture2D" uid="uid://nn1hy75lu3oq" path="res://sprites/enemies/gravity_man.png" id="1_qij3c"]
+[ext_resource type="Texture2D" uid="uid://cgj4xepgk56ed" path="res://sprites/enemies/boss_tornados_transp.png" id="3_d7m4d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3bv5"]
 atlas = ExtResource("1_qij3c")
@@ -18,6 +19,22 @@ region = Rect2(71, 23, 32, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pr23n"]
 atlas = ExtResource("1_qij3c")
 region = Rect2(104, 23, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4kwh"]
+atlas = ExtResource("3_d7m4d")
+region = Rect2(0, 0, 17, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3c1p"]
+atlas = ExtResource("3_d7m4d")
+region = Rect2(18, 0, 17, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulekd"]
+atlas = ExtResource("3_d7m4d")
+region = Rect2(37, 0, 21, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfue4"]
+atlas = ExtResource("3_d7m4d")
+region = Rect2(61, 0, 21, 36)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x0kk0"]
 animations = [{
@@ -63,6 +80,35 @@ animations = [{
 "loop": false,
 "name": &"intro_pose",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4kwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3c1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulekd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfue4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4kwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3c1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulekd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfue4")
+}],
+"loop": false,
+"name": &"tornado",
+"speed": 5.0
 }]
 
 [node name="GravityMan" type="CharacterBody2D"]
@@ -71,4 +117,4 @@ script = ExtResource("1_ay7yl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_x0kk0")
-animation = &"idle"
+animation = &"tornado"

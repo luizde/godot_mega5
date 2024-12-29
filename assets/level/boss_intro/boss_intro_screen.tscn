@@ -64,7 +64,7 @@ tracks/4/path = NodePath("gravity_man:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.233333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -203,6 +203,20 @@ tracks/15/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("gravity_man")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.266667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_play_tornado"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_p3ib7"]
 resource_name = "intro"
@@ -274,9 +288,12 @@ tracks/5/path = NodePath("gravity_man")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"animation_play_tornado"
+}, {
 "args": [],
 "method": &"animation_play_intro"
 }]
@@ -435,9 +452,9 @@ libraries = {
 autoplay = "intro"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_top = 60.0
+offset_top = 17.0
 offset_right = 255.0
-offset_bottom = 160.0
+offset_bottom = 217.0
 color = Color(0.141176, 0.0941176, 0.54902, 1)
 
 [node name="BossScreenEdgeTop" parent="." instance=ExtResource("1_eynb0")]
@@ -455,6 +472,7 @@ position = Vector2(0, 129)
 shape = SubResource("WorldBoundaryShape2D_xuo68")
 
 [node name="gravity_man" parent="." instance=ExtResource("2_dih77")]
+visible = false
 position = Vector2(128, 129)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
